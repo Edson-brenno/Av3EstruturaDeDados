@@ -19,7 +19,7 @@ public class Login extends Application {
         try {
             FXMLLoader loader = new FXMLLoader(Login.class.getResource("Login-view.fxml"));
             Scene scene = new Scene(loader.load());
-            stage.setTitle("Login");
+            stage.setTitle("Os mano");
             stage.setScene(scene);
             stage.show();
         }catch (Exception e){
