@@ -18,7 +18,7 @@
       <PasswordField layoutX="182.0" layoutY="226.0" prefHeight="25.0" prefWidth="235.0" promptText="Senha" />
       <Button layoutX="276.0" layoutY="271.0" mnemonicParsing="false" text="Logar" />
       <TextField fx:id="userName" layoutX="183.0" layoutY="175.0" prefHeight="25.0" prefWidth="235.0" promptText="Usuario" />
-      <Button layoutX="266.0" layoutY="314.0" mnemonicParsing="false" text="Cadastrar" />
+      <Button fx:id="botaoCadastro" layoutX="266.0" layoutY="314.0" mnemonicParsing="false" onAction="#onBtCadastroClickAction" text="Cadastrar" />
       <Label fx:id="mensagemError" layoutX="183.0" layoutY="200.0" prefHeight="15.0" prefWidth="235.0" textFill="#e41818">
          <font>
             <Font size="10.0" />
