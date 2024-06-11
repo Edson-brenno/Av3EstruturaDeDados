@@ -1,6 +1,6 @@
-package com.models.av3_estrutura_de_dados.Listas.NosListas;
+package com.models.av3_estrutura_de_dados.Entities.Listas.NosListas;
 
-import com.models.av3_estrutura_de_dados.Listas.Enum.TipoClienteEnum;
+import com.models.av3_estrutura_de_dados.Entities.Listas.Enum.TipoClienteEnum;
 
 public class NoCliente {
     private String nomeCompleto, email, nomeUsuario, senha;
@@ -13,6 +13,7 @@ public class NoCliente {
         this.nomeUsuario = nomeUsuario;
         this.senha = senha;
         this.tipoCliente = tipoCliente;
+        this.proximoCliente = this.clienteAnterior = null;
     }
 
     public String getNomeCompleto() {
