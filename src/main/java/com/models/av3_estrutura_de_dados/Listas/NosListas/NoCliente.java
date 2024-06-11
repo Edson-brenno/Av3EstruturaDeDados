@@ -7,35 +7,36 @@ public class NoCliente {
     private TipoClienteEnum tipoCliente;
     private NoCliente proximoCliente, clienteAnterior;
 
-    public NoCliente(String nome, String email, String senha, TipoClienteEnum tipoCliente) {
+    public NoCliente(String nome, String email, String nomeUsuario, String senha, TipoClienteEnum tipoCliente) {
         this.nomeCompleto = nome;
         this.email = email;
+        this.nomeUsuario = nomeUsuario;
         this.senha = senha;
         this.tipoCliente = tipoCliente;
     }
 
     public String getNomeCompleto() {
-        return nomeCompleto;
+        return this.nomeCompleto;
     }
 
     public String getEmail() {
-        return email;
+        return this.email;
     }
 
     public String getSenha() {
-        return senha;
+        return this.senha;
     }
 
     public String getNomeUsuario() {
-        return nomeUsuario;
+        return this.nomeUsuario;
     }
 
     public TipoClienteEnum getTipoCliente() {
-        return tipoCliente;
+        return this.tipoCliente;
     }
 
     public NoCliente getProximoCliente() {
-        return proximoCliente;
+        return this.proximoCliente;
     }
 
     public void setProximoCliente(NoCliente proximoCliente) {
@@ -43,7 +44,7 @@ public class NoCliente {
     }
 
     public NoCliente getClienteAnterior() {
-        return clienteAnterior;
+        return this.clienteAnterior;
     }
 
     public void setClienteAnterior(NoCliente clienteAnterior) {
