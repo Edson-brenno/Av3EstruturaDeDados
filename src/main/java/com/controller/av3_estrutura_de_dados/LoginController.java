@@ -17,9 +17,16 @@ import javafx.scene.control.Label;
 import javafx.scene.control.Button;
 
 import com.views.av3_estrutura_de_dados.Cadastro;
+import com.models.av3_estrutura_de_dados.Entities.Listas.ListaClientes;
+import com.controller.av3_estrutura_de_dados.CadastroController;
+import com.controller.av3_estrutura_de_dados.interfaces.Controller;
+import com.controller.av3_estrutura_de_dados.util.SetarListaClientesDoController;
 import javafx.stage.Stage;
 
-public class LoginController implements Initializable {
+public class LoginController implements Initializable, Controller {
+    @FXML
+    private ListaClientes listaClientes;
+
     @FXML
     private TextField userName;
 
@@ -32,7 +39,9 @@ public class LoginController implements Initializable {
     @FXML
     public void onBtCadastroClickAction(ActionEvent event) throws IOException {
         try {
-            Parent root = FXMLLoader.load(Cadastro.class.getResource("Cadastro-view.fxml"));
+            FXMLLoader loader = new FXMLLoader(Cadastro.class.getResource("Cadastro-view.fxml"));
+            Parent root = loader.load();
+            SetarListaClientesDoController.setarListaClientes(loader, this.listaClientes);
             Stage stage = (Stage)((Node)event.getSource()).getScene().getWindow();
             Scene scene = new Scene(root);
             stage.setScene(scene);
@@ -40,6 +49,11 @@ public class LoginController implements Initializable {
         }catch (RuntimeException e){
             e.getStackTrace();
         }
+    }
+
+    @FXML
+    public void setListaClientes(ListaClientes listaClientes) {
+        this.listaClientes = listaClientes;
     }
 
     @Override

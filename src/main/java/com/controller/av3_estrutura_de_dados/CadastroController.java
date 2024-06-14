@@ -19,28 +19,40 @@ import javafx.scene.control.ComboBox;
 import javafx.scene.control.Button;
 
 import com.views.av3_estrutura_de_dados.Login;
+import com.models.av3_estrutura_de_dados.Entities.Listas.ListaClientes;
+import com.controller.av3_estrutura_de_dados.interfaces.Controller;
+import com.controller.av3_estrutura_de_dados.util.SetarListaClientesDoController;
 import javafx.stage.Stage;
 
-public class CadastroController implements Initializable {
+public class CadastroController implements Initializable, Controller {
 
     @FXML
     private TextField nomeCompleto, email, nomeUsuario, senha;
     @FXML
-    private Button btnVoltar;
+    private Button btnVoltar, btnCadastrar;
     @FXML
     private ComboBox<TipoClienteEnum> comboTipoCliente;
+    @FXML
+    private ListaClientes listaClientes=null;
 
     @FXML
     public void onBtnVoltarClickAction(ActionEvent event) throws IOException {
         try{
-            Parent root = FXMLLoader.load(Login.class.getResource("Login-view.fxml"));
+            FXMLLoader loader = new FXMLLoader(Login.class.getResource("Login-view.fxml"));
+            Parent root = loader.load();
             Stage stage = (Stage)((Node)event.getSource()).getScene().getWindow();
             Scene scene = new Scene(root);
+            SetarListaClientesDoController.setarListaClientes(loader, this.listaClientes);
             stage.setScene(scene);
             stage.show();
         }catch(RuntimeException e){
             e.printStackTrace();
         }
+    }
+
+    @FXML
+    public void setListaClientes(ListaClientes listaClientes) {
+        this.listaClientes = listaClientes;
     }
 
     @Override
