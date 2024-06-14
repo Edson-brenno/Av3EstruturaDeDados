@@ -32,4 +32,21 @@ public class ListaClientes {
         }
 
     }
+
+    public void MostrarClientes(){
+
+        if(!this.listaVazia()){
+            NoCliente atual = this.inicio;
+
+            while(atual.getProximoCliente() != null){
+                System.out.println(atual.getNomeCompleto() + " - " + atual.getEmail() + " - " +
+                        atual.getNomeUsuario() + " - " + atual.getSenha() + " - " + atual.getTipoCliente());
+                atual = atual.getProximoCliente();
+            }
+
+            System.out.println(atual.getNomeCompleto() + " - " + atual.getEmail() + " - " +
+                    atual.getNomeUsuario() + " - " + atual.getSenha() + " - " + atual.getTipoCliente());
+        }
+
+    }
 }

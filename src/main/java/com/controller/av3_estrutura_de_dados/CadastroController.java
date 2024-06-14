@@ -51,6 +51,32 @@ public class CadastroController implements Initializable, Controller {
     }
 
     @FXML
+    public void onBtnCadastrarClickAction(ActionEvent event) throws IOException {
+        try{
+            if (this.nomeUsuario.getLength() > 0 && this.nomeCompleto.getLength() > 0 &&
+            this.email.getLength() > 0 && (this.comboTipoCliente.getValue() == TipoClienteEnum.CONSUMIDOR ||
+                    this.comboTipoCliente.getValue() == TipoClienteEnum.VENDEDOR)){
+
+                this.listaClientes.adicionarCliente(this.nomeCompleto.getText(), this.email.getText(),
+                        this.nomeUsuario.getText(), this.senha.getText(),
+                        this.comboTipoCliente.getValue());
+
+                FXMLLoader loader = new FXMLLoader(Login.class.getResource("Login-view.fxml"));
+                Parent root = loader.load();
+                Stage stage = (Stage)((Node)event.getSource()).getScene().getWindow();
+                Scene scene = new Scene(root);
+                SetarListaClientesDoController.setarListaClientes(loader, this.listaClientes);
+                stage.setScene(scene);
+                stage.show();
+
+            }
+        }
+        catch(RuntimeException e){
+            e.printStackTrace();
+        }
+    }
+
+    @FXML
     public void setListaClientes(ListaClientes listaClientes) {
         this.listaClientes = listaClientes;
     }

@@ -1,5 +1,6 @@
 package com.views.av3_estrutura_de_dados;
 
+import com.models.av3_estrutura_de_dados.Entities.Listas.NosListas.NoCliente;
 import javafx.application.Application;
 import javafx.fxml.FXMLLoader;
 import javafx.scene.Scene;
@@ -21,8 +22,6 @@ public class Login extends Application {
     public void start(Stage stage) throws IOException {
         try {
             ListaClientes listaCliente = new ListaClientes();
-            listaCliente.adicionarCliente("dasd", "dadad", "dasda", "dada",
-                    TipoClienteEnum.CONSUMIDOR);
             FXMLLoader loader = new FXMLLoader(Login.class.getResource("Login-view.fxml"));
             Scene scene = new Scene(loader.load());
             LoginController controller = (LoginController) loader.getController();

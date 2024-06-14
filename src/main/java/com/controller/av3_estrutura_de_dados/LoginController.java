@@ -22,10 +22,11 @@ import com.controller.av3_estrutura_de_dados.CadastroController;
 import com.controller.av3_estrutura_de_dados.interfaces.Controller;
 import com.controller.av3_estrutura_de_dados.util.SetarListaClientesDoController;
 import javafx.stage.Stage;
+import javafx.application.Platform;
 
 public class LoginController implements Initializable, Controller {
     @FXML
-    private ListaClientes listaClientes;
+    private ListaClientes listaClientes=null;
 
     @FXML
     private TextField userName;
@@ -58,6 +59,14 @@ public class LoginController implements Initializable, Controller {
 
     @Override
     public void initialize(URL url, ResourceBundle rb) {
+
         Constraints.setTextFieldUsuario(userName, mensagemError);
+
+        Platform.runLater(this::mostrarClientes);
+    }
+
+    private void mostrarClientes(){
+        System.out.println("=======================================");
+        this.listaClientes.MostrarClientes();
     }
 }
