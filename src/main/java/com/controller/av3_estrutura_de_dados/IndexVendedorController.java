@@ -9,10 +9,10 @@ import javafx.fxml.Initializable;
 import javafx.scene.Parent;
 import javafx.scene.Scene;
 import javafx.scene.control.Label;
+import javafx.application.Platform;
 
 import com.models.av3_estrutura_de_dados.Entities.Listas.ListaClientes;
 import com.controller.av3_estrutura_de_dados.interfaces.Controller;
-
 import java.net.URL;
 
 public class IndexVendedorController implements Initializable, Controller {
@@ -23,11 +23,16 @@ public class IndexVendedorController implements Initializable, Controller {
 
     @Override
     public void setListaClientes(ListaClientes listaClientes){
+        System.out.println("Chegou");
         this.listaClientes = listaClientes;
     }
 
     @Override
     public void initialize(URL url, ResourceBundle rb) {
+        Platform.runLater(this::setarNomeUsuarioNoLabel);
+    }
+
+    private void setarNomeUsuarioNoLabel(){
         this.labelNomeUsuario.setText(listaClientes.usuarioLogado.getNomeCompleto());
     }
 }

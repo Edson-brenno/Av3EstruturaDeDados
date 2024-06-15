@@ -1,9 +1,9 @@
 <?xml version="1.0" encoding="UTF-8"?>
 
-<?import com.gluonhq.charm.glisten.control.Avatar?>
 <?import javafx.scene.control.Label?>
 <?import javafx.scene.control.SplitPane?>
 <?import javafx.scene.image.Image?>
+<?import javafx.scene.image.ImageView?>
 <?import javafx.scene.layout.AnchorPane?>
 <?import javafx.scene.layout.ColumnConstraints?>
 <?import javafx.scene.layout.GridPane?>
@@ -24,16 +24,16 @@
                 <RowConstraints maxHeight="59.0" minHeight="10.0" prefHeight="51.0" vgrow="SOMETIMES" />
               </rowConstraints>
                <children>
-                  <Avatar GridPane.halignment="CENTER" GridPane.valignment="TOP">
-                     <image>
-                        <Image url="@../../../../java/com/views/av3_estrutura_de_dados/images/user.png" />
-                     </image>
-                  </Avatar>
-                  <Label prefHeight="51.0" prefWidth="130.0" GridPane.rowIndex="1">
+                  <Label fx:id="labelNomeUsuario" alignment="TOP_LEFT" prefHeight="51.0" prefWidth="130.0" GridPane.rowIndex="1">
                      <font>
                         <Font size="13.0" />
                      </font>
                   </Label>
+                  <ImageView fitHeight="28.0" fitWidth="123.0" pickOnBounds="true" preserveRatio="true" GridPane.halignment="CENTER">
+                     <image>
+                        <Image url="@images/user.png" />
+                     </image>
+                  </ImageView>
                </children>
             </GridPane>
          </items></SplitPane>

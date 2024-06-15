@@ -22,6 +22,8 @@ public class Login extends Application {
     public void start(Stage stage) throws IOException {
         try {
             ListaClientes listaCliente = new ListaClientes();
+            listaCliente.adicionarCliente("Edson Brenno", "teste@gmail.com", "123456",
+                    TipoClienteEnum.VENDEDOR);
             FXMLLoader loader = new FXMLLoader(Login.class.getResource("Login-view.fxml"));
             Scene scene = new Scene(loader.load());
             LoginController controller = (LoginController) loader.getController();

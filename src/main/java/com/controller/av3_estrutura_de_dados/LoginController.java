@@ -47,8 +47,8 @@ public class LoginController implements Initializable, Controller {
     public void onBtnLoginClickAction(ActionEvent event) throws IOException {
         try {
             // Se o usuário existe
-            if(this.listaClientes != null && this.listaClientes.LogarCliente(this.emailTextField.getText(),
-                    this.passwordTextField.getText()) != null){
+            if((this.listaClientes != null) && (this.listaClientes.LogarCliente(this.emailTextField.getText(),
+                    this.passwordTextField.getText()) == true)){
                 CarregarPagina.trocarPagina(event, IndexVendedor.class, "IndexVendedor-view.fxml", this.listaClientes);
             }
             else{ // Error no login

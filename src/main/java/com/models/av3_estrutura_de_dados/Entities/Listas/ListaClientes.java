@@ -54,7 +54,7 @@ public class ListaClientes {
     // Método resposável pelo login do cliente
     public Boolean LogarCliente(String email, String senha){
         if(this.listaVazia()) {
-            return null;
+            return false;
         }else{
             NoCliente atual = this.inicio; // Ponteiro
 
@@ -72,7 +72,7 @@ public class ListaClientes {
                 return true;
             }else {
                 // Retorna nulo se o usuário não for encontrado
-                return null;
+                return false;
             }
         }
     }
