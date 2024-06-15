@@ -15,4 +15,24 @@ public class NoPilhaProduto {
         this.proximoNo = null;
     }
 
+    public String getIdProduto() {
+        return idProduto;
+    }
+
+    public String getNome() {
+        return nome;
+    }
+
+    public String getDescricao() {
+        return descricao;
+    }
+
+    public int getQuantidade() {
+        return quantidade;
+    }
+
+    public NoPilhaProduto getProximoNo() {
+        return proximoNo;
+    }
+
 }
