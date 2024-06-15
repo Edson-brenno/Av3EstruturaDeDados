@@ -8,7 +8,8 @@ import javafx.stage.Stage;
 import com.models.av3_estrutura_de_dados.Entities.Listas.ListaClientes;
 import com.controller.av3_estrutura_de_dados.LoginController;
 import com.models.av3_estrutura_de_dados.Entities.Listas.Enum.TipoClienteEnum;
-
+import com.models.av3_estrutura_de_dados.Entities.Pilhas.PilhaProdutos;
+import com.models.av3_estrutura_de_dados.Entities.Pilhas.NosPilhas.NoPilhaProduto;
 
 import java.io.IOException;
 
@@ -22,6 +23,7 @@ public class Login extends Application {
     public void start(Stage stage) throws IOException {
         try {
             ListaClientes listaCliente = new ListaClientes();
+            PilhaProdutos pilhaProdutos = new PilhaProdutos();
             listaCliente.adicionarCliente("Edson Brenno", "teste@gmail.com", "123456",
                     TipoClienteEnum.VENDEDOR);
             FXMLLoader loader = new FXMLLoader(Login.class.getResource("Login-view.fxml"));

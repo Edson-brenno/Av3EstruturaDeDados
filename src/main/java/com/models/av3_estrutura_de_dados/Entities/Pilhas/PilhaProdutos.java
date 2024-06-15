@@ -20,7 +20,7 @@ public class PilhaProdutos {
             this.base = this.topo = new NoPilhaProduto(nome, descricao, preco, quantidade);
         }else{
             this.topo.setProximoNo(new NoPilhaProduto(nome, descricao, preco, quantidade));
-            this.base = this.topo.getProximoNo();
+            this.topo = this.topo.getProximoNo();
         }
     }
 
@@ -28,12 +28,12 @@ public class PilhaProdutos {
         if(pilhaEstaVazia()){
             return null;
         }else{
-            NoPilhaProduto ponteiro = this.topo.getProximoNo();
+            NoPilhaProduto ponteiro = this.base;
             while(ponteiro.getProximoNo() != this.topo){
                 ponteiro = ponteiro.getProximoNo();
             }
             this.topo = ponteiro;
-
+            this.topo.setProximoNo(null);
             return ponteiro.getProximoNo();
         }
     }
