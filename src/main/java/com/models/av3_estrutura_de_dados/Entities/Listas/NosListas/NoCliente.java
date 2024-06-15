@@ -3,14 +3,13 @@ package com.models.av3_estrutura_de_dados.Entities.Listas.NosListas;
 import com.models.av3_estrutura_de_dados.Entities.Listas.Enum.TipoClienteEnum;
 
 public class NoCliente {
-    private String nomeCompleto, email, nomeUsuario, senha;
+    private String nomeCompleto, email, senha;
     private TipoClienteEnum tipoCliente;
     private NoCliente proximoCliente, clienteAnterior;
 
-    public NoCliente(String nome, String email, String nomeUsuario, String senha, TipoClienteEnum tipoCliente) {
+    public NoCliente(String nome, String email, String senha, TipoClienteEnum tipoCliente) {
         this.nomeCompleto = nome;
         this.email = email;
-        this.nomeUsuario = nomeUsuario;
         this.senha = senha;
         this.tipoCliente = tipoCliente;
         this.proximoCliente = this.clienteAnterior = null;
@@ -26,10 +25,6 @@ public class NoCliente {
 
     public String getSenha() {
         return this.senha;
-    }
-
-    public String getNomeUsuario() {
-        return this.nomeUsuario;
     }
 
     public TipoClienteEnum getTipoCliente() {

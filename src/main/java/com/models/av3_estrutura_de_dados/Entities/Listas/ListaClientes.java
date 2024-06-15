@@ -15,11 +15,11 @@ public class ListaClientes {
         return this.inicio == null;
     }
 
-    public void adicionarCliente(String nome, String email, String nomeUsuario,
+    public void adicionarCliente(String nome, String email,
                                  String senha, TipoClienteEnum tipoCliente){
 
         if(this.listaVazia()){
-            this.inicio = new NoCliente(nome, email, nomeUsuario, senha, tipoCliente);
+            this.inicio = new NoCliente(nome, email, senha, tipoCliente);
         }else{
             NoCliente atual = this.inicio;
 
@@ -27,7 +27,7 @@ public class ListaClientes {
                 atual = atual.getProximoCliente();
             }
 
-            atual.setProximoCliente(new NoCliente(nome, email, nomeUsuario, senha, tipoCliente));
+            atual.setProximoCliente(new NoCliente(nome, email, senha, tipoCliente));
             atual.getProximoCliente().setClienteAnterior(atual);
         }
 
@@ -40,12 +40,12 @@ public class ListaClientes {
 
             while(atual.getProximoCliente() != null){
                 System.out.println(atual.getNomeCompleto() + " - " + atual.getEmail() + " - " +
-                        atual.getNomeUsuario() + " - " + atual.getSenha() + " - " + atual.getTipoCliente());
+                        atual.getSenha() + " - " + atual.getTipoCliente());
                 atual = atual.getProximoCliente();
             }
 
             System.out.println(atual.getNomeCompleto() + " - " + atual.getEmail() + " - " +
-                    atual.getNomeUsuario() + " - " + atual.getSenha() + " - " + atual.getTipoCliente());
+                    atual.getSenha() + " - " + atual.getTipoCliente());
         }
 
     }

@@ -27,7 +27,7 @@ import javafx.stage.Stage;
 public class CadastroController implements Initializable, Controller {
 
     @FXML
-    private TextField nomeCompleto, email, nomeUsuario, senha;
+    private TextField nomeCompleto, email,senha;
     @FXML
     private Button btnVoltar, btnCadastrar;
     @FXML
@@ -53,12 +53,12 @@ public class CadastroController implements Initializable, Controller {
     @FXML
     public void onBtnCadastrarClickAction(ActionEvent event) throws IOException {
         try{
-            if (this.nomeUsuario.getLength() > 0 && this.nomeCompleto.getLength() > 0 &&
+            if (this.nomeCompleto.getLength() > 0 &&
             this.email.getLength() > 0 && (this.comboTipoCliente.getValue() == TipoClienteEnum.CONSUMIDOR ||
                     this.comboTipoCliente.getValue() == TipoClienteEnum.VENDEDOR)){
 
                 this.listaClientes.adicionarCliente(this.nomeCompleto.getText(), this.email.getText(),
-                        this.nomeUsuario.getText(), this.senha.getText(),
+                        this.senha.getText(),
                         this.comboTipoCliente.getValue());
 
                 FXMLLoader loader = new FXMLLoader(Login.class.getResource("Login-view.fxml"));
@@ -86,6 +86,5 @@ public class CadastroController implements Initializable, Controller {
       this.comboTipoCliente.getItems().addAll(TipoClienteEnum.values());
 
       Constraints.setTextFieldNomeCompleto(this.nomeCompleto);
-      Constraints.setTextFieldUsuario(this.nomeUsuario, null);
     }
 }

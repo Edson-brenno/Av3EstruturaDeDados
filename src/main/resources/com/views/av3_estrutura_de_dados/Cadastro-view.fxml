@@ -8,23 +8,21 @@
 <?import javafx.scene.layout.AnchorPane?>
 <?import javafx.scene.text.Font?>
 
-<AnchorPane prefHeight="400.0" prefWidth="600.0" xmlns="http://javafx.com/javafx/22" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.controller.av3_estrutura_de_dados.CadastroController">
+<AnchorPane prefHeight="400.0" prefWidth="600.0" xmlns="http://javafx.com/javafx/21" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.controller.av3_estrutura_de_dados.CadastroController">
    <children>
       <Label alignment="CENTER" contentDisplay="TOP" layoutX="227.0" layoutY="14.0" prefHeight="50.0" prefWidth="146.0" text="Cadastro">
          <font>
             <Font name="Berlin Sans FB Demi Bold" size="17.0" />
          </font>
       </Label>
-      <Button fx:id="btnVoltar" layoutX="227.0" layoutY="337.0" mnemonicParsing="false" onAction="#onBtnVoltarClickAction" text="voltar" />
-      <Button fx:id="btnCadastrar" layoutX="295.0" layoutY="337.0" mnemonicParsing="false" onAction="#onBtnCadastrarClickAction" text="cadastrar" />
+      <Button fx:id="btnVoltar" layoutX="248.0" layoutY="291.0" mnemonicParsing="false" onAction="#onBtnVoltarClickAction" text="voltar" />
+      <Button fx:id="btnCadastrar" layoutX="308.0" layoutY="291.0" mnemonicParsing="false" onAction="#onBtnCadastrarClickAction" text="cadastrar" />
       <Label layoutX="90.0" layoutY="93.0" prefHeight="17.0" prefWidth="93.0" text="Nome Completo" />
       <TextField fx:id="nomeCompleto" layoutX="90.0" layoutY="110.0" prefHeight="25.0" prefWidth="409.0" />
       <TextField fx:id="email" layoutX="90.0" layoutY="152.0" prefHeight="25.0" prefWidth="409.0" />
       <Label layoutX="90.0" layoutY="135.0" prefHeight="17.0" prefWidth="93.0" text="E-mail" />
-      <Label layoutX="90.0" layoutY="216.0" prefHeight="17.0" prefWidth="93.0" text="Nome Usuário" />
-      <TextField fx:id="nomeUsuario" layoutX="90.0" layoutY="233.0" prefHeight="25.0" prefWidth="409.0" />
-      <Label layoutX="90.0" layoutY="258.0" prefHeight="17.0" prefWidth="93.0" text="Senha" />
-      <PasswordField fx:id="senha" layoutX="90.0" layoutY="275.0" prefHeight="25.0" prefWidth="409.0" />
+      <Label layoutX="90.0" layoutY="224.0" prefHeight="17.0" prefWidth="93.0" text="Senha" />
+      <PasswordField fx:id="senha" layoutX="90.0" layoutY="241.0" prefHeight="25.0" prefWidth="409.0" />
       <Label layoutX="90.0" layoutY="177.0" prefHeight="17.0" prefWidth="93.0" text="Tipo Cliente" />
       <ComboBox fx:id="comboTipoCliente" layoutX="90.0" layoutY="191.0" prefHeight="25.0" prefWidth="409.0" />
    </children>
