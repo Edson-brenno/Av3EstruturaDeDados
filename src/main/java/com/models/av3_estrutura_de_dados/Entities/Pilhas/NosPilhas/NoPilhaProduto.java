@@ -4,13 +4,15 @@ import java.util.UUID;
 
 public class NoPilhaProduto {
     private String idProduto, nome, descricao;
+    private double preco;
     private int quantidade;
     private NoPilhaProduto proximoNo;
 
-    public NoPilhaProduto(String nome, String descricao, int quantidade) {
+    public NoPilhaProduto(String nome, String descricao, double preco, int quantidade) {
         this.idProduto = UUID.randomUUID().toString();
         this.nome = nome;
         this.descricao = descricao;
+        this.preco = preco;
         this.quantidade = quantidade;
         this.proximoNo = null;
     }
@@ -25,6 +27,10 @@ public class NoPilhaProduto {
 
     public String getDescricao() {
         return descricao;
+    }
+
+    public double getPreco() {
+        return preco;
     }
 
     public int getQuantidade() {
