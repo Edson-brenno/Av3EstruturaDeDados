@@ -14,4 +14,13 @@ public class PilhaProdutos {
     public Boolean pilhaEstaVazia(){
         return  this.base == null && this.topo == null;
     }
+
+    public void emplilharProduto(String nome, String descricao, double preco, int quantidade){
+        if(pilhaEstaVazia()){
+            this.base = this.topo = new NoPilhaProduto(nome, descricao, preco, quantidade);
+        }else{
+            this.topo.setProximoNo(new NoPilhaProduto(nome, descricao, preco, quantidade));
+            this.base = this.topo.getProximoNo();
+        }
+    }
 }

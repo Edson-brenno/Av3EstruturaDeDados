@@ -41,4 +41,8 @@ public class NoPilhaProduto {
         return proximoNo;
     }
 
+    public void setProximoNo(NoPilhaProduto proximoNo){
+        this.proximoNo = proximoNo;
+    }
+
 }
