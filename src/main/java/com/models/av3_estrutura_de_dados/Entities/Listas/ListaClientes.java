@@ -49,4 +49,28 @@ public class ListaClientes {
         }
 
     }
+
+    // Método resposável pelo login do cliente
+    public NoCliente LogarCliente(String email, String senha){
+        if(this.listaVazia()) {
+            return null;
+        }else{
+            NoCliente atual = this.inicio; // Ponteiro
+
+            while(atual.getProximoCliente() != null){
+                if(atual.getEmail().equals(email) && atual.getSenha().equals(senha)){
+                    return atual;
+                }
+
+                atual = atual.getProximoCliente();
+            }
+
+            if(atual.getEmail().equals(email) && atual.getSenha().equals(senha)){
+                return atual;
+            }else {
+                // Retorna nulo se o usuário não for encontrado
+                return null;
+            }
+        }
+    }
 }

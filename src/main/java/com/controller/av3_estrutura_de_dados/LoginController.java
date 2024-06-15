@@ -35,7 +35,16 @@ public class LoginController implements Initializable, Controller {
     private Label mensagemError;
 
     @FXML
-    private Button botaoCadastro;
+    private Button botaoCadastro, btnLogin;
+
+    @FXML
+    public void onBtnLoginClickAction(ActionEvent event) throws IOException {
+        try {
+
+        }catch (RuntimeException e) {
+            e.printStackTrace();
+        }
+    }
 
     @FXML
     public void onBtCadastroClickAction(ActionEvent event) throws IOException {
