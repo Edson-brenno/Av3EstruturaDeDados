@@ -22,6 +22,7 @@ import com.views.av3_estrutura_de_dados.Login;
 import com.models.av3_estrutura_de_dados.Entities.Listas.ListaClientes;
 import com.controller.av3_estrutura_de_dados.interfaces.Controller;
 import com.controller.av3_estrutura_de_dados.util.SetarListaClientesDoController;
+import com.views.av3_estrutura_de_dados.util.CarregarPagina;
 import javafx.stage.Stage;
 
 public class CadastroController implements Initializable, Controller {
@@ -38,13 +39,7 @@ public class CadastroController implements Initializable, Controller {
     @FXML
     public void onBtnVoltarClickAction(ActionEvent event) throws IOException {
         try{
-            FXMLLoader loader = new FXMLLoader(Login.class.getResource("Login-view.fxml"));
-            Parent root = loader.load();
-            Stage stage = (Stage)((Node)event.getSource()).getScene().getWindow();
-            Scene scene = new Scene(root);
-            SetarListaClientesDoController.setarListaClientes(loader, this.listaClientes);
-            stage.setScene(scene);
-            stage.show();
+            CarregarPagina.trocarPagina(event, Login.class, "Login-view.fxml", this.listaClientes);
         }catch(RuntimeException e){
             e.printStackTrace();
         }
@@ -61,13 +56,7 @@ public class CadastroController implements Initializable, Controller {
                         this.senha.getText(),
                         this.comboTipoCliente.getValue());
 
-                FXMLLoader loader = new FXMLLoader(Login.class.getResource("Login-view.fxml"));
-                Parent root = loader.load();
-                Stage stage = (Stage)((Node)event.getSource()).getScene().getWindow();
-                Scene scene = new Scene(root);
-                SetarListaClientesDoController.setarListaClientes(loader, this.listaClientes);
-                stage.setScene(scene);
-                stage.show();
+                CarregarPagina.trocarPagina(event, Login.class, "Login-view.fxml", this.listaClientes);
 
             }
         }

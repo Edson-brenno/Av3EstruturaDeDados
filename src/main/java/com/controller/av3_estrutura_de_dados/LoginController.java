@@ -22,6 +22,8 @@ import com.models.av3_estrutura_de_dados.Entities.Listas.ListaClientes;
 import com.controller.av3_estrutura_de_dados.CadastroController;
 import com.controller.av3_estrutura_de_dados.interfaces.Controller;
 import com.controller.av3_estrutura_de_dados.util.SetarListaClientesDoController;
+import com.views.av3_estrutura_de_dados.util.CarregarPagina;
+import com.views.av3_estrutura_de_dados.IndexVendedor;
 import javafx.stage.Stage;
 import javafx.application.Platform;
 
@@ -47,7 +49,7 @@ public class LoginController implements Initializable, Controller {
             // Se o usuário existe
             if(this.listaClientes != null && this.listaClientes.LogarCliente(this.emailTextField.getText(),
                     this.passwordTextField.getText()) != null){
-                System.out.println("Logado com sucesso");
+                CarregarPagina.trocarPagina(event, IndexVendedor.class, "IndexVendedor-view.fxml", this.listaClientes);
             }
             else{ // Error no login
                 System.out.println("Error ao logar");
@@ -61,13 +63,8 @@ public class LoginController implements Initializable, Controller {
     @FXML
     public void onBtCadastroClickAction(ActionEvent event) throws IOException {
         try {
-            FXMLLoader loader = new FXMLLoader(Cadastro.class.getResource("Cadastro-view.fxml"));
-            Parent root = loader.load();
-            SetarListaClientesDoController.setarListaClientes(loader, this.listaClientes);
-            Stage stage = (Stage)((Node)event.getSource()).getScene().getWindow();
-            Scene scene = new Scene(root);
-            stage.setScene(scene);
-            stage.show();
+            CarregarPagina.trocarPagina(event, Cadastro.class, "Cadastro-view.fxml", this.listaClientes);
+//
         }catch (RuntimeException e){
             e.getStackTrace();
         }
