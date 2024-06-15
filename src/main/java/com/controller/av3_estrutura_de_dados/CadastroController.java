@@ -86,5 +86,6 @@ public class CadastroController implements Initializable, Controller {
       this.comboTipoCliente.getItems().addAll(TipoClienteEnum.values());
 
       Constraints.setTextFieldNomeCompleto(this.nomeCompleto);
+      Constraints.setTextFieldEmail(this.email);
     }
 }

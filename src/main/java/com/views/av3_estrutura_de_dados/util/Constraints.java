@@ -54,4 +54,18 @@ public class Constraints {
             }
         });
     }
+
+    // Método para validar campo de email
+    public static void setTextFieldEmail(TextField tf) {
+        tf.textProperty().addListener((observable, oldValue, newValue) -> {
+            if(newValue != null && !newValue.matches(
+                    "^(?=[a-zA-Z0-9@._%+-]{6,254}$)([a-zA-Z0-9._%+-]+@[a-zA-Z0-9.-]+\\.[a-zA-Z]{2,})$")){
+                tf.setStyle("-fx-border-color: red;");
+
+            }else{
+                tf.setStyle("-fx-border-color: none;");
+
+            }
+        });
+    }
 }
