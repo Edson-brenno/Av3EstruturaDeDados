@@ -7,11 +7,7 @@ import java.util.ResourceBundle;
 import com.views.av3_estrutura_de_dados.util.Constraints;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
-import javafx.fxml.FXMLLoader;
 import javafx.fxml.Initializable;
-import javafx.scene.Node;
-import javafx.scene.Parent;
-import javafx.scene.Scene;
 import javafx.scene.control.TextField;
 import javafx.scene.control.PasswordField;
 import javafx.scene.control.Label;
@@ -19,17 +15,18 @@ import javafx.scene.control.Button;
 
 import com.views.av3_estrutura_de_dados.Cadastro;
 import com.models.av3_estrutura_de_dados.Entities.Listas.ListaClientes;
-import com.controller.av3_estrutura_de_dados.CadastroController;
+import com.models.av3_estrutura_de_dados.Entities.Pilhas.PilhaProdutos;
 import com.controller.av3_estrutura_de_dados.interfaces.Controller;
-import com.controller.av3_estrutura_de_dados.util.SetarListaClientesDoController;
 import com.views.av3_estrutura_de_dados.util.CarregarPagina;
 import com.views.av3_estrutura_de_dados.IndexVendedor;
-import javafx.stage.Stage;
 import javafx.application.Platform;
 
 public class LoginController implements Initializable, Controller {
     @FXML
     private ListaClientes listaClientes=null;
+
+    @FXML
+    private PilhaProdutos pilhaProdutos=null;
 
     @FXML
     private TextField emailTextField;
@@ -70,9 +67,14 @@ public class LoginController implements Initializable, Controller {
         }
     }
 
-    @FXML
+    @Override
     public void setListaClientes(ListaClientes listaClientes) {
         this.listaClientes = listaClientes;
+    }
+
+    @Override
+    public void setPilhaProdutos(PilhaProdutos pilhaProdutos){
+        this.pilhaProdutos = pilhaProdutos;
     }
 
     @Override

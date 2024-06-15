@@ -8,22 +8,16 @@ import com.views.av3_estrutura_de_dados.util.Constraints;
 import com.models.av3_estrutura_de_dados.Entities.Listas.Enum.TipoClienteEnum;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
-import javafx.fxml.FXMLLoader;
 import javafx.fxml.Initializable;
-import javafx.scene.Node;
-import javafx.scene.Parent;
-import javafx.scene.Scene;
 import javafx.scene.control.TextField;
-import javafx.scene.control.Label;
 import javafx.scene.control.ComboBox;
 import javafx.scene.control.Button;
 
 import com.views.av3_estrutura_de_dados.Login;
 import com.models.av3_estrutura_de_dados.Entities.Listas.ListaClientes;
+import com.models.av3_estrutura_de_dados.Entities.Pilhas.PilhaProdutos;
 import com.controller.av3_estrutura_de_dados.interfaces.Controller;
-import com.controller.av3_estrutura_de_dados.util.SetarListaClientesDoController;
 import com.views.av3_estrutura_de_dados.util.CarregarPagina;
-import javafx.stage.Stage;
 
 public class CadastroController implements Initializable, Controller {
 
@@ -35,6 +29,8 @@ public class CadastroController implements Initializable, Controller {
     private ComboBox<TipoClienteEnum> comboTipoCliente;
     @FXML
     private ListaClientes listaClientes=null;
+    @FXML
+    private PilhaProdutos pilhaProdutos=null;
 
     @FXML
     public void onBtnVoltarClickAction(ActionEvent event) throws IOException {
@@ -65,9 +61,14 @@ public class CadastroController implements Initializable, Controller {
         }
     }
 
-    @FXML
+    @Override
     public void setListaClientes(ListaClientes listaClientes) {
         this.listaClientes = listaClientes;
+    }
+
+    @Override
+    public void setPilhaProdutos(PilhaProdutos pilhaProdutos) {
+        this.pilhaProdutos = pilhaProdutos;
     }
 
     @Override
