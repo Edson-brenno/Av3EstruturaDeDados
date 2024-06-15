@@ -6,9 +6,10 @@ import com.models.av3_estrutura_de_dados.Entities.Listas.NosListas.NoCliente;
 public class ListaClientes {
 
     public NoCliente inicio;
+    public NoCliente usuarioLogado;
 
     public ListaClientes() {
-        this.inicio = null;
+        this.inicio = this.usuarioLogado = null;
     }
 
     public boolean listaVazia(){
@@ -51,7 +52,7 @@ public class ListaClientes {
     }
 
     // Método resposável pelo login do cliente
-    public NoCliente LogarCliente(String email, String senha){
+    public Boolean LogarCliente(String email, String senha){
         if(this.listaVazia()) {
             return null;
         }else{
@@ -59,14 +60,16 @@ public class ListaClientes {
 
             while(atual.getProximoCliente() != null){
                 if(atual.getEmail().equals(email) && atual.getSenha().equals(senha)){
-                    return atual;
+                    this.usuarioLogado = atual;
+                    return true;
                 }
 
                 atual = atual.getProximoCliente();
             }
 
             if(atual.getEmail().equals(email) && atual.getSenha().equals(senha)){
-                return atual;
+                this.usuarioLogado = atual;
+                return true;
             }else {
                 // Retorna nulo se o usuário não for encontrado
                 return null;
