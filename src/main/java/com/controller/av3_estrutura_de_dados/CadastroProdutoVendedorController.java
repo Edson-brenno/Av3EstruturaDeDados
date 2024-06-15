@@ -16,6 +16,8 @@ import com.models.av3_estrutura_de_dados.Entities.Listas.ListaClientes;
 import com.models.av3_estrutura_de_dados.Entities.Pilhas.PilhaProdutos;
 import com.controller.av3_estrutura_de_dados.interfaces.Controller;
 
+import com.views.av3_estrutura_de_dados.util.Constraints;
+
 public class CadastroProdutoVendedorController implements Initializable, Controller {
 
     @FXML
@@ -46,6 +48,7 @@ public class CadastroProdutoVendedorController implements Initializable, Control
 
     @Override
     public void initialize(URL url, ResourceBundle rb) {
+        Constraints.setTextFieldSemAcento(this.textFieldNomeProduto);
         Platform.runLater(this::setarNomeUsuarioNoLabel);
     }
 

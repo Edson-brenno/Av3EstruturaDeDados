@@ -3,6 +3,8 @@ package com.views.av3_estrutura_de_dados.util;
 import javafx.scene.control.TextField;
 import javafx.scene.control.Label;
 
+import java.util.Locale;
+
 public class Constraints {
 
     public static void setTextFieldNomeCompleto(TextField tf) {
@@ -65,6 +67,17 @@ public class Constraints {
             }else{
                 tf.setStyle("-fx-border-color: none;");
 
+            }
+        });
+    }
+
+    // Método para validar campos de textField que tem que ser sem acento
+    public static void setTextFieldSemAcento(TextField tf) {
+        tf.textProperty().addListener((observable, oldvalue, newValue) -> {
+            if(newValue != null && !newValue.matches("^[a-zA-Z0-9 _.-]*$")) {
+                tf.setText(oldvalue);
+            }else {
+                tf.setText(newValue.toLowerCase(Locale.ROOT));
             }
         });
     }
