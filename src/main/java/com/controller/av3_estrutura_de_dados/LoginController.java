@@ -13,6 +13,7 @@ import javafx.scene.Node;
 import javafx.scene.Parent;
 import javafx.scene.Scene;
 import javafx.scene.control.TextField;
+import javafx.scene.control.PasswordField;
 import javafx.scene.control.Label;
 import javafx.scene.control.Button;
 
@@ -29,7 +30,10 @@ public class LoginController implements Initializable, Controller {
     private ListaClientes listaClientes=null;
 
     @FXML
-    private TextField userName;
+    private TextField emailTextField;
+
+    @FXML
+    private PasswordField passwordTextField;
 
     @FXML
     private Label mensagemError;
@@ -40,6 +44,14 @@ public class LoginController implements Initializable, Controller {
     @FXML
     public void onBtnLoginClickAction(ActionEvent event) throws IOException {
         try {
+            // Se o usuário existe
+            if(this.listaClientes != null && this.listaClientes.LogarCliente(this.emailTextField.getText(),
+                    this.passwordTextField.getText()) != null){
+                System.out.println("Logado com sucesso");
+            }
+            else{ // Error no login
+                System.out.println("Error ao logar");
+            }
 
         }catch (RuntimeException e) {
             e.printStackTrace();
@@ -69,7 +81,7 @@ public class LoginController implements Initializable, Controller {
     @Override
     public void initialize(URL url, ResourceBundle rb) {
 
-        Constraints.setTextFieldUsuario(userName, mensagemError);
+        Constraints.setTextFieldEmail(this.emailTextField);
 
         Platform.runLater(this::mostrarClientes);
     }
