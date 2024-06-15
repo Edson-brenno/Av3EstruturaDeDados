@@ -23,4 +23,18 @@ public class PilhaProdutos {
             this.base = this.topo.getProximoNo();
         }
     }
+
+    public NoPilhaProduto desempilharProduto(){
+        if(pilhaEstaVazia()){
+            return null;
+        }else{
+            NoPilhaProduto ponteiro = this.topo.getProximoNo();
+            while(ponteiro.getProximoNo() != this.topo){
+                ponteiro = ponteiro.getProximoNo();
+            }
+            this.topo = ponteiro;
+
+            return ponteiro.getProximoNo();
+        }
+    }
 }
