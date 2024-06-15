@@ -46,7 +46,8 @@ public class LoginController implements Initializable, Controller {
             // Se o usuário existe
             if((this.listaClientes != null) && (this.listaClientes.LogarCliente(this.emailTextField.getText(),
                     this.passwordTextField.getText()) == true)){
-                CarregarPagina.trocarPagina(event, IndexVendedor.class, "IndexVendedor-view.fxml", this.listaClientes);
+                CarregarPagina.trocarPagina(event, IndexVendedor.class,
+                        "IndexVendedor-view.fxml", this.listaClientes, this.pilhaProdutos);
             }
             else{ // Error no login
                 System.out.println("Error ao logar");
@@ -60,7 +61,8 @@ public class LoginController implements Initializable, Controller {
     @FXML
     public void onBtCadastroClickAction(ActionEvent event) throws IOException {
         try {
-            CarregarPagina.trocarPagina(event, Cadastro.class, "Cadastro-view.fxml", this.listaClientes);
+            CarregarPagina.trocarPagina(event, Cadastro.class, "Cadastro-view.fxml",
+                    this.listaClientes, this.pilhaProdutos);
 //
         }catch (RuntimeException e){
             e.getStackTrace();

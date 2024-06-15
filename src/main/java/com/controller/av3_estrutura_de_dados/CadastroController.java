@@ -35,7 +35,8 @@ public class CadastroController implements Initializable, Controller {
     @FXML
     public void onBtnVoltarClickAction(ActionEvent event) throws IOException {
         try{
-            CarregarPagina.trocarPagina(event, Login.class, "Login-view.fxml", this.listaClientes);
+            CarregarPagina.trocarPagina(event, Login.class, "Login-view.fxml", this.listaClientes,
+                    this.pilhaProdutos);
         }catch(RuntimeException e){
             e.printStackTrace();
         }
@@ -52,7 +53,8 @@ public class CadastroController implements Initializable, Controller {
                         this.senha.getText(),
                         this.comboTipoCliente.getValue());
 
-                CarregarPagina.trocarPagina(event, Login.class, "Login-view.fxml", this.listaClientes);
+                CarregarPagina.trocarPagina(event, Login.class, "Login-view.fxml", this.listaClientes,
+                        this.pilhaProdutos);
 
             }
         }

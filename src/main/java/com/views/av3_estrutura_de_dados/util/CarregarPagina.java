@@ -1,7 +1,5 @@
 package com.views.av3_estrutura_de_dados.util;
 
-import com.views.av3_estrutura_de_dados.Login;
-import javafx.application.Application;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXMLLoader;
 import javafx.scene.Scene;
