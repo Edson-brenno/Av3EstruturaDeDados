@@ -6,4 +6,5 @@ import com.models.av3_estrutura_de_dados.Entities.Pilhas.PilhaProdutos;
 public interface Controller {
     void setListaClientes(ListaClientes listaClientes);
     void setPilhaProdutos(PilhaProdutos pilhaProdutos);
+    void getPilhaProdutos();
 }

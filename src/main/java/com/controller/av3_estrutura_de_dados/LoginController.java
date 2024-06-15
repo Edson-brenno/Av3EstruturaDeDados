@@ -79,6 +79,11 @@ public class LoginController implements Initializable, Controller {
         this.pilhaProdutos = pilhaProdutos;
     }
 
+    public void getPilhaProdutos(){
+        System.out.println("==========================");
+        this.pilhaProdutos.mostrarProdutos();
+    }
+
     @Override
     public void initialize(URL url, ResourceBundle rb) {
 

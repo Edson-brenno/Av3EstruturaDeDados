@@ -37,4 +37,21 @@ public class PilhaProdutos {
             return ponteiro.getProximoNo();
         }
     }
+
+    public void mostrarProdutos(){
+        if(!pilhaEstaVazia()){
+            NoPilhaProduto ponteiro = this.base;
+            while(ponteiro.getProximoNo() != this.topo) {
+                System.out.println(ponteiro.getNome() + " - " + ponteiro.getDescricao() + " - " + ponteiro.getPreco() +
+                        " - " + ponteiro.getQuantidade());
+                ponteiro = ponteiro.getProximoNo();
+            }
+            System.out.println(ponteiro.getNome() + " - " + ponteiro.getDescricao() + " - " + ponteiro.getPreco() +
+                    " - " + ponteiro.getQuantidade());
+
+            System.out.println(this.topo.getNome() + " - " + this.topo.getDescricao() + " - " + this.topo.getPreco() +
+                    " - " + this.topo.getQuantidade() );
+        }
+    }
+
 }

@@ -73,6 +73,10 @@ public class CadastroController implements Initializable, Controller {
         this.pilhaProdutos = pilhaProdutos;
     }
 
+    public void getPilhaProdutos(){
+        System.out.println("==========================");
+        this.pilhaProdutos.mostrarProdutos();
+    }
     @Override
     public void initialize(URL url, ResourceBundle rb) {
       this.comboTipoCliente.getItems().addAll(TipoClienteEnum.values());

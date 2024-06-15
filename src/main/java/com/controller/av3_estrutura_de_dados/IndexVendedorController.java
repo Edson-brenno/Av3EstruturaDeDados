@@ -34,6 +34,11 @@ public class IndexVendedorController implements Initializable, Controller {
         this.pilhaProdutos = pilhaProdutos;
     }
 
+    public void getPilhaProdutos(){
+        System.out.println("==========================");
+        this.pilhaProdutos.mostrarProdutos();
+    }
+
     @Override
     public void initialize(URL url, ResourceBundle rb) {
         Platform.runLater(this::setarNomeUsuarioNoLabel);

@@ -9,5 +9,6 @@ public class SetaPilhaProdutosDoController {
     public static void setarPilhaProdutos(FXMLLoader loader, PilhaProdutos pilhaProdutos){
         Controller controller = loader.getController();
         controller.setPilhaProdutos(pilhaProdutos);
+        controller.getPilhaProdutos();
     }
 }
