@@ -10,6 +10,7 @@ import javafx.application.Platform;
 
 import javafx.scene.control.Label;
 import javafx.scene.control.TextField;
+import javafx.scene.control.TextArea;
 import javafx.scene.control.Button;
 
 import com.models.av3_estrutura_de_dados.Entities.Listas.ListaClientes;
@@ -27,7 +28,11 @@ public class CadastroProdutoVendedorController implements Initializable, Control
     @FXML
     private Label labelNomeUsuario;
     @FXML
-    private TextField textFieldNomeProduto, textFieldDescricao, textFieldValor, textFieldQuantidade;
+    private TextField textFieldNomeProduto, textFieldValor, textFieldQuantidade;
+    @FXML
+    private TextArea textFieldDescricao;
+    @FXML
+    private Button btnCadastrar, btnCancelar;
 
     @Override
     public void setListaClientes(ListaClientes listaClientes){
@@ -49,6 +54,7 @@ public class CadastroProdutoVendedorController implements Initializable, Control
     @Override
     public void initialize(URL url, ResourceBundle rb) {
         Constraints.setTextFieldSemAcento(this.textFieldNomeProduto);
+        Constraints.setTextAreaDescricao(this.textFieldDescricao);
         Platform.runLater(this::setarNomeUsuarioNoLabel);
     }
 

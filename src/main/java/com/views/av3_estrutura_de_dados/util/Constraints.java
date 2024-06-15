@@ -1,5 +1,6 @@
 package com.views.av3_estrutura_de_dados.util;
 
+import javafx.scene.control.TextArea;
 import javafx.scene.control.TextField;
 import javafx.scene.control.Label;
 
@@ -78,6 +79,15 @@ public class Constraints {
                 tf.setText(oldvalue);
             }else {
                 tf.setText(newValue.toLowerCase(Locale.ROOT));
+            }
+        });
+    }
+
+    // Método para limitar o tamanho do textArea de descricao
+    public static void setTextAreaDescricao(TextArea tf){
+        tf.textProperty().addListener((observable, oldValue, newValue) -> {
+            if(newValue.length() > 2500){
+                tf.setText(oldValue);
             }
         });
     }
