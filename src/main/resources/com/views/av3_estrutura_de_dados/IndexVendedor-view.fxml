@@ -57,7 +57,7 @@
                 <RowConstraints maxHeight="59.0" minHeight="10.0" prefHeight="51.0" vgrow="SOMETIMES" />
               </rowConstraints>
                <children>
-                  <Label fx:id="labelNomeUsuario" alignment="TOP_LEFT" prefHeight="63.0" prefWidth="128.0" GridPane.rowIndex="1">
+                  <Label fx:id="labelNomeUsuario" alignment="CENTER" prefHeight="63.0" prefWidth="128.0" GridPane.rowIndex="1">
                      <font>
                         <Font size="13.0" />
                      </font>

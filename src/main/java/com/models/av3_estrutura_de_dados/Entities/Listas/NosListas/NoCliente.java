@@ -3,16 +3,22 @@ package com.models.av3_estrutura_de_dados.Entities.Listas.NosListas;
 import com.models.av3_estrutura_de_dados.Entities.Listas.Enum.TipoClienteEnum;
 
 public class NoCliente {
+    private long id;
     private String nomeCompleto, email, senha;
     private TipoClienteEnum tipoCliente;
     private NoCliente proximoCliente, clienteAnterior;
 
-    public NoCliente(String nome, String email, String senha, TipoClienteEnum tipoCliente) {
+    public NoCliente(long id,String nome, String email, String senha, TipoClienteEnum tipoCliente) {
+        this.id = id;
         this.nomeCompleto = nome;
         this.email = email;
         this.senha = senha;
         this.tipoCliente = tipoCliente;
         this.proximoCliente = this.clienteAnterior = null;
+    }
+
+    public Long getId() {
+        return this.id;
     }
 
     public String getNomeCompleto() {
