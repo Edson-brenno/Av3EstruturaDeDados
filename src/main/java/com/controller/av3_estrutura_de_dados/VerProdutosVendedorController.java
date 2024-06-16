@@ -51,10 +51,13 @@ public class VerProdutosVendedorController implements Initializable, Controller{
     private ObservableList<TabelaVerProdutosVendedorModel> obterProdutosDaPilha(){
         ObservableList<TabelaVerProdutosVendedorModel> produtos = FXCollections.observableArrayList();
 
-        for (int i = 1; i <= this.pilhaProdutos.tamanhoPilha; i++ ){
+        for (int i = 1; i < this.pilhaProdutos.tamanhoPilha; i++ ){
             NoPilhaProduto produto = this.pilhaProdutos.desempilharProduto();
-            produtos.add(new TabelaVerProdutosVendedorModel(produto.getNome(), produto.getPreco(),
-                    produto.getQuantidade()));
+
+            if (produto != null){
+                produtos.add(new TabelaVerProdutosVendedorModel(produto.getNome(), produto.getPreco(),
+                        produto.getQuantidade()));
+            }
         }
 
         return produtos;

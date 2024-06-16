@@ -38,6 +38,7 @@ public class PilhaProdutos {
             }
             if (this.base == this.topo){
                 this.base = this.topo = null;
+                System.out.println("zerou");
                 return ponteiro;
             }else{
                 this.topo = ponteiro;
