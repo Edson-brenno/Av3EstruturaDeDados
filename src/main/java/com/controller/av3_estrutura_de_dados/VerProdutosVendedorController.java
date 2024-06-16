@@ -16,6 +16,7 @@ import com.controller.av3_estrutura_de_dados.interfaces.Controller;
 import javafx.scene.control.cell.PropertyValueFactory;
 import javafx.scene.control.TableColumn;
 import javafx.scene.control.TableView;
+import javafx.scene.control.Button;
 
 import java.net.URL;
 import java.util.ResourceBundle;
@@ -32,6 +33,8 @@ public class VerProdutosVendedorController implements Initializable, Controller{
     private TableColumn<TabelaVerProdutosVendedorModel, String> nomeProdutoColumn;
     @FXML
     private TableColumn<TabelaVerProdutosVendedorModel, Double> precoColumn;
+    @FXML
+    private Button btnVoltar;
 
     @Override
     public void initialize(URL location, ResourceBundle resources) {
@@ -55,11 +58,12 @@ public class VerProdutosVendedorController implements Initializable, Controller{
 
     private ObservableList<TabelaVerProdutosVendedorModel> obterProdutosDaPilha(){
         ObservableList<TabelaVerProdutosVendedorModel> produtos = FXCollections.observableArrayList();
+
         PilhaProdutos copiaPilhaProdutos = this.pilhaProdutos;
         int tamanhoPilha = this.pilhaProdutos.tamanhoPilha;
+
         for (int i = 0; i < tamanhoPilha; i++ ){
             NoPilhaProduto produto = copiaPilhaProdutos.desempilharProduto();
-            System.out.println(produto);
             if (produto != null){
                 produtos.add(new TabelaVerProdutosVendedorModel(produto.getNome(), produto.getPreco()));
             }
