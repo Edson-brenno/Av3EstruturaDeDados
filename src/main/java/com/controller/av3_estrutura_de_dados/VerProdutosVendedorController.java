@@ -29,17 +29,13 @@ public class VerProdutosVendedorController implements Initializable, Controller{
     @FXML
     private TableView<TabelaVerProdutosVendedorModel> tabelaVerProdutos;
     @FXML
-    private TableColumn<TabelaVerProdutosVendedorModel, Boolean> selectColumn;
-    @FXML
     private TableColumn<TabelaVerProdutosVendedorModel, String> nomeProdutoColumn;
     @FXML
     private TableColumn<TabelaVerProdutosVendedorModel, Double> precoColumn;
-    @FXML
-    private TableColumn<TabelaVerProdutosVendedorModel, Integer> quantidadeColumn;
 
     @Override
     public void initialize(URL location, ResourceBundle resources) {
-        Platform.runLater(this::setupTabela);
+        setupTabela();
         Platform.runLater(this::popularTabela);
     }
 
@@ -49,12 +45,8 @@ public class VerProdutosVendedorController implements Initializable, Controller{
     }
 
     private void setupTabela() {
-        // Bind the columns to the properties of TabelaVerProdutosVendedorModel
-        selectColumn.setCellValueFactory(
-                new PropertyValueFactory<>("selected"));
-        nomeProdutoColumn.setCellValueFactory(new PropertyValueFactory<>("nome"));
-        precoColumn.setCellValueFactory(new PropertyValueFactory<>("preco"));
-        quantidadeColumn.setCellValueFactory(new PropertyValueFactory<>("quantidade"));
+        nomeProdutoColumn.setCellValueFactory(new PropertyValueFactory<TabelaVerProdutosVendedorModel, String>("nome"));
+        precoColumn.setCellValueFactory(new PropertyValueFactory<TabelaVerProdutosVendedorModel, Double>("preco"));
     }
 
     private void popularTabela(){
@@ -64,12 +56,12 @@ public class VerProdutosVendedorController implements Initializable, Controller{
     private ObservableList<TabelaVerProdutosVendedorModel> obterProdutosDaPilha(){
         ObservableList<TabelaVerProdutosVendedorModel> produtos = FXCollections.observableArrayList();
         PilhaProdutos copiaPilhaProdutos = this.pilhaProdutos;
-
-        for (int i = 0; i <= copiaPilhaProdutos.tamanhoPilha; i++ ){
+        int tamanhoPilha = this.pilhaProdutos.tamanhoPilha;
+        for (int i = 0; i < tamanhoPilha; i++ ){
             NoPilhaProduto produto = copiaPilhaProdutos.desempilharProduto();
+            System.out.println(produto);
             if (produto != null){
                 produtos.add(new TabelaVerProdutosVendedorModel(produto.getNome(), produto.getPreco()));
-                System.out.println(produtos);
             }
         }
 

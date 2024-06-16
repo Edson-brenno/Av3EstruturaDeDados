@@ -31,8 +31,6 @@ public class Login extends Application {
             pilhaProdutos.emplilharProduto("p2", "p2", 1L,14.65);
             pilhaProdutos.emplilharProduto("p3", "p3", 1L,15.65);
             pilhaProdutos.emplilharProduto("p4", "p4", 1L,16.65);
-            t1 = pilhaProdutos.desempilharProduto();
-            t1 = pilhaProdutos.desempilharProduto();
 
             FXMLLoader loader = new FXMLLoader(Login.class.getResource("Login-view.fxml"));
             Scene scene = new Scene(loader.load());
