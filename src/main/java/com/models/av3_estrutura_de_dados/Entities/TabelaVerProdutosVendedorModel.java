@@ -1,13 +1,69 @@
 package com.models.av3_estrutura_de_dados.Entities;
 
-public class TabelaVerProdutosVendedorModel {
-    public String nome;
-    public double preco;
-    public int quantidade;
+import javafx.beans.property.SimpleBooleanProperty;
+import javafx.beans.property.SimpleDoubleProperty;
+import javafx.beans.property.SimpleIntegerProperty;
+import javafx.beans.property.SimpleStringProperty;
 
-    public TabelaVerProdutosVendedorModel(String nome, double preco, int quantidade){
-        this.nome = nome;
-        this.preco = preco;
-        this.quantidade = quantidade;
+public class TabelaVerProdutosVendedorModel {
+    private final SimpleBooleanProperty selected;
+    private final SimpleStringProperty nome;
+    private final SimpleDoubleProperty preco;
+    private final SimpleIntegerProperty quantidade;
+
+    public TabelaVerProdutosVendedorModel(String nome, double preco,
+                                          int quantidade){
+        this.selected = new SimpleBooleanProperty(false);
+        this.nome = new SimpleStringProperty(nome);
+        this.preco = new SimpleDoubleProperty(preco);
+        this.quantidade = new SimpleIntegerProperty(quantidade);
+    }
+
+    public boolean isSelected() {
+        return selected.get();
+    }
+
+    public SimpleBooleanProperty selectedProperty() {
+        return selected;
+    }
+
+    public void setSelected(boolean selected) {
+        this.selected.set(selected);
+    }
+
+    public SimpleStringProperty nomePropety() {
+        return nome;
+    }
+
+    public String getNome() {
+        return nome.get();
+    }
+
+    public void setNome(String nome) {
+        this.nome.set(nome);
+    }
+
+    public Double getPreco() {
+        return preco.get();
+    }
+
+    public SimpleDoubleProperty precoPropety() {
+        return preco;
+    }
+
+    public void setPreco(Double preco) {
+        this.preco.set(preco);
+    }
+
+    public Integer getQuantidade() {
+        return quantidade.get();
+    }
+
+    public SimpleIntegerProperty quantidadePropety(){
+        return this.quantidade;
+    }
+
+    public void setQuantidade(Integer quantidade) {
+        this.quantidade.set(quantidade);
     }
 }

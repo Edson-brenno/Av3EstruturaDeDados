@@ -27,7 +27,7 @@ public class Login extends Application {
                     TipoClienteEnum.VENDEDOR);
             PilhaProdutos pilhaProdutos = new PilhaProdutos();
             NoPilhaProduto t1;
-            pilhaProdutos.emplilharProduto("p1", "p1", 1L,10.65, 5);
+            pilhaProdutos.emplilharProduto("p1", "  p1", 1L,10.65, 5);
             pilhaProdutos.emplilharProduto("p2", "p2", 1L,14.65, 10);
             pilhaProdutos.emplilharProduto("p3", "p3", 1L,15.65, 15);
             pilhaProdutos.emplilharProduto("p4", "p4", 1L,16.65, 20);

@@ -44,7 +44,7 @@ public class PilhaProdutos {
                 this.topo = ponteiro;
                 this.topo.setProximoNo(null);
                 this.tamanhoPilha -= 1;
-                return ponteiro.getProximoNo();
+                return ponteiro;
             }
 
         }

@@ -80,12 +80,16 @@
                 <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
             </rowConstraints>
         </GridPane>
-      <TableView fx:id="tabelaVerProdutos" layoutX="139.0" layoutY="51.0" prefHeight="327.0" prefWidth="422.0">
+      <TableView layoutX="139.0" layoutY="51.0" prefHeight="327.0" prefWidth="422.0">
         <columns>
-          <TableColumn fx:id="nomeProdutoColumn" prefWidth="230.0" text="Nome" />
-          <TableColumn fx:id="precoColumn" prefWidth="79.0" text="Preço" />
-            <TableColumn fx:id="quantidadeColumn" prefWidth="111.0" text="Quantidade" />
+          <TableColumn fx:id="nomeProdutoColumn" prefWidth="105.0" text="Nome" />
+          <TableColumn fx:id="precoColumn" prefWidth="42.0" text="Preço" />
+            <TableColumn fx:id="quantidadeColumn" prefWidth="273.0" text="Quantidade" />
+            <TableColumn prefWidth="75.0" text="Column X" />
         </columns>
+         <columnResizePolicy>
+            <TableView fx:constant="CONSTRAINED_RESIZE_POLICY" />
+         </columnResizePolicy>
       </TableView>
     </children>
 </AnchorPane>
