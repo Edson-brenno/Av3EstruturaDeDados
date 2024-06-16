@@ -82,9 +82,9 @@
         </GridPane>
       <TableView layoutX="139.0" layoutY="51.0" prefHeight="327.0" prefWidth="422.0">
         <columns>
-          <TableColumn prefWidth="230.0" text="Nome" />
-          <TableColumn prefWidth="79.0" text="Preço" />
-            <TableColumn prefWidth="111.0" text="Quantidade" />
+          <TableColumn fx:id="nomeProdutoColumn" prefWidth="230.0" text="Nome" />
+          <TableColumn fx:id="precoColumn" prefWidth="79.0" text="Preço" />
+            <TableColumn fx:id="quantidadeColumn" prefWidth="111.0" text="Quantidade" />
         </columns>
       </TableView>
     </children>

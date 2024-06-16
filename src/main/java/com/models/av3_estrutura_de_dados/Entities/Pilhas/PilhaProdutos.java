@@ -6,9 +6,11 @@ import com.models.av3_estrutura_de_dados.Entities.Pilhas.NosPilhas.NoPilhaProdut
 public class PilhaProdutos {
     public NoPilhaProduto base;
     public NoPilhaProduto topo;
+    public int tamanhoPilha;
 
     public PilhaProdutos() {
         this.base = this.topo = null;
+        this.tamanhoPilha = 0;
     }
 
     public Boolean pilhaEstaVazia(){
@@ -18,9 +20,11 @@ public class PilhaProdutos {
     public void emplilharProduto(String nome, String descricao, long idCliente,double preco, int quantidade){
         if(pilhaEstaVazia()){
             this.base = this.topo = new NoPilhaProduto(nome, descricao, idCliente, preco, quantidade);
+            this.tamanhoPilha += 1;
         }else{
             this.topo.setProximoNo(new NoPilhaProduto(nome, descricao, idCliente, preco, quantidade));
             this.topo = this.topo.getProximoNo();
+            this.tamanhoPilha += 1;
         }
     }
 
