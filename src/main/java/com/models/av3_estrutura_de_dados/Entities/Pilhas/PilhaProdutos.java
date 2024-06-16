@@ -70,4 +70,23 @@ public class PilhaProdutos {
         }
     }
 
+    public PilhaProdutos gerarCopiaPilhaProdutos(){
+        PilhaProdutos copia = new PilhaProdutos();
+
+        NoPilhaProduto ponteiro = this.base;
+
+        while(ponteiro.getProximoNo() != null){
+
+            copia.emplilharProduto(ponteiro.getNome(), ponteiro.getDescricao(), ponteiro.getIdCliente(),
+                    ponteiro.getPreco());
+
+            ponteiro = ponteiro.getProximoNo();
+        }
+
+        copia.emplilharProduto(ponteiro.getNome(), ponteiro.getDescricao(), ponteiro.getIdCliente(),
+                ponteiro.getPreco());
+
+        return copia;
+    }
+
 }

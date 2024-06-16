@@ -36,7 +36,7 @@
                                             </rowConstraints>
                                             <children>
                                                 <Button mnemonicParsing="false" prefHeight="30.0" prefWidth="135.0" style="-fx-background-color: gray;" text="Ver Produtos" textFill="WHITE" />
-                                                <Button fx:id="btnCadastroProduto" mnemonicParsing="false" prefHeight="30.0" prefWidth="131.0" text="Cadastrar Produto" GridPane.rowIndex="1" />
+                                                <Button fx:id="btnCadastroProduto" mnemonicParsing="false" onAction="#onBtnCadastroProdutoAction" prefHeight="30.0" prefWidth="131.0" text="Cadastrar Produto" GridPane.rowIndex="1" />
                                             </children>
                                         </GridPane>
                                     </children>
