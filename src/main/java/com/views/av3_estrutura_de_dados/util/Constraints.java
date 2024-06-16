@@ -111,4 +111,22 @@ public class Constraints {
             }
         });
     }
+
+    // Método para tratamento de valores no textField quantidade
+    public static void setTextFieldQuantidade(TextField tf) {
+
+        tf.textProperty().addListener((observable, oldValue, newValue) -> {
+            // Se o usuario apagar tudo
+            if (newValue == null || newValue.isEmpty()) {
+                tf.setText("");
+                return;
+            }
+
+            if(newValue.matches("^[0-9]+$")) {
+                tf.setText(newValue);
+            }else{
+                tf.setText(oldValue);
+            }
+        });
+    }
 }

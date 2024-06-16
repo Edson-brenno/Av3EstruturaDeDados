@@ -56,6 +56,7 @@ public class CadastroProdutoVendedorController implements Initializable, Control
         Constraints.setTextFieldSemAcento(this.textFieldNomeProduto);
         Constraints.setTextAreaDescricao(this.textFieldDescricao);
         Constraints.setTextFieldValor(this.textFieldValor);
+        Constraints.setTextFieldQuantidade(this.textFieldQuantidade);
         Platform.runLater(this::setarNomeUsuarioNoLabel);
     }
 
