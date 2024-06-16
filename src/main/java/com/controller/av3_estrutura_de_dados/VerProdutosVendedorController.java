@@ -7,6 +7,7 @@ import com.models.av3_estrutura_de_dados.Entities.TabelaVerProdutosVendedorModel
 
 import com.views.av3_estrutura_de_dados.util.CarregarPagina;
 import com.views.av3_estrutura_de_dados.IndexVendedor;
+import com.views.av3_estrutura_de_dados.CadastroProdutoVendedor;
 
 import javafx.application.Platform;
 import javafx.collections.FXCollections;
@@ -39,7 +40,7 @@ public class VerProdutosVendedorController implements Initializable, Controller{
     @FXML
     private TableColumn<TabelaVerProdutosVendedorModel, Double> precoColumn;
     @FXML
-    private Button btnVoltar;
+    private Button btnVoltar, btnCadastroProduto;
 
     @FXML
     public void onBtnVoltarAction(ActionEvent event) throws IOException {
@@ -48,6 +49,16 @@ public class VerProdutosVendedorController implements Initializable, Controller{
                     this.listaClientes, this.pilhaProdutos);
         } catch (IOException e) {
             throw new RuntimeException(e);
+        }
+    }
+
+    @FXML
+    public void onBtnCadastroProdutoAction(ActionEvent event) throws IOException {
+        try{
+            CarregarPagina.trocarPagina(event, CadastroProdutoVendedor.class,
+                    "CadastroProdutoVendedor-view.fxml", this.listaClientes, this.pilhaProdutos);
+        } catch (RuntimeException e){
+            e.printStackTrace();
         }
     }
 
