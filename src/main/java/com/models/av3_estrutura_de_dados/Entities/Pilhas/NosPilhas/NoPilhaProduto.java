@@ -6,15 +6,13 @@ public class NoPilhaProduto {
     private String idProduto, nome, descricao;
     private double preco;
     private long idCliente;
-    private int quantidade;
     private NoPilhaProduto proximoNo;
 
-    public NoPilhaProduto(String nome, String descricao, long idCliente,double preco, int quantidade) {
+    public NoPilhaProduto(String nome, String descricao, long idCliente,double preco) {
         this.idProduto = UUID.randomUUID().toString();
         this.nome = nome;
         this.descricao = descricao;
         this.preco = preco;
-        this.quantidade = quantidade;
         this.proximoNo = null;
     }
 
@@ -35,10 +33,6 @@ public class NoPilhaProduto {
     }
     public double getPreco() {
         return preco;
-    }
-
-    public int getQuantidade() {
-        return quantidade;
     }
 
     public NoPilhaProduto getProximoNo() {

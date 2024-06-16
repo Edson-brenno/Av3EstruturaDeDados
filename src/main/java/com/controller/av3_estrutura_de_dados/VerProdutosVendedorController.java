@@ -68,8 +68,7 @@ public class VerProdutosVendedorController implements Initializable, Controller{
         for (int i = 0; i <= copiaPilhaProdutos.tamanhoPilha; i++ ){
             NoPilhaProduto produto = copiaPilhaProdutos.desempilharProduto();
             if (produto != null){
-                produtos.add(new TabelaVerProdutosVendedorModel(produto.getNome(), produto.getPreco(),
-                        produto.getQuantidade()));
+                produtos.add(new TabelaVerProdutosVendedorModel(produto.getNome(), produto.getPreco()));
                 System.out.println(produtos);
             }
         }

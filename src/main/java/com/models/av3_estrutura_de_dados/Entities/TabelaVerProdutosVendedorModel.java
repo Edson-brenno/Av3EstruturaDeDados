@@ -9,14 +9,11 @@ public class TabelaVerProdutosVendedorModel {
     private final SimpleBooleanProperty selected;
     private final SimpleStringProperty nome;
     private final SimpleDoubleProperty preco;
-    private final SimpleIntegerProperty quantidade;
 
-    public TabelaVerProdutosVendedorModel(String nome, double preco,
-                                          int quantidade){
+    public TabelaVerProdutosVendedorModel(String nome, double preco){
         this.selected = new SimpleBooleanProperty(false);
         this.nome = new SimpleStringProperty(nome);
         this.preco = new SimpleDoubleProperty(preco);
-        this.quantidade = new SimpleIntegerProperty(quantidade);
     }
 
     public boolean isSelected() {
@@ -53,17 +50,5 @@ public class TabelaVerProdutosVendedorModel {
 
     public void setPreco(Double preco) {
         this.preco.set(preco);
-    }
-
-    public Integer getQuantidade() {
-        return quantidade.get();
-    }
-
-    public SimpleIntegerProperty quantidadePropety(){
-        return this.quantidade;
-    }
-
-    public void setQuantidade(Integer quantidade) {
-        this.quantidade.set(quantidade);
     }
 }

@@ -52,8 +52,7 @@ public class CadastroProdutoVendedorController implements Initializable, Control
         try {
             this.pilhaProdutos.emplilharProduto(this.textFieldNomeProduto.getText(), this.textFieldDescricao.getText(),
                     this.listaClientes.usuarioLogado.getId(),
-                    Double.parseDouble(this.textFieldValor.getText().replace(",",".")),
-                    Integer.parseInt(this.textFieldQuantidade.getText()));
+                    Double.parseDouble(this.textFieldValor.getText().replace(",",".")));
 
             CarregarPagina.trocarPagina(event, IndexVendedor.class, "IndexVendedor-view.fxml",
                     this.listaClientes, this.pilhaProdutos);
