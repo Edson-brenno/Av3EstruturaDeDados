@@ -23,16 +23,16 @@ public class Login extends Application {
     public void start(Stage stage) throws IOException {
         try {
             ListaClientes listaCliente = new ListaClientes();
-            PilhaProdutos pilhaProdutos = new PilhaProdutos();
-            NoPilhaProduto t1;
-            pilhaProdutos.emplilharProduto("p1", "p1", 10.65, 5);
-            pilhaProdutos.emplilharProduto("p2", "p2", 14.65, 10);
-            pilhaProdutos.emplilharProduto("p3", "p3", 15.65, 15);
-            pilhaProdutos.emplilharProduto("p4", "p4", 16.65, 20);
-            t1 = pilhaProdutos.desempilharProduto();
-            t1 = pilhaProdutos.desempilharProduto();
             listaCliente.adicionarCliente("Edson Brenno", "teste@gmail.com", "123456",
                     TipoClienteEnum.VENDEDOR);
+            PilhaProdutos pilhaProdutos = new PilhaProdutos();
+            NoPilhaProduto t1;
+            pilhaProdutos.emplilharProduto("p1", "p1", 1L,10.65, 5);
+            pilhaProdutos.emplilharProduto("p2", "p2", 1L,14.65, 10);
+            pilhaProdutos.emplilharProduto("p3", "p3", 1L,15.65, 15);
+            pilhaProdutos.emplilharProduto("p4", "p4", 1L,16.65, 20);
+            t1 = pilhaProdutos.desempilharProduto();
+            t1 = pilhaProdutos.desempilharProduto();
             FXMLLoader loader = new FXMLLoader(Login.class.getResource("Login-view.fxml"));
             Scene scene = new Scene(loader.load());
             LoginController controller = (LoginController) loader.getController();

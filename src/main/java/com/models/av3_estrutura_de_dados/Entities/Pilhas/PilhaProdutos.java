@@ -15,11 +15,11 @@ public class PilhaProdutos {
         return  this.base == null && this.topo == null;
     }
 
-    public void emplilharProduto(String nome, String descricao, double preco, int quantidade){
+    public void emplilharProduto(String nome, String descricao, long idCliente,double preco, int quantidade){
         if(pilhaEstaVazia()){
-            this.base = this.topo = new NoPilhaProduto(nome, descricao, preco, quantidade);
+            this.base = this.topo = new NoPilhaProduto(nome, descricao, idCliente, preco, quantidade);
         }else{
-            this.topo.setProximoNo(new NoPilhaProduto(nome, descricao, preco, quantidade));
+            this.topo.setProximoNo(new NoPilhaProduto(nome, descricao, idCliente, preco, quantidade));
             this.topo = this.topo.getProximoNo();
         }
     }
