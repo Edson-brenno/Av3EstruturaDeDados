@@ -47,6 +47,21 @@ public class CadastroProdutoVendedorController implements Initializable, Control
         }
     }
 
+    @FXML
+    public void onBtnCadastrar(ActionEvent event) throws IOException {
+        try {
+            this.pilhaProdutos.emplilharProduto(this.textFieldNomeProduto.getText(), this.textFieldDescricao.getText(),
+                    this.listaClientes.usuarioLogado.getId(),
+                    Double.parseDouble(this.textFieldValor.getText().replace(",",".")),
+                    Integer.parseInt(this.textFieldQuantidade.getText()));
+
+            CarregarPagina.trocarPagina(event, IndexVendedor.class, "IndexVendedor-view.fxml",
+                    this.listaClientes, this.pilhaProdutos);
+        }catch(RuntimeException e){
+            e.printStackTrace();
+        }
+    }
+
     @Override
     public void setListaClientes(ListaClientes listaClientes){
         System.out.println("Chegou");

@@ -43,14 +43,14 @@ public class PilhaProdutos {
             NoPilhaProduto ponteiro = this.base;
             while(ponteiro.getProximoNo() != this.topo) {
                 System.out.println(ponteiro.getNome() + " - " + ponteiro.getDescricao() + " - " + ponteiro.getPreco() +
-                        " - " + ponteiro.getQuantidade());
+                        " - " + ponteiro.getQuantidade() + " - " + ponteiro.getIdCliente());
                 ponteiro = ponteiro.getProximoNo();
             }
             System.out.println(ponteiro.getNome() + " - " + ponteiro.getDescricao() + " - " + ponteiro.getPreco() +
-                    " - " + ponteiro.getQuantidade());
+                    " - " + ponteiro.getQuantidade() + " - " + ponteiro.getIdCliente());
 
             System.out.println(this.topo.getNome() + " - " + this.topo.getDescricao() + " - " + this.topo.getPreco() +
-                    " - " + this.topo.getQuantidade() );
+                    " - " + this.topo.getQuantidade() + " - " + this.topo.getIdCliente() );
         }
     }
 

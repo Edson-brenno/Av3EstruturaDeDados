@@ -5,7 +5,7 @@ import java.util.UUID;
 public class NoPilhaProduto {
     private String idProduto, nome, descricao;
     private double preco;
-    private double idCliente;
+    private long idCliente;
     private int quantidade;
     private NoPilhaProduto proximoNo;
 
@@ -30,6 +30,9 @@ public class NoPilhaProduto {
         return descricao;
     }
 
+    public long getIdCliente() {
+        return this.idCliente;
+    }
     public double getPreco() {
         return preco;
     }
