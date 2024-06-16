@@ -4,7 +4,9 @@ import javafx.scene.control.TextArea;
 import javafx.scene.control.TextField;
 import javafx.scene.control.Label;
 
+import java.text.NumberFormat;
 import java.util.Locale;
+import java.math.BigDecimal;
 
 public class Constraints {
 
@@ -87,6 +89,24 @@ public class Constraints {
     public static void setTextAreaDescricao(TextArea tf){
         tf.textProperty().addListener((observable, oldValue, newValue) -> {
             if(newValue.length() > 2500){
+                tf.setText(oldValue);
+            }
+        });
+    }
+
+    // Método para tratamento de valores no textField Valores
+    public static void setTextFieldValor(TextField tf) {
+
+        tf.textProperty().addListener((observable, oldValue, newValue) -> {
+            // Se o usuario apagar tudo
+            if (newValue == null || newValue.isEmpty()) {
+                tf.setText("");
+                return;
+            }
+
+            if(newValue.matches("^[0-9,]+$")) {
+                tf.setText(newValue);
+            }else{
                 tf.setText(oldValue);
             }
         });

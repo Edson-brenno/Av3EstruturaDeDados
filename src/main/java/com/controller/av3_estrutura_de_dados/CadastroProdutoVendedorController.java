@@ -55,6 +55,7 @@ public class CadastroProdutoVendedorController implements Initializable, Control
     public void initialize(URL url, ResourceBundle rb) {
         Constraints.setTextFieldSemAcento(this.textFieldNomeProduto);
         Constraints.setTextAreaDescricao(this.textFieldDescricao);
+        Constraints.setTextFieldValor(this.textFieldValor);
         Platform.runLater(this::setarNomeUsuarioNoLabel);
     }
 

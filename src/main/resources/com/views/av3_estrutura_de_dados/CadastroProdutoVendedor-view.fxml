@@ -90,7 +90,7 @@
             <Label alignment="BOTTOM_LEFT" prefHeight="17.0" prefWidth="206.0" text="Preço do produto:" GridPane.rowIndex="4" />
             <Label alignment="BOTTOM_LEFT" prefHeight="17.0" prefWidth="207.0" text="Quantidade:" GridPane.rowIndex="6" />
             <TextField fx:id="textFieldNomeProduto" prefHeight="30.0" prefWidth="200.0" promptText="ex: Iphone 5" GridPane.rowIndex="1" />
-            <TextField promptText="ex: 2.500" GridPane.rowIndex="5" />
+            <TextField fx:id="textFieldValor" promptText="ex: 2.500" GridPane.rowIndex="5" />
             <TextField promptText="ex: 50" GridPane.rowIndex="7" />
             <TextArea fx:id="textFieldDescricao" prefHeight="200.0" prefWidth="200.0" wrapText="true" GridPane.rowIndex="3" />
          </children>
