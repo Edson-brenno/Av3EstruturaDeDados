@@ -4,6 +4,7 @@ import java.net.URL;
 import java.io.IOException;
 import java.util.ResourceBundle;
 
+import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.fxml.Initializable;
 import javafx.application.Platform;
@@ -18,6 +19,8 @@ import com.models.av3_estrutura_de_dados.Entities.Pilhas.PilhaProdutos;
 import com.controller.av3_estrutura_de_dados.interfaces.Controller;
 
 import com.views.av3_estrutura_de_dados.util.Constraints;
+import com.views.av3_estrutura_de_dados.util.CarregarPagina;
+import com.views.av3_estrutura_de_dados.IndexVendedor;
 
 public class CadastroProdutoVendedorController implements Initializable, Controller {
 
@@ -33,6 +36,16 @@ public class CadastroProdutoVendedorController implements Initializable, Control
     private TextArea textFieldDescricao;
     @FXML
     private Button btnCadastrar, btnCancelar;
+
+    @FXML
+    public void onBtnCancelar(ActionEvent event) throws IOException {
+        try {
+            CarregarPagina.trocarPagina(event, IndexVendedor.class, "IndexVendedor-view.fxml",
+                    this.listaClientes, this.pilhaProdutos);
+        }catch (RuntimeException e){
+            e.printStackTrace();
+        }
+    }
 
     @Override
     public void setListaClientes(ListaClientes listaClientes){
