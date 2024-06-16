@@ -5,9 +5,13 @@ import com.models.av3_estrutura_de_dados.Entities.Pilhas.PilhaProdutos;
 import com.models.av3_estrutura_de_dados.Entities.Pilhas.NosPilhas.NoPilhaProduto;
 import com.models.av3_estrutura_de_dados.Entities.TabelaVerProdutosVendedorModel;
 
+import com.views.av3_estrutura_de_dados.util.CarregarPagina;
+import com.views.av3_estrutura_de_dados.IndexVendedor;
+
 import javafx.application.Platform;
 import javafx.collections.FXCollections;
 import javafx.collections.ObservableList;
+import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.fxml.Initializable;
 
@@ -18,6 +22,7 @@ import javafx.scene.control.TableColumn;
 import javafx.scene.control.TableView;
 import javafx.scene.control.Button;
 
+import java.io.IOException;
 import java.net.URL;
 import java.util.ResourceBundle;
 
@@ -35,6 +40,16 @@ public class VerProdutosVendedorController implements Initializable, Controller{
     private TableColumn<TabelaVerProdutosVendedorModel, Double> precoColumn;
     @FXML
     private Button btnVoltar;
+
+    @FXML
+    public void onBtnVoltarAction(ActionEvent event) throws IOException {
+        try {
+            CarregarPagina.trocarPagina(event, IndexVendedor.class, "IndexVendedor-view.fxml",
+                    this.listaClientes, this.pilhaProdutos);
+        } catch (IOException e) {
+            throw new RuntimeException(e);
+        }
+    }
 
     @Override
     public void initialize(URL location, ResourceBundle resources) {
