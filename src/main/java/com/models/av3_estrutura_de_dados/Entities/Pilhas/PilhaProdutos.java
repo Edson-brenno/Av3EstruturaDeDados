@@ -33,12 +33,19 @@ public class PilhaProdutos {
             return null;
         }else{
             NoPilhaProduto ponteiro = this.base;
-            while(ponteiro.getProximoNo() != this.topo){
+            while(this.base != this.topo && ponteiro.getProximoNo() != this.topo){
                 ponteiro = ponteiro.getProximoNo();
             }
-            this.topo = ponteiro;
-            this.topo.setProximoNo(null);
-            return ponteiro.getProximoNo();
+            if (this.base == this.topo){
+                this.base = this.topo = null;
+                return ponteiro;
+            }else{
+                this.topo = ponteiro;
+                this.topo.setProximoNo(null);
+                this.tamanhoPilha -= 1;
+                return ponteiro.getProximoNo();
+            }
+
         }
     }
 

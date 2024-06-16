@@ -2,8 +2,12 @@ package com.controller.av3_estrutura_de_dados;
 
 import com.models.av3_estrutura_de_dados.Entities.Listas.ListaClientes;
 import com.models.av3_estrutura_de_dados.Entities.Pilhas.PilhaProdutos;
+import com.models.av3_estrutura_de_dados.Entities.Pilhas.NosPilhas.NoPilhaProduto;
 import com.models.av3_estrutura_de_dados.Entities.TabelaVerProdutosVendedorModel;
 
+import javafx.application.Platform;
+import javafx.collections.FXCollections;
+import javafx.collections.ObservableList;
 import javafx.fxml.FXML;
 import javafx.fxml.Initializable;
 
@@ -32,7 +36,7 @@ public class VerProdutosVendedorController implements Initializable, Controller{
 
     @Override
     public void initialize(URL location, ResourceBundle resources) {
-
+        Platform.runLater(this::popularTabela);
     }
 
     @Override
@@ -40,6 +44,21 @@ public class VerProdutosVendedorController implements Initializable, Controller{
         this.listaClientes = listaClientes;
     }
 
+    private void popularTabela(){
+        tabelaVerProdutos.setItems(this.obterProdutosDaPilha());
+    }
+
+    private ObservableList<TabelaVerProdutosVendedorModel> obterProdutosDaPilha(){
+        ObservableList<TabelaVerProdutosVendedorModel> produtos = FXCollections.observableArrayList();
+
+        for (int i = 1; i <= this.pilhaProdutos.tamanhoPilha; i++ ){
+            NoPilhaProduto produto = this.pilhaProdutos.desempilharProduto();
+            produtos.add(new TabelaVerProdutosVendedorModel(produto.getNome(), produto.getPreco(),
+                    produto.getQuantidade()));
+        }
+
+        return produtos;
+    }
     @Override
     public void setPilhaProdutos(PilhaProdutos pilhaProdutos) {
         this.pilhaProdutos = pilhaProdutos;
