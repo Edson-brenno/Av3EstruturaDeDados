@@ -17,6 +17,7 @@ import com.models.av3_estrutura_de_dados.Entities.Pilhas.PilhaProdutos;
 import com.controller.av3_estrutura_de_dados.interfaces.Controller;
 import com.views.av3_estrutura_de_dados.util.CarregarPagina;
 import com.views.av3_estrutura_de_dados.CadastroProdutoVendedor;
+import com.views.av3_estrutura_de_dados.VerProdutosVendedor;
 
 public class IndexVendedorController implements Initializable, Controller {
     @FXML
@@ -26,7 +27,7 @@ public class IndexVendedorController implements Initializable, Controller {
     @FXML
     private Label labelNomeUsuario;
     @FXML
-    private Button btnCadastroProduto;
+    private Button btnCadastroProduto, btnVerProdutos;
 
     @Override
     public void setListaClientes(ListaClientes listaClientes){
@@ -56,6 +57,15 @@ public class IndexVendedorController implements Initializable, Controller {
         }
     }
 
+    @FXML
+    public void onBtnVerProdutosOnAction(ActionEvent event) throws IOException {
+        try {
+            CarregarPagina.trocarPagina(event, VerProdutosVendedor.class,
+                    "VerProdutosVendedor-view.fxml", this.listaClientes, this.pilhaProdutos);
+        }catch (RuntimeException e){
+            e.printStackTrace();
+        }
+    }
     @Override
     public void initialize(URL url, ResourceBundle rb) {
         Platform.runLater(this::setarNomeUsuarioNoLabel);
