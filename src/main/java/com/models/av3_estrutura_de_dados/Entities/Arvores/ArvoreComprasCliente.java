@@ -62,4 +62,21 @@ public class ArvoreComprasCliente {
         obterPedidosEmOrdem(this.raiz, idClienteComprador, pilhaProdutos);
         return pilhaProdutos;
     }
+
+    private void setarPedidoAvaliadoEmOrdem(NoAvoreCompraCliente atual,String idCompra){
+        if(atual != null){
+            setarPedidoAvaliadoEmOrdem(atual.getEsquerda(), idCompra);
+            if(atual.getIdCompra().equals(idCompra)){
+                atual.setProdutoAvaliadao(true);
+            }
+            setarPedidoAvaliadoEmOrdem(atual.getDireita(), idCompra);
+        }
+    }
+
+    public void setarPedidoAvaliado(String idCompra){
+        NoAvoreCompraCliente atual = this.raiz;
+        if(atual != null){
+            setarPedidoAvaliadoEmOrdem(atual, idCompra);
+        }
+    }
 }
