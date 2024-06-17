@@ -70,13 +70,13 @@
                 </GridPane>
             </items></SplitPane>
       <Label alignment="TOP_CENTER" layoutX="263.0" layoutY="14.0" prefHeight="22.0" prefWidth="214.0" text="COMPRAR PRODUTOS" />
-      <TableView fx:id="tabelaProdutosAComprar" layoutX="170.0" layoutY="51.0" prefHeight="296.0" prefWidth="395.0">
+      <TableView fx:id="tabelaProdutosAComprar" layoutX="140.0" layoutY="51.0" prefHeight="324.0" prefWidth="446.0">
         <columns>
-          <TableColumn fx:id="nomeProdutoColumn" prefWidth="75.0" text="Nome" />
-          <TableColumn fx:id="descricaoProdutoColumn" prefWidth="75.0" text="Descricao" />
-            <TableColumn fx:id="precoProdutoColumn" prefWidth="75.0" text="Preco" />
-            <TableColumn fx:id="nomeVendedorColumn" prefWidth="75.0" text="Vendedor" />
-            <TableColumn fx:id="nomeComprarColumn" prefWidth="75.0" text="Opcao" />
+          <TableColumn fx:id="nomeProdutoColumn" prefWidth="121.0" text="Nome" />
+          <TableColumn fx:id="descricaoProdutoColumn" prefWidth="78.0" text="Descricao" />
+            <TableColumn fx:id="precoProdutoColumn" prefWidth="79.0" text="Preco" />
+            <TableColumn fx:id="nomeVendedorColumn" prefWidth="86.0" text="Vendedor" />
+            <TableColumn fx:id="nomeComprarColumn" prefWidth="81.0" text="Opcao" />
         </columns>
       </TableView>
     </children>
