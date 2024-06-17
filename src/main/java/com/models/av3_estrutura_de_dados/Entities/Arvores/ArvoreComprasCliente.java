@@ -56,7 +56,9 @@ public class ArvoreComprasCliente {
         }
     }
 
-    public void obterTodosPedidosCliente(NoAvoreCompraCliente esquerda, int idCliente, PilhaProdutos pilhaProdutos){
-
+    public PilhaProdutos obterTodosPedidosCliente(long idClienteComprador){
+        PilhaProdutos pilhaProdutos = new PilhaProdutos();
+        obterPedidosEmOrdem(this.raiz, idClienteComprador, pilhaProdutos);
+        return pilhaProdutos;
     }
 }
