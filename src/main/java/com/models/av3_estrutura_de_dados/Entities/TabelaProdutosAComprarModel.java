@@ -6,6 +6,7 @@ public class TabelaProdutosAComprarModel {
     private final double precoProduto;
     private final String nomeVendedor;
     private final long idVendedor;
+    private final String textoCompra = "Comprar";
 
     public TabelaProdutosAComprarModel(String nomeProduto, String descricaoProduto, double precoProduto,
                                        String nomeVendedor, long idVendedor) {
@@ -34,6 +35,10 @@ public class TabelaProdutosAComprarModel {
 
     public long getIdVendedor() {
         return idVendedor;
+    }
+
+    public String getTextoCompra() {
+        return textoCompra;
     }
 
 }
