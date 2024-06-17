@@ -13,6 +13,7 @@ import javafx.application.Platform;
 
 import javafx.scene.control.TableView;
 import javafx.scene.control.TableColumn;
+import javafx.scene.control.TableRow;
 
 import com.models.av3_estrutura_de_dados.Entities.Listas.ListaClientes;
 import com.models.av3_estrutura_de_dados.Entities.Pilhas.PilhaProdutos;
@@ -73,6 +74,20 @@ public class IndexClienteController implements Initializable, Controller{
     @Override
     public void initialize(URL url, ResourceBundle resourceBundle) {
         setupTable();
+        tabelaProdutosAComprar.setRowFactory(tv ->{
+            TableRow<TabelaProdutosAComprarModel> row = new TableRow<>();
+
+            row.setOnMouseClicked(event -> {
+               if(!row.isEmpty()){
+                   TabelaProdutosAComprarModel rowData = row.getItem();
+                   System.out.println(rowData.getNomeProduto());
+               }
+            });
+            return row;
+        });
+
+        nomeComprarColumn.setStyle("-fx-alignment: CENTER; -fx-background-color: #34b1eb; -fx-text-fill: white;" +
+                "-fx-border-color: black;");
         Platform.runLater(this::setarNomeUsuarioNoLabel);
         Platform.runLater(this::popularTabela);
     }
