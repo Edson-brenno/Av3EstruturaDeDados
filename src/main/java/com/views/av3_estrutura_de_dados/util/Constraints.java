@@ -129,4 +129,22 @@ public class Constraints {
             }
         });
     }
+
+    // Método para setar a nota de avaliacao
+    public static void setTextFlieldNotaAvaliacao(TextField tf){
+        tf.textProperty().addListener((observable, oldValue, newValue) -> {
+            if (newValue == null || newValue.isEmpty()) {
+                tf.setText("");
+                return;
+            }
+            if(newValue.matches("^[0-9]+$") && (Integer.parseInt(newValue) > 0 &&
+                    Integer.parseInt(newValue) < 11)){
+                tf.setText(newValue);
+                tf.setStyle("-fx-border-color: none;");
+            }else{
+                tf.setText(newValue);
+                tf.setStyle("-fx-border-color: red;");
+            }
+        });
+    }
 }

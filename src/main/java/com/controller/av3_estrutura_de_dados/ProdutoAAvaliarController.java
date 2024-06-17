@@ -29,6 +29,8 @@ import com.views.av3_estrutura_de_dados.MeuPedidosClienteConsumidor;
 import com.controller.av3_estrutura_de_dados.interfaces.Controller;
 import javafx.scene.control.cell.PropertyValueFactory;
 
+import static com.views.av3_estrutura_de_dados.util.Constraints.setTextFlieldNotaAvaliacao;
+
 public class ProdutoAAvaliarController implements Initializable, Controller {
 
     @FXML
@@ -88,7 +90,7 @@ public class ProdutoAAvaliarController implements Initializable, Controller {
 
     @Override
     public void initialize(URL url, ResourceBundle resourceBundle) {
-
+        setTextFlieldNotaAvaliacao(this.textFieldNotaProduto);
         Platform.runLater(this::setarNomeUsuarioNoLabel);
         Platform.runLater(this::setFilaAvaliacaoPedido);
         Platform.runLater(this::getProdutoASerAvaliado);
