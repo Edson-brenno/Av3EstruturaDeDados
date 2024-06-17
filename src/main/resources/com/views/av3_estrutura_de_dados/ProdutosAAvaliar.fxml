@@ -102,7 +102,7 @@
         </rowConstraints>
          <children>
             <Button fx:id="buttonVoltar" mnemonicParsing="false" prefHeight="24.0" prefWidth="103.0" text="Voltar" />
-            <Button fx:id="buttonAvaliar" mnemonicParsing="false" prefHeight="24.0" prefWidth="117.0" text="Avaliar" GridPane.columnIndex="1" />
+            <Button fx:id="buttonAvaliar" mnemonicParsing="false" onAction="#onBtnAvaliarAction" prefHeight="24.0" prefWidth="117.0" text="Avaliar" GridPane.columnIndex="1" />
          </children>
       </GridPane>
     </children>

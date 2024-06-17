@@ -5,6 +5,7 @@ import java.net.URL;
 import java.util.ResourceBundle;
 
 import com.models.av3_estrutura_de_dados.Entities.Pilhas.NosPilhas.NoPilhaProduto;
+import com.views.av3_estrutura_de_dados.ProdutosAAvaliar;
 import javafx.collections.FXCollections;
 import javafx.collections.ObservableList;
 import javafx.fxml.FXML;
@@ -62,7 +63,14 @@ public class ProdutoAAvaliarController implements Initializable, Controller {
     @FXML
     private Button buttonVoltar,buttonAvaliar;
 
-
+    @FXML
+    public void onBtnAvaliarAction(ActionEvent event) throws IOException {
+        if(this.produtoASerAvaliado != null){
+            this.arvoreComprasCliente.setarPedidoAvaliado(this.produtoASerAvaliado.getIdCompra());
+        }
+        CarregarPagina.trocarPagina(event, ProdutosAAvaliar.class, "ProdutosAAvaliar.fxml",
+                this.listaClientes, this.pilhaProdutos, this.arvoreComprasCliente);
+    }
     @Override
     public void setListaClientes(ListaClientes listaClientes) {
         this.listaClientes = listaClientes;
@@ -109,12 +117,18 @@ public class ProdutoAAvaliarController implements Initializable, Controller {
 
     private void getProdutoASerAvaliado(){
         if(this.filaAvaliacaoPedido != null){
+
             this.produtoASerAvaliado = this.filaAvaliacaoPedido.desenfileiraPedidoAvaliar();
-            this.nomeProduto.setText(this.produtoASerAvaliado.getNomeProduto());
+            if(this.produtoASerAvaliado == null){
+                this.filaAvaliacaoPedido = null;
+            }else{
+                this.nomeProduto.setText(this.produtoASerAvaliado.getNomeProduto());
+            }
+
         }
     }
     private void setarVisibilidadeComponentes(){
-        if(this.filaAvaliacaoPedido == null){
+        if(this.produtoASerAvaliado == null){
             this.labelProduto.setVisible(false);
             this.nomeProduto.setVisible(false);
             this.descricaoAvaliacao.setVisible(false);
