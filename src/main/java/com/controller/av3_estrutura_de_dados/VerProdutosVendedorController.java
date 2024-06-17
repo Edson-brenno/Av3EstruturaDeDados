@@ -4,6 +4,7 @@ import com.models.av3_estrutura_de_dados.Entities.Listas.ListaClientes;
 import com.models.av3_estrutura_de_dados.Entities.Pilhas.PilhaProdutos;
 import com.models.av3_estrutura_de_dados.Entities.Pilhas.NosPilhas.NoPilhaProduto;
 import com.models.av3_estrutura_de_dados.Entities.TabelaVerProdutosVendedorModel;
+import com.models.av3_estrutura_de_dados.Entities.Arvores.ArvoreComprasCliente;
 
 import com.views.av3_estrutura_de_dados.util.CarregarPagina;
 import com.views.av3_estrutura_de_dados.IndexVendedor;
@@ -34,6 +35,8 @@ public class VerProdutosVendedorController implements Initializable, Controller{
     @FXML
     private PilhaProdutos pilhaProdutos;
     @FXML
+    private ArvoreComprasCliente arvoreComprasCliente;
+    @FXML
     private TableView<TabelaVerProdutosVendedorModel> tabelaVerProdutos;
     @FXML
     private TableColumn<TabelaVerProdutosVendedorModel, String> nomeProdutoColumn;
@@ -46,7 +49,7 @@ public class VerProdutosVendedorController implements Initializable, Controller{
     public void onBtnVoltarAction(ActionEvent event) throws IOException {
         try {
             CarregarPagina.trocarPagina(event, IndexVendedor.class, "IndexVendedor-view.fxml",
-                    this.listaClientes, this.pilhaProdutos);
+                    this.listaClientes, this.pilhaProdutos, this.arvoreComprasCliente);
         } catch (IOException e) {
             throw new RuntimeException(e);
         }
@@ -56,7 +59,8 @@ public class VerProdutosVendedorController implements Initializable, Controller{
     public void onBtnCadastroProdutoAction(ActionEvent event) throws IOException {
         try{
             CarregarPagina.trocarPagina(event, CadastroProdutoVendedor.class,
-                    "CadastroProdutoVendedor-view.fxml", this.listaClientes, this.pilhaProdutos);
+                    "CadastroProdutoVendedor-view.fxml", this.listaClientes, this.pilhaProdutos,
+                    this.arvoreComprasCliente);
         } catch (RuntimeException e){
             e.printStackTrace();
         }
@@ -105,5 +109,15 @@ public class VerProdutosVendedorController implements Initializable, Controller{
     @Override
     public void getPilhaProdutos() {
         this.pilhaProdutos.mostrarProdutos();
+    }
+
+    @Override
+    public void setArvoreComprasCliente(ArvoreComprasCliente arvore) {
+        this.arvoreComprasCliente = arvore;
+    }
+
+    @Override
+    public void getArvoreComprasCliente() {
+        this.arvoreComprasCliente.obterTodosPedidosCliente(2);
     }
 }

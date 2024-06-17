@@ -16,6 +16,7 @@ import javafx.scene.control.Button;
 
 import com.models.av3_estrutura_de_dados.Entities.Listas.ListaClientes;
 import com.models.av3_estrutura_de_dados.Entities.Pilhas.PilhaProdutos;
+import com.models.av3_estrutura_de_dados.Entities.Arvores.ArvoreComprasCliente;
 import com.controller.av3_estrutura_de_dados.interfaces.Controller;
 
 import com.views.av3_estrutura_de_dados.util.Constraints;
@@ -29,6 +30,8 @@ public class CadastroProdutoVendedorController implements Initializable, Control
     @FXML
     private PilhaProdutos pilhaProdutos=null;
     @FXML
+    private ArvoreComprasCliente arvoreComprasCliente=null;
+    @FXML
     private Label labelNomeUsuario;
     @FXML
     private TextField textFieldNomeProduto, textFieldValor, textFieldQuantidade;
@@ -41,7 +44,7 @@ public class CadastroProdutoVendedorController implements Initializable, Control
     public void onBtnCancelar(ActionEvent event) throws IOException {
         try {
             CarregarPagina.trocarPagina(event, IndexVendedor.class, "IndexVendedor-view.fxml",
-                    this.listaClientes, this.pilhaProdutos);
+                    this.listaClientes, this.pilhaProdutos, this.arvoreComprasCliente);
         }catch (RuntimeException e){
             e.printStackTrace();
         }
@@ -55,7 +58,7 @@ public class CadastroProdutoVendedorController implements Initializable, Control
                     null,Double.parseDouble(this.textFieldValor.getText().replace(",",".")));
 
             CarregarPagina.trocarPagina(event, IndexVendedor.class, "IndexVendedor-view.fxml",
-                    this.listaClientes, this.pilhaProdutos);
+                    this.listaClientes, this.pilhaProdutos, this.arvoreComprasCliente);
         }catch(RuntimeException e){
             e.printStackTrace();
         }
@@ -76,6 +79,16 @@ public class CadastroProdutoVendedorController implements Initializable, Control
     public void getPilhaProdutos(){
         System.out.println("==========================");
         this.pilhaProdutos.mostrarProdutos();
+    }
+
+    @Override
+    public void setArvoreComprasCliente(ArvoreComprasCliente arvore) {
+        this.arvoreComprasCliente = arvore;
+    }
+
+    @Override
+    public void getArvoreComprasCliente() {
+        this.arvoreComprasCliente.obterTodosPedidosCliente(2);
     }
 
     @Override

@@ -16,6 +16,7 @@ import javafx.scene.control.Button;
 import com.views.av3_estrutura_de_dados.Cadastro;
 import com.models.av3_estrutura_de_dados.Entities.Listas.ListaClientes;
 import com.models.av3_estrutura_de_dados.Entities.Pilhas.PilhaProdutos;
+import com.models.av3_estrutura_de_dados.Entities.Arvores.ArvoreComprasCliente;
 import com.controller.av3_estrutura_de_dados.interfaces.Controller;
 import com.views.av3_estrutura_de_dados.util.CarregarPagina;
 import com.views.av3_estrutura_de_dados.IndexVendedor;
@@ -27,6 +28,9 @@ public class LoginController implements Initializable, Controller {
 
     @FXML
     private PilhaProdutos pilhaProdutos=null;
+
+    @FXML
+    private ArvoreComprasCliente arvoreComprasCliente=null;
 
     @FXML
     private TextField emailTextField;
@@ -47,7 +51,8 @@ public class LoginController implements Initializable, Controller {
             if((this.listaClientes != null) && (this.listaClientes.LogarCliente(this.emailTextField.getText(),
                     this.passwordTextField.getText()) == true)){
                 CarregarPagina.trocarPagina(event, IndexVendedor.class,
-                        "IndexVendedor-view.fxml", this.listaClientes, this.pilhaProdutos);
+                        "IndexVendedor-view.fxml", this.listaClientes, this.pilhaProdutos,
+                        this.arvoreComprasCliente);
             }
             else{ // Error no login
                 System.out.println("Error ao logar");
@@ -62,7 +67,7 @@ public class LoginController implements Initializable, Controller {
     public void onBtCadastroClickAction(ActionEvent event) throws IOException {
         try {
             CarregarPagina.trocarPagina(event, Cadastro.class, "Cadastro-view.fxml",
-                    this.listaClientes, this.pilhaProdutos);
+                    this.listaClientes, this.pilhaProdutos, this.arvoreComprasCliente);
 //
         }catch (RuntimeException e){
             e.getStackTrace();
@@ -82,6 +87,16 @@ public class LoginController implements Initializable, Controller {
     public void getPilhaProdutos(){
         System.out.println("==========================");
         this.pilhaProdutos.mostrarProdutos();
+    }
+
+    @Override
+    public void setArvoreComprasCliente(ArvoreComprasCliente arvore) {
+        this.arvoreComprasCliente = arvore;
+    }
+
+    @Override
+    public void getArvoreComprasCliente() {
+        this.arvoreComprasCliente.obterTodosPedidosCliente(2);
     }
 
     @Override

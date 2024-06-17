@@ -16,6 +16,8 @@ import javafx.scene.control.Button;
 import com.views.av3_estrutura_de_dados.Login;
 import com.models.av3_estrutura_de_dados.Entities.Listas.ListaClientes;
 import com.models.av3_estrutura_de_dados.Entities.Pilhas.PilhaProdutos;
+import com.models.av3_estrutura_de_dados.Entities.Arvores.ArvoreComprasCliente;
+
 import com.controller.av3_estrutura_de_dados.interfaces.Controller;
 import com.views.av3_estrutura_de_dados.util.CarregarPagina;
 
@@ -31,12 +33,14 @@ public class CadastroController implements Initializable, Controller {
     private ListaClientes listaClientes=null;
     @FXML
     private PilhaProdutos pilhaProdutos=null;
+    @FXML
+    private ArvoreComprasCliente arvoreComprasCliente=null;
 
     @FXML
     public void onBtnVoltarClickAction(ActionEvent event) throws IOException {
         try{
             CarregarPagina.trocarPagina(event, Login.class, "Login-view.fxml", this.listaClientes,
-                    this.pilhaProdutos);
+                    this.pilhaProdutos, this.arvoreComprasCliente);
         }catch(RuntimeException e){
             e.printStackTrace();
         }
@@ -54,7 +58,7 @@ public class CadastroController implements Initializable, Controller {
                         this.comboTipoCliente.getValue());
 
                 CarregarPagina.trocarPagina(event, Login.class, "Login-view.fxml", this.listaClientes,
-                        this.pilhaProdutos);
+                        this.pilhaProdutos, this.arvoreComprasCliente);
 
             }
         }
@@ -77,6 +81,17 @@ public class CadastroController implements Initializable, Controller {
         System.out.println("==========================");
         this.pilhaProdutos.mostrarProdutos();
     }
+
+    @Override
+    public void setArvoreComprasCliente(ArvoreComprasCliente arvore) {
+        this.arvoreComprasCliente = arvore;
+    }
+
+    @Override
+    public void getArvoreComprasCliente() {
+        this.arvoreComprasCliente.obterTodosPedidosCliente(2);
+    }
+
     @Override
     public void initialize(URL url, ResourceBundle rb) {
       this.comboTipoCliente.getItems().addAll(TipoClienteEnum.values());

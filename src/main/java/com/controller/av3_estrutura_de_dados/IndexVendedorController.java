@@ -14,6 +14,8 @@ import javafx.scene.control.Button;
 
 import com.models.av3_estrutura_de_dados.Entities.Listas.ListaClientes;
 import com.models.av3_estrutura_de_dados.Entities.Pilhas.PilhaProdutos;
+import com.models.av3_estrutura_de_dados.Entities.Arvores.ArvoreComprasCliente;
+
 import com.controller.av3_estrutura_de_dados.interfaces.Controller;
 import com.views.av3_estrutura_de_dados.util.CarregarPagina;
 import com.views.av3_estrutura_de_dados.CadastroProdutoVendedor;
@@ -24,6 +26,8 @@ public class IndexVendedorController implements Initializable, Controller {
     private ListaClientes listaClientes=null;
     @FXML
     private PilhaProdutos pilhaProdutos=null;
+    @FXML
+    private ArvoreComprasCliente arvoreComprasCliente=null;
     @FXML
     private Label labelNomeUsuario;
     @FXML
@@ -45,13 +49,23 @@ public class IndexVendedorController implements Initializable, Controller {
         this.pilhaProdutos.mostrarProdutos();
     }
 
+    @Override
+    public void setArvoreComprasCliente(ArvoreComprasCliente arvore) {
+        this.arvoreComprasCliente = arvore;
+    }
+
+    @Override
+    public void getArvoreComprasCliente() {
+        this.arvoreComprasCliente.obterTodosPedidosCliente(2);
+    }
+
     @FXML
     public void onBtnCadastroProdutoOnAction(ActionEvent event) throws IOException {
         try{
 
             CarregarPagina.trocarPagina(event, CadastroProdutoVendedor.class,
                     "CadastroProdutoVendedor-view.fxml", this.listaClientes,
-                    this.pilhaProdutos);
+                    this.pilhaProdutos, this.arvoreComprasCliente);
         }catch (RuntimeException e){
             e.printStackTrace();
         }
@@ -61,7 +75,8 @@ public class IndexVendedorController implements Initializable, Controller {
     public void onBtnVerProdutosOnAction(ActionEvent event) throws IOException {
         try {
             CarregarPagina.trocarPagina(event, VerProdutosVendedor.class,
-                    "VerProdutosVendedor-view.fxml", this.listaClientes, this.pilhaProdutos);
+                    "VerProdutosVendedor-view.fxml", this.listaClientes, this.pilhaProdutos,
+                    this.arvoreComprasCliente);
         }catch (RuntimeException e){
             e.printStackTrace();
         }

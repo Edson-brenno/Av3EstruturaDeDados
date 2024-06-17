@@ -49,6 +49,7 @@ public class Login extends Application {
             LoginController controller = (LoginController) loader.getController();
             controller.setListaClientes(listaCliente);
             controller.setPilhaProdutos(pilhaProdutos);
+            controller.setArvoreComprasCliente(arvoreComprasCliente);
             stage.setTitle("Os mano");
             stage.setScene(scene);
             stage.show();
