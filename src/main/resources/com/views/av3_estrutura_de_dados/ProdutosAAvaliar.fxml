@@ -101,7 +101,7 @@
           <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
         </rowConstraints>
          <children>
-            <Button fx:id="buttonVoltar" mnemonicParsing="false" prefHeight="24.0" prefWidth="103.0" text="Voltar" />
+            <Button fx:id="buttonVoltar" mnemonicParsing="false" onAction="#onBtnVoltarAction" prefHeight="24.0" prefWidth="103.0" text="Voltar" />
             <Button fx:id="buttonAvaliar" mnemonicParsing="false" onAction="#onBtnAvaliarAction" prefHeight="24.0" prefWidth="117.0" text="Avaliar" GridPane.columnIndex="1" />
          </children>
       </GridPane>

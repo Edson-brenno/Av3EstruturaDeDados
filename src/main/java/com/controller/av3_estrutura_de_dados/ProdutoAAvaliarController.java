@@ -5,6 +5,7 @@ import java.net.URL;
 import java.util.ResourceBundle;
 
 import com.models.av3_estrutura_de_dados.Entities.Pilhas.NosPilhas.NoPilhaProduto;
+import com.views.av3_estrutura_de_dados.IndexCliente;
 import com.views.av3_estrutura_de_dados.ProdutosAAvaliar;
 import javafx.collections.FXCollections;
 import javafx.collections.ObservableList;
@@ -69,6 +70,12 @@ public class ProdutoAAvaliarController implements Initializable, Controller {
             this.arvoreComprasCliente.setarPedidoAvaliado(this.produtoASerAvaliado.getIdCompra());
         }
         CarregarPagina.trocarPagina(event, ProdutosAAvaliar.class, "ProdutosAAvaliar.fxml",
+                this.listaClientes, this.pilhaProdutos, this.arvoreComprasCliente);
+    }
+
+    @FXML
+    public void onBtnVoltarAction(ActionEvent event) throws IOException {
+        CarregarPagina.trocarPagina(event, IndexCliente.class, "IndexCliente-view.fxml",
                 this.listaClientes, this.pilhaProdutos, this.arvoreComprasCliente);
     }
     @Override
