@@ -1,0 +1,83 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.scene.control.Accordion?>
+<?import javafx.scene.control.Button?>
+<?import javafx.scene.control.Label?>
+<?import javafx.scene.control.SplitPane?>
+<?import javafx.scene.control.TableColumn?>
+<?import javafx.scene.control.TableView?>
+<?import javafx.scene.control.TitledPane?>
+<?import javafx.scene.image.Image?>
+<?import javafx.scene.image.ImageView?>
+<?import javafx.scene.layout.AnchorPane?>
+<?import javafx.scene.layout.ColumnConstraints?>
+<?import javafx.scene.layout.GridPane?>
+<?import javafx.scene.layout.RowConstraints?>
+<?import javafx.scene.text.Font?>
+
+<AnchorPane prefHeight="400.0" prefWidth="600.0" xmlns="http://javafx.com/javafx/22" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.views.av3_estrutura_de_dados.MeuPedidosClienteConsumidorView">
+    <children>
+        <SplitPane layoutX="-1.0" layoutY="102.0" prefHeight="304.0" prefWidth="130.0">
+            <items>
+                <Accordion>
+                    <panes>
+                        <TitledPane animated="false" text="Pedidos">
+                            <content>
+                                <AnchorPane minHeight="0.0" minWidth="0.0" prefHeight="180.0" prefWidth="200.0">
+                                    <children>
+                                        <GridPane prefHeight="65.0" prefWidth="130.0">
+                                            <columnConstraints>
+                                                <ColumnConstraints hgrow="SOMETIMES" minWidth="10.0" prefWidth="100.0" />
+                                            </columnConstraints>
+                                            <rowConstraints>
+                                                <RowConstraints maxHeight="40.0" minHeight="10.0" prefHeight="32.0" vgrow="SOMETIMES" />
+                                                <RowConstraints maxHeight="68.0" minHeight="10.0" prefHeight="33.0" vgrow="SOMETIMES" />
+                                            </rowConstraints>
+                                            <children>
+                                                <Button fx:id="btnVerProdutos" mnemonicParsing="false" prefHeight="30.0" prefWidth="135.0" text="Ver Compras" />
+                                                <Button fx:id="btnCadastroProduto" mnemonicParsing="false" prefHeight="30.0" prefWidth="131.0" text="Avaliar Pedido" GridPane.rowIndex="1" />
+                                            </children>
+                                        </GridPane>
+                                    </children>
+                                </AnchorPane>
+                            </content>
+                        </TitledPane>
+                    </panes>
+                </Accordion>
+            </items></SplitPane>
+        <SplitPane layoutY="-1.0" prefHeight="104.0" prefWidth="130.0">
+            <items>
+                <GridPane prefHeight="111.0" prefWidth="128.0">
+                    <columnConstraints>
+                        <ColumnConstraints hgrow="SOMETIMES" minWidth="10.0" prefWidth="100.0" />
+                    </columnConstraints>
+                    <rowConstraints>
+                        <RowConstraints maxHeight="38.0" minHeight="10.0" prefHeight="34.0" vgrow="SOMETIMES" />
+                        <RowConstraints maxHeight="59.0" minHeight="10.0" prefHeight="51.0" vgrow="SOMETIMES" />
+                    </rowConstraints>
+                    <children>
+                        <Label fx:id="labelNomeUsuario" alignment="CENTER" prefHeight="63.0" prefWidth="128.0" GridPane.rowIndex="1">
+                            <font>
+                                <Font size="13.0" />
+                            </font>
+                        </Label>
+                        <ImageView fitHeight="28.0" fitWidth="123.0" pickOnBounds="true" preserveRatio="true" GridPane.halignment="CENTER">
+                            <image>
+                                <Image url="@images/user.png" />
+                            </image>
+                        </ImageView>
+                    </children>
+                </GridPane>
+            </items></SplitPane>
+        <Label alignment="TOP_CENTER" layoutX="263.0" layoutY="14.0" prefHeight="22.0" prefWidth="214.0" text="Meus Pedidos" />
+        <TableView fx:id="tabelaProdutosAComprar" layoutX="140.0" layoutY="51.0" prefHeight="324.0" prefWidth="446.0">
+            <columns>
+                <TableColumn fx:id="nomeProdutoColumn" prefWidth="121.0" text="Nome" />
+                <TableColumn fx:id="descricaoProdutoColumn" prefWidth="78.0" text="Descricao" />
+                <TableColumn fx:id="precoProdutoColumn" prefWidth="79.0" text="Preco" />
+                <TableColumn fx:id="nomeVendedorColumn" prefWidth="86.0" text="Vendedor" />
+                <TableColumn fx:id="nomeComprarColumn" prefWidth="81.0" />
+            </columns>
+        </TableView>
+    </children>
+</AnchorPane>
