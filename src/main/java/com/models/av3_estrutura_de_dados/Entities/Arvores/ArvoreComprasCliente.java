@@ -86,7 +86,7 @@ public class ArvoreComprasCliente {
                                                 FilaAvaliacaoPedido filaAvaliacaoPedido, ListaClientes listaClientes){
         if(atual != null){
             obterPedidoASerAvaliadoEmOrdem(atual.getEsquerda(), idClienteConsumidor, filaAvaliacaoPedido, listaClientes);
-            if(atual.getIdCliente() == idClienteConsumidor){
+            if(atual.getIdCliente() == idClienteConsumidor && atual.getProdutoAvaliadao().equals(false)){
                 System.out.println(atual.getNomeProduto());
                 filaAvaliacaoPedido.enfileiraPedidoAvaliar(atual.getNomeProduto(),
                         listaClientes.obterNomeVendedor(atual.getIdVendedor()), idClienteConsumidor);
