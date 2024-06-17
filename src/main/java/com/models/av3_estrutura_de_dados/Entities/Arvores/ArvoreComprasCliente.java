@@ -95,7 +95,7 @@ public class ArvoreComprasCliente {
         }
     }
 
-    private FilaAvaliacaoPedido obterPedidosASeremAvaliadosClienteConsumidor(long idClienteConsumidor,
+    public FilaAvaliacaoPedido obterPedidosASeremAvaliadosClienteConsumidor(long idClienteConsumidor,
                                                                              ListaClientes listaClientes){
         FilaAvaliacaoPedido filaAvaliacaoPedido = new FilaAvaliacaoPedido();
         this.obterPedidoASerAvaliadoEmOrdem(this.raiz, idClienteConsumidor, filaAvaliacaoPedido, listaClientes);

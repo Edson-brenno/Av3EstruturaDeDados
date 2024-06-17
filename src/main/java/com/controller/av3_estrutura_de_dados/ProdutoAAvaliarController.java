@@ -21,6 +21,7 @@ import com.models.av3_estrutura_de_dados.Entities.Listas.ListaClientes;
 import com.models.av3_estrutura_de_dados.Entities.Pilhas.PilhaProdutos;
 import com.models.av3_estrutura_de_dados.Entities.Arvores.ArvoreComprasCliente;
 import com.models.av3_estrutura_de_dados.Entities.Filas.FilaAvaliacaoPedido;
+import com.models.av3_estrutura_de_dados.Entities.Filas.NosFilas.NoFilaAvaliacaoPedido;
 
 import com.views.av3_estrutura_de_dados.util.CarregarPagina;
 import com.views.av3_estrutura_de_dados.MeuPedidosClienteConsumidor;
@@ -38,6 +39,8 @@ public class ProdutoAAvaliarController implements Initializable, Controller {
     private ArvoreComprasCliente arvoreComprasCliente;
     @FXML
     private FilaAvaliacaoPedido filaAvaliacaoPedido;
+    @FXML
+    private NoFilaAvaliacaoPedido produtoASerAvaliado;
     @FXML
     private Label labelNomeUsuario;
     @FXML
@@ -87,6 +90,8 @@ public class ProdutoAAvaliarController implements Initializable, Controller {
     public void initialize(URL url, ResourceBundle resourceBundle) {
 
         Platform.runLater(this::setarNomeUsuarioNoLabel);
+        Platform.runLater(this::setFilaAvaliacaoPedido);
+        Platform.runLater(this::getProdutoASerAvaliado);
         Platform.runLater(this::setarVisibilidadeComponentes);
     }
 
@@ -94,6 +99,18 @@ public class ProdutoAAvaliarController implements Initializable, Controller {
         this.labelNomeUsuario.setText(listaClientes.usuarioLogado.getNomeCompleto());
     }
 
+    private void setFilaAvaliacaoPedido(){
+        this.filaAvaliacaoPedido = this.arvoreComprasCliente.obterPedidosASeremAvaliadosClienteConsumidor(
+                this.listaClientes.usuarioLogado.getId(), this.listaClientes
+        );
+    }
+
+    private void getProdutoASerAvaliado(){
+        if(this.filaAvaliacaoPedido != null){
+            this.produtoASerAvaliado = this.filaAvaliacaoPedido.desenfileiraPedidoAvaliar();
+            this.nomeProduto.setText(this.produtoASerAvaliado.getNomeProduto());
+        }
+    }
     private void setarVisibilidadeComponentes(){
         if(this.filaAvaliacaoPedido == null){
             this.labelProduto.setVisible(false);
