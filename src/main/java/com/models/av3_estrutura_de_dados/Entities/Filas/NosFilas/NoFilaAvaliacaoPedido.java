@@ -45,4 +45,12 @@ public class NoFilaAvaliacaoPedido {
     public void setJaAvaliado(Boolean jaAvaliado) {
         this.jaAvaliado = jaAvaliado;
     }
+
+    public NoFilaAvaliacaoPedido getProximoProdutoDaFila() {
+        return proximoProdutoDaFila;
+    }
+
+    public void setProximoProdutoDaFila(NoFilaAvaliacaoPedido proximoProdutoDaFila) {
+        this.proximoProdutoDaFila = proximoProdutoDaFila;
+    }
 }
