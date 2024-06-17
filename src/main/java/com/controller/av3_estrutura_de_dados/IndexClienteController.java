@@ -1,5 +1,6 @@
 package com.controller.av3_estrutura_de_dados;
 
+import java.io.IOException;
 import java.net.URL;
 import java.util.ResourceBundle;
 
@@ -10,15 +11,20 @@ import javafx.fxml.FXML;
 import javafx.fxml.Initializable;
 import javafx.scene.control.Label;
 import javafx.application.Platform;
+import javafx.event.ActionEvent;
 
 import javafx.scene.control.TableView;
 import javafx.scene.control.TableColumn;
 import javafx.scene.control.TableRow;
+import javafx.scene.control.Button;
 
 import com.models.av3_estrutura_de_dados.Entities.Listas.ListaClientes;
 import com.models.av3_estrutura_de_dados.Entities.Pilhas.PilhaProdutos;
 import com.models.av3_estrutura_de_dados.Entities.Arvores.ArvoreComprasCliente;
 import com.models.av3_estrutura_de_dados.Entities.TabelaProdutosAComprarModel;
+
+import com.views.av3_estrutura_de_dados.util.CarregarPagina;
+import com.views.av3_estrutura_de_dados.MeuPedidosClienteConsumidor;
 
 import com.controller.av3_estrutura_de_dados.interfaces.Controller;
 import javafx.scene.control.cell.PropertyValueFactory;
@@ -34,6 +40,10 @@ public class IndexClienteController implements Initializable, Controller{
     @FXML
     private Label labelNomeUsuario;
     @FXML
+    private Button btnMinhasCompras;
+    @FXML
+    private Button btnPedidosAAvaliar;
+    @FXML
     private TableView<TabelaProdutosAComprarModel> tabelaProdutosAComprar;
     @FXML
     private TableColumn<TabelaProdutosAComprarModel, String> nomeProdutoColumn;
@@ -46,6 +56,16 @@ public class IndexClienteController implements Initializable, Controller{
     @FXML
     private TableColumn<TabelaProdutosAComprarModel, String> nomeComprarColumn;
 
+    @FXML
+    public void onBtnMinhasComprasAction(ActionEvent event) throws IOException {
+        try{
+            CarregarPagina.trocarPagina(event, MeuPedidosClienteConsumidor.class,
+                    "MeuPedidosClienteConsumidor-view.fxml", this.listaClientes, this.pilhaProdutos,
+                    this.arvoreComprasCliente);
+        }catch (RuntimeException e){
+            e.printStackTrace();
+        }
+    }
     @Override
     public void setListaClientes(ListaClientes listaClientes) {
         this.listaClientes = listaClientes;

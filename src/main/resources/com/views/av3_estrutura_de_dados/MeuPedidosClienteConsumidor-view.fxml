@@ -15,7 +15,7 @@
 <?import javafx.scene.layout.RowConstraints?>
 <?import javafx.scene.text.Font?>
 
-<AnchorPane prefHeight="400.0" prefWidth="600.0" xmlns="http://javafx.com/javafx/22" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.views.av3_estrutura_de_dados.MeuPedidosClienteConsumidorView">
+<AnchorPane prefHeight="400.0" prefWidth="600.0" xmlns="http://javafx.com/javafx/22" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.controller.av3_estrutura_de_dados.MeusPedidosClienteConsumidorController">
     <children>
         <SplitPane layoutX="-1.0" layoutY="102.0" prefHeight="304.0" prefWidth="130.0">
             <items>
@@ -34,7 +34,7 @@
                                                 <RowConstraints maxHeight="68.0" minHeight="10.0" prefHeight="33.0" vgrow="SOMETIMES" />
                                             </rowConstraints>
                                             <children>
-                                                <Button fx:id="btnVerProdutos" mnemonicParsing="false" prefHeight="30.0" prefWidth="135.0" text="Ver Compras" />
+                                                <Button fx:id="btnVerProdutos" mnemonicParsing="false" prefHeight="30.0" prefWidth="135.0" style="-fx-background-color: gray;" text="Ver Compras" textFill="WHITE" />
                                                 <Button fx:id="btnCadastroProduto" mnemonicParsing="false" prefHeight="30.0" prefWidth="131.0" text="Avaliar Pedido" GridPane.rowIndex="1" />
                                             </children>
                                         </GridPane>
