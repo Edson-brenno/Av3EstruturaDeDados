@@ -14,6 +14,9 @@ import com.models.av3_estrutura_de_dados.Entities.Pilhas.NosPilhas.NoPilhaProdut
 import com.models.av3_estrutura_de_dados.Entities.Arvores.NosAvores.NoAvoreCompraCliente;
 import com.models.av3_estrutura_de_dados.Entities.Arvores.ArvoreComprasCliente;
 
+import com.models.av3_estrutura_de_dados.Entities.Filas.NosFilas.NoFilaAvaliacaoPedido;
+import com.models.av3_estrutura_de_dados.Entities.Filas.FilaAvaliacaoPedido;
+
 import java.io.IOException;
 
 public class Login extends Application {
@@ -45,6 +48,11 @@ public class Login extends Application {
             arvoreComprasCliente.adicionarCompraCliente("p5", 5,1L,3L);
 
             arvoreComprasCliente.obterTodosPedidosCliente(2);
+            NoFilaAvaliacaoPedido t2 = null;
+            FilaAvaliacaoPedido filaAvaliacaoPedido = new FilaAvaliacaoPedido();
+            filaAvaliacaoPedido.enfileiraPedidoAvaliar("t1", "brenno", 2L);
+            filaAvaliacaoPedido.enfileiraPedidoAvaliar("t2", "brenno", 2L);
+            filaAvaliacaoPedido.enfileiraPedidoAvaliar("t3", "brenno", 2L);
 
             FXMLLoader loader = new FXMLLoader(Login.class.getResource("Login-view.fxml"));
             Scene scene = new Scene(loader.load());

@@ -6,9 +6,11 @@ import com.models.av3_estrutura_de_dados.Entities.Pilhas.NosPilhas.NoPilhaProdut
 public class FilaAvaliacaoPedido {
     private NoFilaAvaliacaoPedido inicio;
     private NoFilaAvaliacaoPedido fim;
+    private int tamanhoFila;
 
     public FilaAvaliacaoPedido() {
         this.inicio = this.fim = null;
+        this.tamanhoFila = 0;
     }
 
     public NoFilaAvaliacaoPedido getInicio() {
@@ -30,15 +32,17 @@ public class FilaAvaliacaoPedido {
     public boolean filaVazia(){
         return this.inicio == null && this.fim == null;
     }
-    public void enfileiraPedidoAvaliar(String nomeProduto, String nomeVendedior ){
+    public void enfileiraPedidoAvaliar(String nomeProduto, String nomeVendedior, long idClienteConsumidor ){
         NoFilaAvaliacaoPedido novoNoAvaliacao = new NoFilaAvaliacaoPedido(nomeProduto, null,
-                nomeVendedior);
+                nomeVendedior, idClienteConsumidor);
 
         if(this.filaVazia()){
             this.inicio = this.fim = novoNoAvaliacao;
+            this.tamanhoFila++;
         }else{
             this.fim.setProximoProdutoDaFila(novoNoAvaliacao);
             this.fim = fim.getProximoProdutoDaFila();
+            this.tamanhoFila++;
         }
     }
 
@@ -52,18 +56,18 @@ public class FilaAvaliacaoPedido {
                 ponteiro = ponteiro.getProximoProdutoDaFila();
             }
             this.fim = ponteiro;
-            if(ponteiro.getProximoProdutoDaFila() == null){
-                NoFilaAvaliacaoPedido avaliacaoRetorno = ponteiro;
+            if(ponteiro.getProximoProdutoDaFila() == null && this.inicio == this.fim){
+                NoFilaAvaliacaoPedido avaliacaoRetorno = this.inicio;
                 this.inicio = this.fim = null;
+                this.tamanhoFila--;
                 return avaliacaoRetorno;
             }else{
-                NoFilaAvaliacaoPedido avaliacaoRetorno = ponteiro.getProximoProdutoDaFila();
+                NoFilaAvaliacaoPedido avaliacaoRetorno = this.inicio;
                 this.fim.setProximoProdutoDaFila(null);
+                this.inicio = this.inicio.getProximoProdutoDaFila();
+                this.tamanhoFila--;
                 return avaliacaoRetorno;
             }
-
-
-
         }
     }
 }
