@@ -45,10 +45,10 @@ public class ArvoreComprasCliente {
         }
     }
 
-    private void obterPedidosEmOrdem(NoAvoreCompraCliente atual, int idCliente, PilhaProdutos pilhaProdutos){
+    private void obterPedidosEmOrdem(NoAvoreCompraCliente atual, int idClienteComprador, PilhaProdutos pilhaProdutos){
         if(atual != null){
-            obterPedidosEmOrdem(atual.getEsquerda(), idCliente, pilhaProdutos);
-            if(atual.getIdCliente() == idCliente){
+            obterPedidosEmOrdem(atual.getEsquerda(), idClienteComprador, pilhaProdutos);
+            if(atual.getIdCliente() == idClienteComprador){
                 pilhaProdutos.emplilharProduto(atual.getNomeProduto(),"", );
             }
         }

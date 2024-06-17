@@ -9,11 +9,12 @@ public class NoPilhaProduto {
     private int idClienteComprador;
     private NoPilhaProduto proximoNo;
 
-    public NoPilhaProduto(String nome, String descricao, long idClienteVendedor,double preco) {
+    public NoPilhaProduto(String nome, String descricao, long idClienteVendedor, long idClienteComprador,double preco) {
         this.idProduto = UUID.randomUUID().toString();
         this.nome = nome;
         this.descricao = descricao;
         this.idClienteVendedor = idClienteVendedor;
+        this.idClienteComprador = idClienteComprador;
         this.preco = preco;
         this.proximoNo = null;
     }

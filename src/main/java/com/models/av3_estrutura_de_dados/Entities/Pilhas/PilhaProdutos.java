@@ -17,12 +17,12 @@ public class PilhaProdutos {
         return  this.base == null && this.topo == null;
     }
 
-    public void emplilharProduto(String nome, String descricao, long idCliente,double preco){
+    public void emplilharProduto(String nome, String descricao, long idClienteVendedor, Long idClienteComprador, double preco){
         if(pilhaEstaVazia()){
-            this.base = this.topo = new NoPilhaProduto(nome, descricao, idCliente, preco);
+            this.base = this.topo = new NoPilhaProduto(nome, descricao, idClienteVendedor,idClienteComprador,preco);
             this.tamanhoPilha += 1;
         }else{
-            this.topo.setProximoNo(new NoPilhaProduto(nome, descricao, idCliente, preco));
+            this.topo.setProximoNo(new NoPilhaProduto(nome, descricao, idClienteVendedor, idClienteComprador,preco));
             this.topo = this.topo.getProximoNo();
             this.tamanhoPilha += 1;
         }
@@ -78,13 +78,13 @@ public class PilhaProdutos {
         while(ponteiro.getProximoNo() != null){
 
             copia.emplilharProduto(ponteiro.getNome(), ponteiro.getDescricao(), ponteiro.getIdClienteVendedor(),
-                    ponteiro.getPreco());
+                    null,ponteiro.getPreco());
 
             ponteiro = ponteiro.getProximoNo();
         }
 
         copia.emplilharProduto(ponteiro.getNome(), ponteiro.getDescricao(), ponteiro.getIdClienteVendedor(),
-                ponteiro.getPreco());
+                null,ponteiro.getPreco());
 
         return copia;
     }
