@@ -26,11 +26,11 @@ import com.views.av3_estrutura_de_dados.IndexVendedor;
 public class CadastroProdutoVendedorController implements Initializable, Controller {
 
     @FXML
-    private ListaClientes listaClientes=null;
+    private ListaClientes listaClientes;
     @FXML
-    private PilhaProdutos pilhaProdutos=null;
+    private PilhaProdutos pilhaProdutos;
     @FXML
-    private ArvoreComprasCliente arvoreComprasCliente=null;
+    private ArvoreComprasCliente arvoreComprasCliente;
     @FXML
     private Label labelNomeUsuario;
     @FXML
@@ -53,6 +53,7 @@ public class CadastroProdutoVendedorController implements Initializable, Control
     @FXML
     public void onBtnCadastrar(ActionEvent event) throws IOException {
         try {
+
             this.pilhaProdutos.emplilharProduto(this.textFieldNomeProduto.getText(), this.textFieldDescricao.getText(),
                     this.listaClientes.usuarioLogado.getId(),
                     null,Double.parseDouble(this.textFieldValor.getText().replace(",",".")));

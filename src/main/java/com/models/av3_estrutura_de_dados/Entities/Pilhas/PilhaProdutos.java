@@ -57,7 +57,7 @@ public class PilhaProdutos {
     public void mostrarProdutos(){
         if(!pilhaEstaVazia()){
             NoPilhaProduto ponteiro = this.base;
-            while(ponteiro.getProximoNo() != this.topo) {
+            while(ponteiro.getProximoNo() != null && ponteiro.getProximoNo() != this.topo) {
                 System.out.println(ponteiro.getNome() + " - " + ponteiro.getDescricao() + " - " + ponteiro.getPreco() +
                          " - " + ponteiro.getIdClienteVendedor());
                 ponteiro = ponteiro.getProximoNo();
@@ -71,22 +71,27 @@ public class PilhaProdutos {
     }
 
     public PilhaProdutos gerarCopiaPilhaProdutos(){
-        PilhaProdutos copia = new PilhaProdutos();
+        if(!this.pilhaEstaVazia()){
+            PilhaProdutos copia = new PilhaProdutos();
 
-        NoPilhaProduto ponteiro = this.base;
+            NoPilhaProduto ponteiro = this.base;
 
-        while(ponteiro.getProximoNo() != null){
+            while(ponteiro.getProximoNo() != null){
+
+                copia.emplilharProduto(ponteiro.getNome(), ponteiro.getDescricao(), ponteiro.getIdClienteVendedor(),
+                        null,ponteiro.getPreco());
+
+                ponteiro = ponteiro.getProximoNo();
+            }
 
             copia.emplilharProduto(ponteiro.getNome(), ponteiro.getDescricao(), ponteiro.getIdClienteVendedor(),
                     null,ponteiro.getPreco());
 
-            ponteiro = ponteiro.getProximoNo();
+            return copia;
+        }else{
+            return null;
         }
 
-        copia.emplilharProduto(ponteiro.getNome(), ponteiro.getDescricao(), ponteiro.getIdClienteVendedor(),
-                null,ponteiro.getPreco());
-
-        return copia;
     }
 
 }

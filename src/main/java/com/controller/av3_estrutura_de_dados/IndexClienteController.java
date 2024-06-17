@@ -145,19 +145,20 @@ public class IndexClienteController implements Initializable, Controller{
         ObservableList<TabelaProdutosAComprarModel> produtos = FXCollections.observableArrayList();
 
         PilhaProdutos copiaPilhaProdutos = this.pilhaProdutos.gerarCopiaPilhaProdutos();
+        if(copiaPilhaProdutos != null){
+            int tamanhoPilha = this.pilhaProdutos.tamanhoPilha;
 
-        int tamanhoPilha = this.pilhaProdutos.tamanhoPilha;
-
-        for (int i = 0; i < tamanhoPilha; i++ ){
-            NoPilhaProduto produto = copiaPilhaProdutos.desempilharProduto();
-            if (produto != null){
-                produtos.add(new TabelaProdutosAComprarModel(produto.getNome(), produto.getDescricao(),
-                        produto.getPreco(), listaClientes.obterNomeVendedor(produto.getIdClienteVendedor()),
-                        produto.getIdClienteVendedor()));
+            for (int i = 0; i < tamanhoPilha; i++ ){
+                NoPilhaProduto produto = copiaPilhaProdutos.desempilharProduto();
+                if (produto != null){
+                    produtos.add(new TabelaProdutosAComprarModel(produto.getNome(), produto.getDescricao(),
+                            produto.getPreco(), listaClientes.obterNomeVendedor(produto.getIdClienteVendedor()),
+                            produto.getIdClienteVendedor()));
+                }
             }
         }
 
-        return produtos;
+       return produtos;
     }
 
     private void setarNomeUsuarioNoLabel(){
