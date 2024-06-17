@@ -1,5 +1,6 @@
 package com.controller.av3_estrutura_de_dados;
 
+import java.io.IOException;
 import java.net.URL;
 import java.util.ResourceBundle;
 
@@ -15,7 +16,12 @@ import javafx.application.Platform;
 
 import javafx.scene.control.TableView;
 import javafx.scene.control.TableColumn;
-import javafx.scene.control.TableRow;
+import javafx.scene.control.Button;
+
+import javafx.event.ActionEvent;
+
+import com.views.av3_estrutura_de_dados.IndexCliente;
+import com.views.av3_estrutura_de_dados.util.CarregarPagina;
 
 import com.models.av3_estrutura_de_dados.Entities.Listas.ListaClientes;
 import com.models.av3_estrutura_de_dados.Entities.Pilhas.PilhaProdutos;
@@ -36,6 +42,8 @@ public class MeusPedidosClienteConsumidorController implements Initializable, Co
     @FXML
     private Label labelNomeUsuario;
     @FXML
+    private Button btnVoltar;
+    @FXML
     private TableView<TabelaMeusPedidosConsumidorModel> tabelaMeusPedidosConsumidor;
     @FXML
     private TableColumn<TabelaMeusPedidosConsumidorModel, String> nomeProdutoColumn;
@@ -43,6 +51,16 @@ public class MeusPedidosClienteConsumidorController implements Initializable, Co
     private TableColumn<TabelaMeusPedidosConsumidorModel, Double> valorProdutoColumn;
     @FXML
     private TableColumn<TabelaMeusPedidosConsumidorModel, String> nomeVendedorColumn;
+
+    @FXML
+    public void onBtnVoltarAction(ActionEvent event) throws IOException {
+        try {
+            CarregarPagina.trocarPagina(event, IndexCliente.class, "IndexCliente-view.fxml",
+                    this.listaClientes, this.pilhaProdutos, this.arvoreComprasCliente);
+        }catch (RuntimeException e) {
+            e.printStackTrace();
+        }
+    }
 
     @Override
     public void setListaClientes(ListaClientes listaClientes) {
