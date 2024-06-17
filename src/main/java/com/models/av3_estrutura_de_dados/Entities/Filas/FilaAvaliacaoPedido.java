@@ -32,9 +32,10 @@ public class FilaAvaliacaoPedido {
     public boolean filaVazia(){
         return this.inicio == null && this.fim == null;
     }
-    public void enfileiraPedidoAvaliar(String nomeProduto, String nomeVendedior, long idClienteConsumidor ){
+    public void enfileiraPedidoAvaliar(String nomeProduto, String nomeVendedior, long idClienteConsumidor,
+                                       String idCompra ){
         NoFilaAvaliacaoPedido novoNoAvaliacao = new NoFilaAvaliacaoPedido(nomeProduto, null,
-                nomeVendedior, idClienteConsumidor);
+                nomeVendedior, idClienteConsumidor, idCompra);
 
         if(this.filaVazia()){
             this.inicio = this.fim = novoNoAvaliacao;

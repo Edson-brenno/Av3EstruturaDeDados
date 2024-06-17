@@ -50,9 +50,9 @@ public class Login extends Application {
             arvoreComprasCliente.obterTodosPedidosCliente(2);
             NoFilaAvaliacaoPedido t2 = null;
             FilaAvaliacaoPedido filaAvaliacaoPedido = new FilaAvaliacaoPedido();
-            filaAvaliacaoPedido.enfileiraPedidoAvaliar("t1", "brenno", 2L);
-            filaAvaliacaoPedido.enfileiraPedidoAvaliar("t2", "brenno", 2L);
-            filaAvaliacaoPedido.enfileiraPedidoAvaliar("t3", "brenno", 2L);
+            filaAvaliacaoPedido.enfileiraPedidoAvaliar("t1", "brenno", 2L, "t1");
+            filaAvaliacaoPedido.enfileiraPedidoAvaliar("t2", "brenno", 2L, "t2");
+            filaAvaliacaoPedido.enfileiraPedidoAvaliar("t3", "brenno", 2L, "t3");
 
             FXMLLoader loader = new FXMLLoader(Login.class.getResource("Login-view.fxml"));
             Scene scene = new Scene(loader.load());

@@ -7,16 +7,18 @@ public class NoFilaAvaliacaoPedido {
     private String descricaoAvaliacaoProduto;
     private String nomeVendedorProduto;
     private Long idClienteConsumidorProduto;
+    private String idCompra;
     private Integer notaAvaliacaoProduto;
     private Boolean jaAvaliado;
     private NoFilaAvaliacaoPedido proximoProdutoDaFila;
 
     public NoFilaAvaliacaoPedido(String nomeProduto, String descricaoAvaliacaoProduto, String nomeVendedorProduto,
-                                 long idClienteConsumidorProduto) {
+                                 long idClienteConsumidorProduto, String idCompra) {
         this.nomeProduto = nomeProduto;
         this.descricaoAvaliacaoProduto = descricaoAvaliacaoProduto;
         this.nomeVendedorProduto = nomeVendedorProduto;
         this.idClienteConsumidorProduto = idClienteConsumidorProduto;
+        this.idCompra = idCompra;
         this.notaAvaliacaoProduto = 0;
         this.jaAvaliado = false;
     }
@@ -59,5 +61,9 @@ public class NoFilaAvaliacaoPedido {
 
     public Long getIdClienteConsumidorProduto() {
         return idClienteConsumidorProduto;
+    }
+
+    public String getIdCompra() {
+        return idCompra;
     }
 }
