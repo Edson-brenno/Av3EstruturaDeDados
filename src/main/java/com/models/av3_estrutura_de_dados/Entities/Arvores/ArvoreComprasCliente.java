@@ -1,6 +1,8 @@
 package com.models.av3_estrutura_de_dados.Entities.Arvores;
 
 import com.models.av3_estrutura_de_dados.Entities.Arvores.NosAvores.NoAvoreCompraCliente;
+import com.models.av3_estrutura_de_dados.Entities.Filas.FilaAvaliacaoPedido;
+import com.models.av3_estrutura_de_dados.Entities.Listas.ListaClientes;
 import com.models.av3_estrutura_de_dados.Entities.Pilhas.PilhaProdutos;
 
 public class ArvoreComprasCliente {
@@ -78,5 +80,25 @@ public class ArvoreComprasCliente {
         if(atual != null){
             setarPedidoAvaliadoEmOrdem(atual, idCompra);
         }
+    }
+
+    private void obterPedidoASerAvaliadoEmOrdem(NoAvoreCompraCliente atual, long idClienteConsumidor,
+                                                FilaAvaliacaoPedido filaAvaliacaoPedido, ListaClientes listaClientes){
+        if(atual != null){
+            obterPedidoASerAvaliadoEmOrdem(atual.getEsquerda(), idClienteConsumidor, filaAvaliacaoPedido, listaClientes);
+            if(atual.getIdCliente() == idClienteConsumidor){
+                System.out.println(atual.getNomeProduto());
+                filaAvaliacaoPedido.enfileiraPedidoAvaliar(atual.getNomeProduto(),
+                        listaClientes.obterNomeVendedor(atual.getIdVendedor()), idClienteConsumidor);
+            }
+            obterPedidoASerAvaliadoEmOrdem(atual.getDireita(), idClienteConsumidor, filaAvaliacaoPedido, listaClientes);
+        }
+    }
+
+    private FilaAvaliacaoPedido obterPedidosASeremAvaliadosClienteConsumidor(long idClienteConsumidor,
+                                                                             ListaClientes listaClientes){
+        FilaAvaliacaoPedido filaAvaliacaoPedido = new FilaAvaliacaoPedido();
+        this.obterPedidoASerAvaliadoEmOrdem(this.raiz, idClienteConsumidor, filaAvaliacaoPedido, listaClientes);
+        return filaAvaliacaoPedido;
     }
 }
