@@ -14,4 +14,36 @@ public class NoAvoreCompraCliente {
         this.idCliente = idCliente;
         this.esquerda = this.direita = null;
     }
+
+    public String getNomeProduto() {
+        return nomeProduto;
+    }
+
+    public double getPrecoProduto() {
+        return precoProduto;
+    }
+
+    public int getIdVendedor() {
+        return idVendedor;
+    }
+
+    public int getIdCliente() {
+        return idCliente;
+    }
+
+    public NoAvoreCompraCliente getEsquerda() {
+        return esquerda;
+    }
+
+    public void setEsquerda(NoAvoreCompraCliente esquerda) {
+        this.esquerda = esquerda;
+    }
+
+    public NoAvoreCompraCliente getDireita() {
+        return direita;
+    }
+
+    public void setDireita(NoAvoreCompraCliente direita) {
+        this.direita = direita;
+    }
 }
