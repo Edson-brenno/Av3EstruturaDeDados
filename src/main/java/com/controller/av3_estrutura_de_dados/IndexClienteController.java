@@ -80,7 +80,8 @@ public class IndexClienteController implements Initializable, Controller{
             row.setOnMouseClicked(event -> {
                if(!row.isEmpty()){
                    TabelaProdutosAComprarModel rowData = row.getItem();
-                   System.out.println(rowData.getNomeProduto());
+                   this.arvoreComprasCliente.adicionarCompraCliente(rowData.getNomeProduto(), rowData.getPrecoProduto(),
+                           rowData.getIdVendedor(), this.listaClientes.usuarioLogado.getId());
                }
             });
             return row;

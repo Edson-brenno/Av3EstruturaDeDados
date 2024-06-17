@@ -38,11 +38,11 @@ public class Login extends Application {
             pilhaProdutos.emplilharProduto("p4", "p4", 1L,null,16.65);
 
             ArvoreComprasCliente arvoreComprasCliente = new ArvoreComprasCliente();
-            arvoreComprasCliente.adicionarCompraCliente("p1", 10.65, 1, 2);
-            arvoreComprasCliente.adicionarCompraCliente("p2", 15.65, 1, 2);
-            arvoreComprasCliente.adicionarCompraCliente("p3", 14.65,1,2);
-            arvoreComprasCliente.adicionarCompraCliente("p4", 9,1,2);
-            arvoreComprasCliente.adicionarCompraCliente("p5", 5,1,3);
+            arvoreComprasCliente.adicionarCompraCliente("p1", 10.65, 1L, 2L);
+            arvoreComprasCliente.adicionarCompraCliente("p2", 15.65, 1L, 2L);
+            arvoreComprasCliente.adicionarCompraCliente("p3", 14.65,1L,2L);
+            arvoreComprasCliente.adicionarCompraCliente("p4", 9,1L,2L);
+            arvoreComprasCliente.adicionarCompraCliente("p5", 5,1L,3L);
 
             arvoreComprasCliente.obterTodosPedidosCliente(2);
 

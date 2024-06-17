@@ -18,7 +18,7 @@ public class ArvoreComprasCliente {
         return this.raiz == null;
     }
 
-    public void adicionarCompraCliente(String nomeProduto, double precoProduto, int idVendedor, int idCliente) {
+    public void adicionarCompraCliente(String nomeProduto, double precoProduto, Long idVendedor, Long idCliente) {
         NoAvoreCompraCliente novoNo = new NoAvoreCompraCliente(nomeProduto, precoProduto, idVendedor, idCliente);
         if (this.arvoreEstaVazia()) {
             this.raiz = novoNo;
