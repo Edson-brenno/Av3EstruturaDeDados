@@ -17,7 +17,7 @@ public class PilhaProdutos {
         return  this.base == null && this.topo == null;
     }
 
-    public void emplilharProduto(String nome, String descricao, long idClienteVendedor, Long idClienteComprador, double preco){
+    public void emplilharProduto(String nome, String descricao, Long idClienteVendedor, Long idClienteComprador, double preco){
         if(pilhaEstaVazia()){
             this.base = this.topo = new NoPilhaProduto(nome, descricao, idClienteVendedor,idClienteComprador,preco);
             this.tamanhoPilha += 1;
