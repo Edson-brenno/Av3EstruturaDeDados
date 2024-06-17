@@ -25,6 +25,7 @@ import com.models.av3_estrutura_de_dados.Entities.TabelaProdutosAComprarModel;
 
 import com.views.av3_estrutura_de_dados.util.CarregarPagina;
 import com.views.av3_estrutura_de_dados.MeuPedidosClienteConsumidor;
+import com.views.av3_estrutura_de_dados.ProdutosAAvaliar;
 
 import com.controller.av3_estrutura_de_dados.interfaces.Controller;
 import javafx.scene.control.cell.PropertyValueFactory;
@@ -62,6 +63,16 @@ public class IndexClienteController implements Initializable, Controller{
             CarregarPagina.trocarPagina(event, MeuPedidosClienteConsumidor.class,
                     "MeuPedidosClienteConsumidor-view.fxml", this.listaClientes, this.pilhaProdutos,
                     this.arvoreComprasCliente);
+        }catch (RuntimeException e){
+            e.printStackTrace();
+        }
+    }
+
+    @FXML
+    public void onBtnPedidosAAvaliarAction(ActionEvent event) throws IOException {
+        try {
+            CarregarPagina.trocarPagina(event, ProdutosAAvaliar.class, "ProdutosAAvaliar.fxml",
+                    this.listaClientes, this.pilhaProdutos, this.arvoreComprasCliente);
         }catch (RuntimeException e){
             e.printStackTrace();
         }

@@ -15,7 +15,7 @@
 <?import javafx.scene.layout.RowConstraints?>
 <?import javafx.scene.text.Font?>
 
-<AnchorPane prefHeight="400.0" prefWidth="600.0" xmlns="http://javafx.com/javafx/22" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.views.av3_estrutura_de_dados.ProdutosAAvaliar">
+<AnchorPane prefHeight="400.0" prefWidth="600.0" xmlns="http://javafx.com/javafx/22" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.controller.av3_estrutura_de_dados.ProdutoAAvaliarController">
     <children>
         <SplitPane layoutX="-1.0" layoutY="102.0" prefHeight="304.0" prefWidth="130.0">
             <items>
@@ -70,7 +70,7 @@
                 </GridPane>
             </items></SplitPane>
         <Label alignment="TOP_CENTER" layoutX="263.0" layoutY="14.0" prefHeight="22.0" prefWidth="214.0" text="Produto a avaliar" />
-      <Label alignment="CENTER" contentDisplay="CENTER" layoutX="225.0" layoutY="151.0" prefHeight="104.0" prefWidth="290.0" style="visibility: true;" text="Sem pedidos para avaliar" />
+      <Label fx:id="mensagemSemProdutoParaAvaliar" alignment="CENTER" contentDisplay="CENTER" layoutX="225.0" layoutY="151.0" prefHeight="104.0" prefWidth="290.0" style="visibility: true;" text="Sem pedidos para avaliar" />
       <GridPane layoutX="224.0" layoutY="61.0" prefHeight="275.0" prefWidth="279.0">
         <columnConstraints>
           <ColumnConstraints hgrow="SOMETIMES" minWidth="10.0" prefWidth="100.0" />
@@ -84,12 +84,12 @@
             <RowConstraints maxHeight="205.0" minHeight="10.0" prefHeight="29.0" vgrow="SOMETIMES" />
         </rowConstraints>
          <children>
-            <Label prefHeight="17.0" prefWidth="279.0" text="Produto" />
-            <Label prefHeight="26.0" prefWidth="279.0" GridPane.rowIndex="1" />
-            <Label prefHeight="25.0" prefWidth="276.0" text="Descriçao avaliaçao" GridPane.rowIndex="2" />
-            <TextArea prefHeight="200.0" prefWidth="200.0" GridPane.rowIndex="3" />
-            <Label prefHeight="16.0" prefWidth="211.0" text="Nota para o Produto (0-10):" GridPane.rowIndex="4" />
-            <TextField prefHeight="17.0" prefWidth="279.0" GridPane.rowIndex="5" />
+            <Label fx:id="labelProduto" prefHeight="17.0" prefWidth="279.0" text="Produto" />
+            <Label fx:id="nomeProduto" prefHeight="26.0" prefWidth="279.0" GridPane.rowIndex="1" />
+            <Label fx:id="descricaoAvaliacao" prefHeight="25.0" prefWidth="276.0" text="Descriçao avaliaçao" GridPane.rowIndex="2" />
+            <TextArea fx:id="textAreaDescricao" prefHeight="200.0" prefWidth="200.0" GridPane.rowIndex="3" />
+            <Label fx:id="labelNotaProduto" prefHeight="16.0" prefWidth="211.0" text="Nota para o Produto (0-10):" GridPane.rowIndex="4" />
+            <TextField fx:id="textFieldNotaProduto" prefHeight="17.0" prefWidth="279.0" GridPane.rowIndex="5" />
          </children>
       </GridPane>
       <GridPane layoutX="264.0" layoutY="356.0" prefHeight="22.0" prefWidth="200.0">
@@ -101,8 +101,8 @@
           <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
         </rowConstraints>
          <children>
-            <Button mnemonicParsing="false" prefHeight="24.0" prefWidth="103.0" text="Voltar" />
-            <Button mnemonicParsing="false" prefHeight="24.0" prefWidth="117.0" text="Avaliar" GridPane.columnIndex="1" />
+            <Button fx:id="buttonVoltar" mnemonicParsing="false" prefHeight="24.0" prefWidth="103.0" text="Voltar" />
+            <Button fx:id="buttonAvaliar" mnemonicParsing="false" prefHeight="24.0" prefWidth="117.0" text="Avaliar" GridPane.columnIndex="1" />
          </children>
       </GridPane>
     </children>
