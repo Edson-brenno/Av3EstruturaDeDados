@@ -4,6 +4,7 @@ import java.net.URL;
 import java.util.ResourceBundle;
 
 import com.models.av3_estrutura_de_dados.Entities.Pilhas.NosPilhas.NoPilhaProduto;
+import com.models.av3_estrutura_de_dados.Entities.TabelaProdutosAComprarModel;
 import javafx.application.Application;
 import javafx.collections.FXCollections;
 import javafx.collections.ObservableList;
@@ -70,8 +71,10 @@ public class MeusPedidosClienteConsumidorController implements Initializable, Co
 
     @Override
     public void initialize(URL url, ResourceBundle resourceBundle) {
+        this.setupTabela();
 
         Platform.runLater(this::setarNomeUsuarioNoLabel);
+        Platform.runLater(this::popularTabela);
     }
 
     private void setarNomeUsuarioNoLabel(){
@@ -82,8 +85,32 @@ public class MeusPedidosClienteConsumidorController implements Initializable, Co
         nomeProdutoColumn.setCellValueFactory(new PropertyValueFactory<TabelaMeusPedidosConsumidorModel,
                 String>("nomeProduto"));
         valorProdutoColumn.setCellValueFactory(new PropertyValueFactory<TabelaMeusPedidosConsumidorModel,
-                Double>("precoProdutoprecoProduto"));
+                Double>("precoProduto"));
         nomeVendedorColumn.setCellValueFactory(new PropertyValueFactory<TabelaMeusPedidosConsumidorModel,
                 String>("nomeVendedor"));
+    }
+
+    public void popularTabela(){
+        this.tabelaMeusPedidosConsumidor.setItems(this.obterPedidosDaArvore());
+    }
+
+    private ObservableList<TabelaMeusPedidosConsumidorModel> obterPedidosDaArvore(){
+        ObservableList<TabelaMeusPedidosConsumidorModel> produtos = FXCollections.observableArrayList();
+
+        PilhaProdutos copiaPilhaProdutos = this.arvoreComprasCliente.obterTodosPedidosCliente(
+                this.listaClientes.usuarioLogado.getId());
+
+        int tamanhoPilha = copiaPilhaProdutos.tamanhoPilha;
+
+        for (int i = 0; i < tamanhoPilha; i++ ){
+            NoPilhaProduto produto = copiaPilhaProdutos.desempilharProduto();
+            if (produto != null){
+                produtos.add(new TabelaMeusPedidosConsumidorModel(produto.getNome(), produto.getPreco(),
+                        this.listaClientes.obterNomeVendedor(produto.getIdClienteVendedor()),
+                        produto.getIdClienteVendedor()));
+            }
+        }
+
+        return produtos;
     }
 }
