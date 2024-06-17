@@ -5,13 +5,15 @@ import java.util.UUID;
 public class NoPilhaProduto {
     private String idProduto, nome, descricao;
     private double preco;
-    private long idCliente;
+    private long idClienteVendedor;
+    private int idClienteComprador;
     private NoPilhaProduto proximoNo;
 
-    public NoPilhaProduto(String nome, String descricao, long idCliente,double preco) {
+    public NoPilhaProduto(String nome, String descricao, long idClienteVendedor,double preco) {
         this.idProduto = UUID.randomUUID().toString();
         this.nome = nome;
         this.descricao = descricao;
+        this.idClienteVendedor = idClienteVendedor;
         this.preco = preco;
         this.proximoNo = null;
     }
@@ -28,8 +30,8 @@ public class NoPilhaProduto {
         return descricao;
     }
 
-    public long getIdCliente() {
-        return this.idCliente;
+    public long getIdClienteVendedor() {
+        return this.idClienteVendedor;
     }
     public double getPreco() {
         return preco;
@@ -44,4 +46,11 @@ public class NoPilhaProduto {
     }
 
 
+    public int getIdClienteComprador() {
+        return idClienteComprador;
+    }
+
+    public void setIdClienteComprador(int idClienteComprador) {
+        this.idClienteComprador = idClienteComprador;
+    }
 }

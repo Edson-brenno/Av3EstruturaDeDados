@@ -59,14 +59,14 @@ public class PilhaProdutos {
             NoPilhaProduto ponteiro = this.base;
             while(ponteiro.getProximoNo() != this.topo) {
                 System.out.println(ponteiro.getNome() + " - " + ponteiro.getDescricao() + " - " + ponteiro.getPreco() +
-                         " - " + ponteiro.getIdCliente());
+                         " - " + ponteiro.getIdClienteVendedor());
                 ponteiro = ponteiro.getProximoNo();
             }
             System.out.println(ponteiro.getNome() + " - " + ponteiro.getDescricao() + " - " + ponteiro.getPreco() +
-                    " - " + ponteiro.getIdCliente());
+                    " - " + ponteiro.getIdClienteVendedor());
 
             System.out.println(this.topo.getNome() + " - " + this.topo.getDescricao() + " - " + this.topo.getPreco() +
-                   " - " + this.topo.getIdCliente() );
+                   " - " + this.topo.getIdClienteVendedor() );
         }
     }
 
@@ -77,13 +77,13 @@ public class PilhaProdutos {
 
         while(ponteiro.getProximoNo() != null){
 
-            copia.emplilharProduto(ponteiro.getNome(), ponteiro.getDescricao(), ponteiro.getIdCliente(),
+            copia.emplilharProduto(ponteiro.getNome(), ponteiro.getDescricao(), ponteiro.getIdClienteVendedor(),
                     ponteiro.getPreco());
 
             ponteiro = ponteiro.getProximoNo();
         }
 
-        copia.emplilharProduto(ponteiro.getNome(), ponteiro.getDescricao(), ponteiro.getIdCliente(),
+        copia.emplilharProduto(ponteiro.getNome(), ponteiro.getDescricao(), ponteiro.getIdClienteVendedor(),
                 ponteiro.getPreco());
 
         return copia;

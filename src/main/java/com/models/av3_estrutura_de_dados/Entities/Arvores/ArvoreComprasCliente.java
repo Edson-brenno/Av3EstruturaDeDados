@@ -1,6 +1,7 @@
 package com.models.av3_estrutura_de_dados.Entities.Arvores;
 
 import com.models.av3_estrutura_de_dados.Entities.Arvores.NosAvores.NoAvoreCompraCliente;
+import com.models.av3_estrutura_de_dados.Entities.Pilhas.PilhaProdutos;
 
 public class ArvoreComprasCliente {
     private NoAvoreCompraCliente raiz;
@@ -16,6 +17,7 @@ public class ArvoreComprasCliente {
     private boolean arvoreEstaVazia(){
         return this.raiz == null;
     }
+
     public void adicionarCompraCliente(String nomeProduto, double precoProduto, int idVendedor, int idCliente) {
         NoAvoreCompraCliente novoNo = new NoAvoreCompraCliente(nomeProduto, precoProduto, idVendedor, idCliente);
         if (this.arvoreEstaVazia()) {
@@ -41,5 +43,18 @@ public class ArvoreComprasCliente {
                 }
             }
         }
+    }
+
+    private void obterPedidosEmOrdem(NoAvoreCompraCliente atual, int idCliente, PilhaProdutos pilhaProdutos){
+        if(atual != null){
+            obterPedidosEmOrdem(atual.getEsquerda(), idCliente, pilhaProdutos);
+            if(atual.getIdCliente() == idCliente){
+                pilhaProdutos.emplilharProduto(atual.getNomeProduto(),"", );
+            }
+        }
+    }
+
+    public void obterTodosPedidosCliente(NoAvoreCompraCliente esquerda, int idCliente, PilhaProdutos pilhaProdutos){
+
     }
 }
