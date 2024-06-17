@@ -49,6 +49,7 @@ public class ArvoreComprasCliente {
         if(atual != null){
             obterPedidosEmOrdem(atual.getEsquerda(), idClienteComprador, pilhaProdutos);
             if(atual.getIdCliente() == idClienteComprador){
+                System.out.println(atual.getNomeProduto());
                 pilhaProdutos.emplilharProduto(atual.getNomeProduto(),"", null,
                       idClienteComprador  , atual.getPrecoProduto());
             }
