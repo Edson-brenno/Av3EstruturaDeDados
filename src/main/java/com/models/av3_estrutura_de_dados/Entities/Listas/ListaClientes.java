@@ -79,4 +79,26 @@ public class ListaClientes {
             }
         }
     }
+
+    public String obterNomeVendedor(long id){
+        if(this.listaVazia()){
+            return null;
+        }else{
+            NoCliente atual = this.inicio;
+            while(atual.getProximoCliente() != null){
+                if(atual.getId().equals(id) ){
+                    return atual.getNomeCompleto();
+                }
+
+                atual = atual.getProximoCliente();
+            }
+
+            if(atual.getId().equals(id) ){
+                return atual.getNomeCompleto();
+            }else{
+                return null;
+            }
+
+        }
+    }
 }
