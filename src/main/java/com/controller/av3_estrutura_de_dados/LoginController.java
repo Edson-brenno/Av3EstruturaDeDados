@@ -4,6 +4,7 @@ import java.io.IOException;
 import java.net.URL;
 import java.util.ResourceBundle;
 
+import com.models.av3_estrutura_de_dados.Entities.Listas.Enum.TipoClienteEnum;
 import com.views.av3_estrutura_de_dados.util.Constraints;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
@@ -18,8 +19,11 @@ import com.models.av3_estrutura_de_dados.Entities.Listas.ListaClientes;
 import com.models.av3_estrutura_de_dados.Entities.Pilhas.PilhaProdutos;
 import com.models.av3_estrutura_de_dados.Entities.Arvores.ArvoreComprasCliente;
 import com.controller.av3_estrutura_de_dados.interfaces.Controller;
+
 import com.views.av3_estrutura_de_dados.util.CarregarPagina;
 import com.views.av3_estrutura_de_dados.IndexVendedor;
+import com.views.av3_estrutura_de_dados.IndexCliente;
+
 import javafx.application.Platform;
 
 public class LoginController implements Initializable, Controller {
@@ -50,9 +54,17 @@ public class LoginController implements Initializable, Controller {
             // Se o usuário existe
             if((this.listaClientes != null) && (this.listaClientes.LogarCliente(this.emailTextField.getText(),
                     this.passwordTextField.getText()) == true)){
-                CarregarPagina.trocarPagina(event, IndexVendedor.class,
-                        "IndexVendedor-view.fxml", this.listaClientes, this.pilhaProdutos,
-                        this.arvoreComprasCliente);
+                System.out.println(this.listaClientes.usuarioLogado.getTipoCliente());
+                if(this.listaClientes.usuarioLogado.getTipoCliente() == TipoClienteEnum.VENDEDOR){
+                    CarregarPagina.trocarPagina(event, IndexVendedor.class,
+                            "IndexVendedor-view.fxml", this.listaClientes, this.pilhaProdutos,
+                            this.arvoreComprasCliente);
+                }else{
+                    CarregarPagina.trocarPagina(event, IndexCliente.class,
+                            "IndexCliente-view.fxml", this.listaClientes, this.pilhaProdutos,
+                            this.arvoreComprasCliente);
+                }
+
             }
             else{ // Error no login
                 System.out.println("Error ao logar");

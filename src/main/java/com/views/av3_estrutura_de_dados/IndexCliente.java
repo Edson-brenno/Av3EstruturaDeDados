@@ -5,9 +5,7 @@ import javafx.fxml.FXMLLoader;
 import javafx.scene.Scene;
 import javafx.stage.Stage;
 
-import java.io.IOException;
-
-public class indexCliente extends Application {
+public class IndexCliente extends Application {
     public static void main(String[] args) {
         launch(args);
     }

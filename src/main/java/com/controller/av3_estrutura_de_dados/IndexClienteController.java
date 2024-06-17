@@ -59,6 +59,10 @@ public class IndexClienteController implements Initializable, Controller{
 
     @Override
     public void initialize(URL url, ResourceBundle resourceBundle) {
-        this.labelNomeUsuario.setText(this.listaClientes.usuarioLogado.getNomeCompleto());
+        Platform.runLater(this::setarNomeUsuarioNoLabel);
+    }
+
+    private void setarNomeUsuarioNoLabel(){
+        this.labelNomeUsuario.setText(listaClientes.usuarioLogado.getNomeCompleto());
     }
 }

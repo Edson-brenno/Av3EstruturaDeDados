@@ -28,6 +28,8 @@ public class Login extends Application {
             ListaClientes listaCliente = new ListaClientes();
             listaCliente.adicionarCliente("Edson Brenno", "teste@gmail.com", "123456",
                     TipoClienteEnum.VENDEDOR);
+            listaCliente.adicionarCliente("Cliente", "cliente@gmail.com", "123456",
+                    TipoClienteEnum.CONSUMIDOR);
             PilhaProdutos pilhaProdutos = new PilhaProdutos();
             NoPilhaProduto t1;
             pilhaProdutos.emplilharProduto("p1", "  p1", 1L,null,10.65);
