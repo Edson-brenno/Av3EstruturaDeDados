@@ -19,7 +19,7 @@ import javafx.scene.control.TableRow;
 import com.models.av3_estrutura_de_dados.Entities.Listas.ListaClientes;
 import com.models.av3_estrutura_de_dados.Entities.Pilhas.PilhaProdutos;
 import com.models.av3_estrutura_de_dados.Entities.Arvores.ArvoreComprasCliente;
-import com.models.av3_estrutura_de_dados.Entities.TabelaProdutosAComprarModel;
+import com.models.av3_estrutura_de_dados.Entities.TabelaMeusPedidosConsumidorModel;
 
 import com.controller.av3_estrutura_de_dados.interfaces.Controller;
 import javafx.scene.control.cell.PropertyValueFactory;
@@ -34,6 +34,14 @@ public class MeusPedidosClienteConsumidorController implements Initializable, Co
     private ArvoreComprasCliente arvoreComprasCliente;
     @FXML
     private Label labelNomeUsuario;
+    @FXML
+    private TableView<TabelaMeusPedidosConsumidorModel> tabelaMeusPedidosConsumidor;
+    @FXML
+    private TableColumn<TabelaMeusPedidosConsumidorModel, String> nomeProdutoColumn;
+    @FXML
+    private TableColumn<TabelaMeusPedidosConsumidorModel, Double> valorProdutoColumn;
+    @FXML
+    private TableColumn<TabelaMeusPedidosConsumidorModel, String> nomeVendedorColumn;
 
     @Override
     public void setListaClientes(ListaClientes listaClientes) {
@@ -68,5 +76,14 @@ public class MeusPedidosClienteConsumidorController implements Initializable, Co
 
     private void setarNomeUsuarioNoLabel(){
         this.labelNomeUsuario.setText(listaClientes.usuarioLogado.getNomeCompleto());
+    }
+
+    private void setupTabela(){
+        nomeProdutoColumn.setCellValueFactory(new PropertyValueFactory<TabelaMeusPedidosConsumidorModel,
+                String>("nomeProduto"));
+        valorProdutoColumn.setCellValueFactory(new PropertyValueFactory<TabelaMeusPedidosConsumidorModel,
+                Double>("precoProdutoprecoProduto"));
+        nomeVendedorColumn.setCellValueFactory(new PropertyValueFactory<TabelaMeusPedidosConsumidorModel,
+                String>("nomeVendedor"));
     }
 }
