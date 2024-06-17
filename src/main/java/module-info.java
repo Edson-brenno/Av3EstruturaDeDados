@@ -11,4 +11,6 @@ module com.views.av3_estrutura_de_dados {
 
     opens com.models.av3_estrutura_de_dados.Entities to javafx.base;
     exports com.models.av3_estrutura_de_dados.Entities to javafx.base;
+    exports com.models.av3_estrutura_de_dados.Entities.Arvores to javafx.base;
+    opens com.models.av3_estrutura_de_dados.Entities.Arvores to javafx.base;
 }
