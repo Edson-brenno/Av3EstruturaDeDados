@@ -79,6 +79,7 @@
             <TableColumn fx:id="nomeComprarColumn" prefWidth="81.0" />
         </columns>
       </TableView>
+      <Button fx:id="btnDeslogar" layoutX="510.0" layoutY="13.0" mnemonicParsing="false" onAction="#onBtnDeslogar" text="Deslogar" />
     </children>
 
 </AnchorPane>

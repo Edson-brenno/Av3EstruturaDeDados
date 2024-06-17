@@ -5,6 +5,7 @@ import java.net.URL;
 import java.util.ResourceBundle;
 
 import com.models.av3_estrutura_de_dados.Entities.Pilhas.NosPilhas.NoPilhaProduto;
+import com.views.av3_estrutura_de_dados.Login;
 import javafx.collections.FXCollections;
 import javafx.collections.ObservableList;
 import javafx.fxml.FXML;
@@ -45,6 +46,8 @@ public class IndexClienteController implements Initializable, Controller{
     @FXML
     private Button btnPedidosAAvaliar;
     @FXML
+    private Button btnDeslogar;
+    @FXML
     private TableView<TabelaProdutosAComprarModel> tabelaProdutosAComprar;
     @FXML
     private TableColumn<TabelaProdutosAComprarModel, String> nomeProdutoColumn;
@@ -77,6 +80,18 @@ public class IndexClienteController implements Initializable, Controller{
             e.printStackTrace();
         }
     }
+
+    @FXML
+    public void onBtnDeslogar(ActionEvent event) throws IOException {
+        try {
+            this.listaClientes.deslogarCliente();
+            CarregarPagina.trocarPagina(event, Login.class, "Login-view.fxml",
+                    this.listaClientes, this.pilhaProdutos, this.arvoreComprasCliente);
+        }catch (RuntimeException e){
+            e.printStackTrace();
+        }
+    }
+
     @Override
     public void setListaClientes(ListaClientes listaClientes) {
         this.listaClientes = listaClientes;

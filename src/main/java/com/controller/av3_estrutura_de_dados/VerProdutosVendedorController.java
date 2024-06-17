@@ -6,6 +6,7 @@ import com.models.av3_estrutura_de_dados.Entities.Pilhas.NosPilhas.NoPilhaProdut
 import com.models.av3_estrutura_de_dados.Entities.TabelaVerProdutosVendedorModel;
 import com.models.av3_estrutura_de_dados.Entities.Arvores.ArvoreComprasCliente;
 
+import com.views.av3_estrutura_de_dados.Login;
 import com.views.av3_estrutura_de_dados.util.CarregarPagina;
 import com.views.av3_estrutura_de_dados.IndexVendedor;
 import com.views.av3_estrutura_de_dados.CadastroProdutoVendedor;
@@ -43,7 +44,7 @@ public class VerProdutosVendedorController implements Initializable, Controller{
     @FXML
     private TableColumn<TabelaVerProdutosVendedorModel, Double> precoColumn;
     @FXML
-    private Button btnVoltar, btnCadastroProduto;
+    private Button btnVoltar, btnCadastroProduto, btnDeslogar;
 
     @FXML
     public void onBtnVoltarAction(ActionEvent event) throws IOException {
@@ -62,6 +63,17 @@ public class VerProdutosVendedorController implements Initializable, Controller{
                     "CadastroProdutoVendedor-view.fxml", this.listaClientes, this.pilhaProdutos,
                     this.arvoreComprasCliente);
         } catch (RuntimeException e){
+            e.printStackTrace();
+        }
+    }
+
+    @FXML
+    public void onBtnDeslogar(ActionEvent event) throws IOException {
+        try {
+            this.listaClientes.deslogarCliente();
+            CarregarPagina.trocarPagina(event, Login.class, "Login-view.fxml",
+                    this.listaClientes, this.pilhaProdutos, this.arvoreComprasCliente);
+        }catch (RuntimeException e){
             e.printStackTrace();
         }
     }

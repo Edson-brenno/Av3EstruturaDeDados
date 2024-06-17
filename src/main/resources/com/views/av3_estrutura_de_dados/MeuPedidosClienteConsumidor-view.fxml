@@ -78,5 +78,6 @@
             </columns>
         </TableView>
       <Button fx:id="btnVoltar" layoutX="140.0" layoutY="377.0" mnemonicParsing="false" onAction="#onBtnVoltarAction" prefHeight="22.0" prefWidth="76.0" text="Voltar" />
+      <Button fx:id="btnDeslogar" layoutX="510.0" layoutY="13.0" mnemonicParsing="false" onAction="#onBtnDeslogar" text="Deslogar" />
     </children>
 </AnchorPane>

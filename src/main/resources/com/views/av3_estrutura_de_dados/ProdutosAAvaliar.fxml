@@ -105,5 +105,6 @@
             <Button fx:id="buttonAvaliar" mnemonicParsing="false" onAction="#onBtnAvaliarAction" prefHeight="24.0" prefWidth="117.0" text="Avaliar" GridPane.columnIndex="1" />
          </children>
       </GridPane>
+      <Button fx:id="btnDeslogar" layoutX="503.0" layoutY="13.0" mnemonicParsing="false" onAction="#onBtnDeslogar" text="Deslogar" />
     </children>
 </AnchorPane>

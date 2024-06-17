@@ -6,6 +6,7 @@ import java.util.ResourceBundle;
 
 import com.models.av3_estrutura_de_dados.Entities.Pilhas.NosPilhas.NoPilhaProduto;
 import com.models.av3_estrutura_de_dados.Entities.TabelaProdutosAComprarModel;
+import com.views.av3_estrutura_de_dados.Login;
 import javafx.application.Application;
 import javafx.collections.FXCollections;
 import javafx.collections.ObservableList;
@@ -42,7 +43,7 @@ public class MeusPedidosClienteConsumidorController implements Initializable, Co
     @FXML
     private Label labelNomeUsuario;
     @FXML
-    private Button btnVoltar;
+    private Button btnVoltar, btnDeslogar;
     @FXML
     private TableView<TabelaMeusPedidosConsumidorModel> tabelaMeusPedidosConsumidor;
     @FXML
@@ -62,6 +63,17 @@ public class MeusPedidosClienteConsumidorController implements Initializable, Co
         }
     }
 
+    @FXML
+    public void onBtnDeslogar(ActionEvent event) throws IOException {
+        try {
+            this.listaClientes.deslogarCliente();
+            CarregarPagina.trocarPagina(event, Login.class, "Login-view.fxml",
+                    this.listaClientes, this.pilhaProdutos, this.arvoreComprasCliente);
+        }catch (RuntimeException e){
+            e.printStackTrace();
+        }
+    }
+    
     @Override
     public void setListaClientes(ListaClientes listaClientes) {
         this.listaClientes = listaClientes;

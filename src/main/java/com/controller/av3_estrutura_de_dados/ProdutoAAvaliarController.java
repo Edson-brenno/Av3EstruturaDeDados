@@ -6,6 +6,7 @@ import java.util.ResourceBundle;
 
 import com.models.av3_estrutura_de_dados.Entities.Pilhas.NosPilhas.NoPilhaProduto;
 import com.views.av3_estrutura_de_dados.IndexCliente;
+import com.views.av3_estrutura_de_dados.Login;
 import com.views.av3_estrutura_de_dados.ProdutosAAvaliar;
 import javafx.collections.FXCollections;
 import javafx.collections.ObservableList;
@@ -62,7 +63,7 @@ public class ProdutoAAvaliarController implements Initializable, Controller {
     @FXML
     private TextField textFieldNotaProduto;
     @FXML
-    private Button buttonVoltar,buttonAvaliar;
+    private Button buttonVoltar,buttonAvaliar, btnDeslogar;
 
     @FXML
     public void onBtnAvaliarAction(ActionEvent event) throws IOException {
@@ -71,6 +72,17 @@ public class ProdutoAAvaliarController implements Initializable, Controller {
         }
         CarregarPagina.trocarPagina(event, ProdutosAAvaliar.class, "ProdutosAAvaliar.fxml",
                 this.listaClientes, this.pilhaProdutos, this.arvoreComprasCliente);
+    }
+
+    @FXML
+    public void onBtnDeslogar(ActionEvent event) throws IOException {
+        try {
+            this.listaClientes.deslogarCliente();
+            CarregarPagina.trocarPagina(event, Login.class, "Login-view.fxml",
+                    this.listaClientes, this.pilhaProdutos, this.arvoreComprasCliente);
+        }catch (RuntimeException e){
+            e.printStackTrace();
+        }
     }
 
     @FXML

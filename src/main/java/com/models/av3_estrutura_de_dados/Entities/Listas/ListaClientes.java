@@ -80,6 +80,12 @@ public class ListaClientes {
         }
     }
 
+    public void deslogarCliente(){
+        if(this.usuarioLogado != null){
+            this.usuarioLogado = null;
+        }
+    }
+
     public String obterNomeVendedor(long id){
         if(this.listaVazia()){
             return null;

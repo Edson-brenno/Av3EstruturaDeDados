@@ -4,6 +4,7 @@ import java.io.IOException;
 import java.net.URL;
 import java.util.ResourceBundle;
 
+import com.views.av3_estrutura_de_dados.Login;
 import javafx.fxml.FXML;
 import javafx.fxml.Initializable;
 import javafx.scene.control.Label;
@@ -31,7 +32,7 @@ public class IndexVendedorController implements Initializable, Controller {
     @FXML
     private Label labelNomeUsuario;
     @FXML
-    private Button btnCadastroProduto, btnVerProdutos;
+    private Button btnCadastroProduto, btnVerProdutos, btnDeslogar;
 
     @Override
     public void setListaClientes(ListaClientes listaClientes){
@@ -81,6 +82,18 @@ public class IndexVendedorController implements Initializable, Controller {
             e.printStackTrace();
         }
     }
+
+    @FXML
+    public void onBtnDeslogar(ActionEvent event) throws IOException {
+        try {
+            this.listaClientes.deslogarCliente();
+            CarregarPagina.trocarPagina(event, Login.class, "Login-view.fxml",
+                    this.listaClientes, this.pilhaProdutos, this.arvoreComprasCliente);
+        }catch (RuntimeException e){
+            e.printStackTrace();
+        }
+    }
+
     @Override
     public void initialize(URL url, ResourceBundle rb) {
         Platform.runLater(this::setarNomeUsuarioNoLabel);

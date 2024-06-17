@@ -4,6 +4,7 @@ import java.net.URL;
 import java.io.IOException;
 import java.util.ResourceBundle;
 
+import com.views.av3_estrutura_de_dados.Login;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.fxml.Initializable;
@@ -34,11 +35,11 @@ public class CadastroProdutoVendedorController implements Initializable, Control
     @FXML
     private Label labelNomeUsuario;
     @FXML
-    private TextField textFieldNomeProduto, textFieldValor, textFieldQuantidade;
+    private TextField textFieldNomeProduto, textFieldValor;
     @FXML
     private TextArea textFieldDescricao;
     @FXML
-    private Button btnCadastrar, btnCancelar;
+    private Button btnCadastrar, btnCancelar, btnDeslogar;
 
     @FXML
     public void onBtnCancelar(ActionEvent event) throws IOException {
@@ -61,6 +62,17 @@ public class CadastroProdutoVendedorController implements Initializable, Control
             CarregarPagina.trocarPagina(event, IndexVendedor.class, "IndexVendedor-view.fxml",
                     this.listaClientes, this.pilhaProdutos, this.arvoreComprasCliente);
         }catch(RuntimeException e){
+            e.printStackTrace();
+        }
+    }
+
+    @FXML
+    public void onBtnDeslogar(ActionEvent event) throws IOException {
+        try {
+            this.listaClientes.deslogarCliente();
+            CarregarPagina.trocarPagina(event, Login.class, "Login-view.fxml",
+                    this.listaClientes, this.pilhaProdutos, this.arvoreComprasCliente);
+        }catch (RuntimeException e){
             e.printStackTrace();
         }
     }
@@ -97,7 +109,6 @@ public class CadastroProdutoVendedorController implements Initializable, Control
         Constraints.setTextFieldSemAcento(this.textFieldNomeProduto);
         Constraints.setTextAreaDescricao(this.textFieldDescricao);
         Constraints.setTextFieldValor(this.textFieldValor);
-        Constraints.setTextFieldQuantidade(this.textFieldQuantidade);
         Platform.runLater(this::setarNomeUsuarioNoLabel);
     }
 
