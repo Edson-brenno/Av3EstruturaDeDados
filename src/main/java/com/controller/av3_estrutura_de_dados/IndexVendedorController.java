@@ -136,7 +136,15 @@ public class IndexVendedorController implements Initializable, Controller {
             PilhaProdutos vendasProdutos = this.arvoreComprasCliente.obterTodasVendasClienteVendedor(
                     this.listaClientes.usuarioLogado.getId());
 
-            this.labelTotalVendas.setText(String.valueOf(vendasProdutos.tamanhoPilha));
+            int totalProdutosVendidos = 0;
+            int tamanhoPilha = vendasProdutos.tamanhoPilha;
+
+            for(int i = 0; i < tamanhoPilha; i++){
+                NoPilhaProduto produtoVendido = vendasProdutos.desempilharProduto();
+                totalProdutosVendidos ++;
+            }
+
+            this.labelTotalVendas.setText(String.valueOf(totalProdutosVendidos));
         }else {
             this.labelTotalVendas.setText("0");
         }
