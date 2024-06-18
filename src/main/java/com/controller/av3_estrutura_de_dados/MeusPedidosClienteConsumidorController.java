@@ -7,6 +7,7 @@ import java.util.ResourceBundle;
 import com.models.av3_estrutura_de_dados.Entities.Pilhas.NosPilhas.NoPilhaProduto;
 import com.models.av3_estrutura_de_dados.Entities.TabelaProdutosAComprarModel;
 import com.views.av3_estrutura_de_dados.Login;
+import com.views.av3_estrutura_de_dados.ProdutosAAvaliar;
 import javafx.application.Application;
 import javafx.collections.FXCollections;
 import javafx.collections.ObservableList;
@@ -43,19 +44,21 @@ public class MeusPedidosClienteConsumidorController implements Initializable, Co
     @FXML
     private Label labelNomeUsuario;
     @FXML
-    private Button btnVoltar, btnDeslogar;
+    private Button btnVoltar, btnDeslogar, btnProdutosAAvaliar;
     @FXML
-    private TableView<TabelaMeusPedidosConsumidorModel> tabelaMeusPedidosConsumidor;
+    private TableView<TabelaMeusPedidosConsumidorModel> tabelaMeusPedidosConsumidor; // Tabela
     @FXML
-    private TableColumn<TabelaMeusPedidosConsumidorModel, String> nomeProdutoColumn;
+    private TableColumn<TabelaMeusPedidosConsumidorModel, String> nomeProdutoColumn; // coluna tabela
     @FXML
-    private TableColumn<TabelaMeusPedidosConsumidorModel, Double> valorProdutoColumn;
+    private TableColumn<TabelaMeusPedidosConsumidorModel, Double> valorProdutoColumn; // coluna tabela
     @FXML
-    private TableColumn<TabelaMeusPedidosConsumidorModel, String> nomeVendedorColumn;
+    private TableColumn<TabelaMeusPedidosConsumidorModel, String> nomeVendedorColumn; // coluna tabela
 
     @FXML
+    // Função a ser chamda ao clicar no botão de voltar
     public void onBtnVoltarAction(ActionEvent event) throws IOException {
         try {
+            // Carrega index do cliente
             CarregarPagina.trocarPagina(event, IndexCliente.class, "IndexCliente-view.fxml",
                     this.listaClientes, this.pilhaProdutos, this.arvoreComprasCliente);
         }catch (RuntimeException e) {
@@ -64,10 +67,25 @@ public class MeusPedidosClienteConsumidorController implements Initializable, Co
     }
 
     @FXML
+    // Função a ser chamda ao clicar no botao de deslogar
     public void onBtnDeslogar(ActionEvent event) throws IOException {
         try {
+            // Desloga usuário
             this.listaClientes.deslogarCliente();
+            // Carrega página de login
             CarregarPagina.trocarPagina(event, Login.class, "Login-view.fxml",
+                    this.listaClientes, this.pilhaProdutos, this.arvoreComprasCliente);
+        }catch (RuntimeException e){
+            e.printStackTrace();
+        }
+    }
+
+    @FXML
+    // Função a ser chamada ao clicar no botao de produtos a avaliar
+    public void onBtnProdutosAAvaliar(ActionEvent event) throws IOException {
+        try {
+            // Carrega página de produtos a avaliar
+            CarregarPagina.trocarPagina(event, ProdutosAAvaliar.class, "ProdutosAAvaliar.fxml",
                     this.listaClientes, this.pilhaProdutos, this.arvoreComprasCliente);
         }catch (RuntimeException e){
             e.printStackTrace();
@@ -100,18 +118,24 @@ public class MeusPedidosClienteConsumidorController implements Initializable, Co
     }
 
     @Override
+    // Função a ser executa na inicializacao do fxml
     public void initialize(URL url, ResourceBundle resourceBundle) {
+        // Configura tabela
         this.setupTabela();
 
+        // Funções a serem rodas após a inicialização
         Platform.runLater(this::setarNomeUsuarioNoLabel);
         Platform.runLater(this::popularTabela);
     }
 
+    // Seta nome usuario na view
     private void setarNomeUsuarioNoLabel(){
         this.labelNomeUsuario.setText(listaClientes.usuarioLogado.getNomeCompleto());
     }
 
+    // Configura tabela
     private void setupTabela(){
+        // Seta respectivos atributos a serem buscados
         nomeProdutoColumn.setCellValueFactory(new PropertyValueFactory<TabelaMeusPedidosConsumidorModel,
                 String>("nomeProduto"));
         valorProdutoColumn.setCellValueFactory(new PropertyValueFactory<TabelaMeusPedidosConsumidorModel,
@@ -120,13 +144,16 @@ public class MeusPedidosClienteConsumidorController implements Initializable, Co
                 String>("nomeVendedor"));
     }
 
+    // Escreve os dados na tabela
     public void popularTabela(){
         this.tabelaMeusPedidosConsumidor.setItems(this.obterPedidosDaArvore());
     }
 
+    // Obtem os pedidos do cliente
     private ObservableList<TabelaMeusPedidosConsumidorModel> obterPedidosDaArvore(){
         ObservableList<TabelaMeusPedidosConsumidorModel> produtos = FXCollections.observableArrayList();
 
+        // Obtém todos os pedidos do cliente na arvore
         PilhaProdutos copiaPilhaProdutos = this.arvoreComprasCliente.obterTodosPedidosCliente(
                 this.listaClientes.usuarioLogado.getId());
 
@@ -135,6 +162,7 @@ public class MeusPedidosClienteConsumidorController implements Initializable, Co
         for (int i = 0; i < tamanhoPilha; i++ ){
             NoPilhaProduto produto = copiaPilhaProdutos.desempilharProduto();
             if (produto != null){
+                // Prepara dado para ser mostrado na tabela
                 produtos.add(new TabelaMeusPedidosConsumidorModel(produto.getNome(), produto.getPreco(),
                         this.listaClientes.obterNomeVendedor(produto.getIdClienteVendedor()),
                         produto.getIdClienteVendedor()));
