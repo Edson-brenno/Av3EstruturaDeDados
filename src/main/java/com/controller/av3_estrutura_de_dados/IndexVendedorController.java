@@ -42,7 +42,6 @@ public class IndexVendedorController implements Initializable, Controller {
 
     @Override
     public void setListaClientes(ListaClientes listaClientes){
-        System.out.println("Chegou");
         this.listaClientes = listaClientes;
     }
 
@@ -52,7 +51,6 @@ public class IndexVendedorController implements Initializable, Controller {
     }
 
     public void getPilhaProdutos(){
-        System.out.println("==========================");
         this.pilhaProdutos.mostrarProdutos();
     }
 
@@ -67,9 +65,10 @@ public class IndexVendedorController implements Initializable, Controller {
     }
 
     @FXML
+    // Função a ser chamada ao clicar no botao cadastros de produto
     public void onBtnCadastroProdutoOnAction(ActionEvent event) throws IOException {
         try{
-
+            // Carrega página de cadatro de produto do vendedor
             CarregarPagina.trocarPagina(event, CadastroProdutoVendedor.class,
                     "CadastroProdutoVendedor-view.fxml", this.listaClientes,
                     this.pilhaProdutos, this.arvoreComprasCliente);
@@ -79,8 +78,10 @@ public class IndexVendedorController implements Initializable, Controller {
     }
 
     @FXML
+    // Função a ser chamada ao clicar no botao de ver produto
     public void onBtnVerProdutosOnAction(ActionEvent event) throws IOException {
         try {
+            // Carrega a pagina de ver produtos do vendedor
             CarregarPagina.trocarPagina(event, VerProdutosVendedor.class,
                     "VerProdutosVendedor-view.fxml", this.listaClientes, this.pilhaProdutos,
                     this.arvoreComprasCliente);
@@ -90,9 +91,12 @@ public class IndexVendedorController implements Initializable, Controller {
     }
 
     @FXML
+    // Função a ser chamada ao clicar em deslogar
     public void onBtnDeslogar(ActionEvent event) throws IOException {
         try {
+            // Seta usuario logado como nulo
             this.listaClientes.deslogarCliente();
+            // Carrega página de login
             CarregarPagina.trocarPagina(event, Login.class, "Login-view.fxml",
                     this.listaClientes, this.pilhaProdutos, this.arvoreComprasCliente);
         }catch (RuntimeException e){
@@ -101,19 +105,25 @@ public class IndexVendedorController implements Initializable, Controller {
     }
 
     @Override
+    // Função a ser executada na inicialização do fxml
     public void initialize(URL url, ResourceBundle rb) {
 
+        // Funções a serem rodas após a inicialização
         Platform.runLater(this::setarNomeUsuarioNoLabel);
         Platform.runLater(this::obterValorTotalDeVendas);
         Platform.runLater(this::obterTotalDeVendas);
     }
 
+    // Seta o nome do usario no label
     private void setarNomeUsuarioNoLabel(){
         this.labelNomeUsuario.setText(listaClientes.usuarioLogado.getNomeCompleto());
     }
 
+    // Obtém o valor Total de vendas
     public void obterValorTotalDeVendas(){
+        // Se a arvore não for vazia
         if(this.arvoreComprasCliente!=null){
+            // Obtém todas as vendas com o id do vendedor
             PilhaProdutos vendasProdutos = this.arvoreComprasCliente.obterTodasVendasClienteVendedor(
                     this.listaClientes.usuarioLogado.getId());
 
@@ -124,15 +134,18 @@ public class IndexVendedorController implements Initializable, Controller {
                 NoPilhaProduto produtoVendido = vendasProdutos.desempilharProduto();
                 totalVendas += produtoVendido.getPreco();
             }
-
+            // Seta valor no label
             this.labelValorTotalVendas.setText("R$ " + totalVendas);
         }else{
             this.labelValorTotalVendas.setText("R$ 0.00");
         }
     }
 
+    // Obtem o total de venda
     public void obterTotalDeVendas(){
+        // Se a arvore não for vazia
         if(this.arvoreComprasCliente!=null){
+            // Obtém todas as vendas do vendedor
             PilhaProdutos vendasProdutos = this.arvoreComprasCliente.obterTodasVendasClienteVendedor(
                     this.listaClientes.usuarioLogado.getId());
 
@@ -143,7 +156,7 @@ public class IndexVendedorController implements Initializable, Controller {
                 NoPilhaProduto produtoVendido = vendasProdutos.desempilharProduto();
                 totalProdutosVendidos ++;
             }
-
+            // Seta total no label de total de vendas
             this.labelTotalVendas.setText(String.valueOf(totalProdutosVendidos));
         }else {
             this.labelTotalVendas.setText("0");
