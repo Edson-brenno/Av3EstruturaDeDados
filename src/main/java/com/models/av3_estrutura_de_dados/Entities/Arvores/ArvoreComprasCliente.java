@@ -101,4 +101,22 @@ public class ArvoreComprasCliente {
         this.obterPedidoASerAvaliadoEmOrdem(this.raiz, idClienteConsumidor, filaAvaliacaoPedido, listaClientes);
         return filaAvaliacaoPedido;
     }
+
+    private void obterPedidosEmOrdemParaVendedor(NoAvoreCompraCliente atual, long idClienteVendedor,
+                                                 PilhaProdutos pilhaProdutos){
+        if(atual != null){
+            obterPedidosEmOrdem(atual.getEsquerda(), idClienteVendedor, pilhaProdutos);
+            if(atual.getIdVendedor() == idClienteVendedor){
+                pilhaProdutos.emplilharProduto(atual.getNomeProduto(),"", atual.getIdVendedor(),
+                        null  , atual.getPrecoProduto());
+            }
+            obterPedidosEmOrdem(atual.getDireita(), idClienteVendedor, pilhaProdutos);
+        }
+    }
+
+    public PilhaProdutos obterTodasVendasClienteVendedor(long idClienteVendedor){
+        PilhaProdutos pilhaProdutos = new PilhaProdutos();
+        obterPedidosEmOrdemParaVendedor(this.raiz, idClienteVendedor, pilhaProdutos);
+        return pilhaProdutos;
+    }
 }

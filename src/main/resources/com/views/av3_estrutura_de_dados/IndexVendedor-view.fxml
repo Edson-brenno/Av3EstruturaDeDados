@@ -13,7 +13,7 @@
 <?import javafx.scene.layout.RowConstraints?>
 <?import javafx.scene.text.Font?>
 
-<AnchorPane prefHeight="400.0" prefWidth="600.0" xmlns="http://javafx.com/javafx/22" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.controller.av3_estrutura_de_dados.IndexVendedorController">
+<AnchorPane prefHeight="400.0" prefWidth="600.0" xmlns="http://javafx.com/javafx/21" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.controller.av3_estrutura_de_dados.IndexVendedorController">
    <children>
       <SplitPane layoutX="-1.0" layoutY="102.0" prefHeight="304.0" prefWidth="130.0">
          <items>
@@ -67,8 +67,22 @@
                </children>
             </GridPane>
          </items></SplitPane>
-      <TitledPane layoutX="153.0" layoutY="120.0" prefHeight="104.0" prefWidth="188.0" text="Total De Vendas" />
-      <TitledPane layoutX="372.0" layoutY="120.0" prefHeight="104.0" prefWidth="188.0" text="Total Produdos Vendidos" />
+      <TitledPane layoutX="153.0" layoutY="120.0" prefHeight="104.0" prefWidth="188.0" text="Total De Vendas">
+         <content>
+            <Label fx:id="labelValorTotalVendas" alignment="CENTER" prefHeight="75.0" prefWidth="189.0" text="Label">
+               <font>
+                  <Font size="15.0" />
+               </font>
+            </Label>
+         </content></TitledPane>
+      <TitledPane layoutX="372.0" layoutY="120.0" prefHeight="104.0" prefWidth="188.0" text="Total Produdos Vendidos">
+         <content>
+            <Label fx:id="labelTotalVendas" alignment="CENTER" prefHeight="75.0" prefWidth="189.0" text="Label">
+               <font>
+                  <Font size="15.0" />
+               </font>
+            </Label>
+         </content></TitledPane>
       <Button fx:id="btnDeslogar" layoutX="509.0" layoutY="14.0" mnemonicParsing="false" onAction="#onBtnDeslogar" text="Deslogar" />
    </children>
 </AnchorPane>
