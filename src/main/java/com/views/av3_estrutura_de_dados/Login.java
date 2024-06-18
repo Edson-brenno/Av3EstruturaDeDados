@@ -22,18 +22,19 @@ public class Login extends Application {
     @Override
     public void start(Stage stage) throws IOException {
         try {
+            // Estância lista de clientes
             ListaClientes listaCliente = new ListaClientes();
-            listaCliente.adicionarCliente("Edson Brenno", "teste@gmail.com", "123456",
-                    TipoClienteEnum.VENDEDOR);
-            listaCliente.adicionarCliente("Cliente", "cliente@gmail.com", "123456",
-                    TipoClienteEnum.CONSUMIDOR);
+            // Estância pilhaProdutos
             PilhaProdutos pilhaProdutos = new PilhaProdutos();
-
+            // Estância arvoreComprasCliente
             ArvoreComprasCliente arvoreComprasCliente = new ArvoreComprasCliente();
 
+            // Carrega o Fxml
             FXMLLoader loader = new FXMLLoader(Login.class.getResource("Login-view.fxml"));
             Scene scene = new Scene(loader.load());
+            // Obtem o controller do login
             LoginController controller = (LoginController) loader.getController();
+            // Seta as estâncias da lista, pilha e arvore no controller para que se mudar de página possa ir para outra
             controller.setListaClientes(listaCliente);
             controller.setPilhaProdutos(pilhaProdutos);
             controller.setArvoreComprasCliente(arvoreComprasCliente);

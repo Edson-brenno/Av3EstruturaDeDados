@@ -9,10 +9,7 @@ import com.views.av3_estrutura_de_dados.util.Constraints;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.fxml.Initializable;
-import javafx.scene.control.TextField;
-import javafx.scene.control.PasswordField;
-import javafx.scene.control.Label;
-import javafx.scene.control.Button;
+import javafx.scene.control.*;
 
 import com.views.av3_estrutura_de_dados.Cadastro;
 import com.models.av3_estrutura_de_dados.Entities.Listas.ListaClientes;
@@ -49,25 +46,31 @@ public class LoginController implements Initializable, Controller {
     private Button botaoCadastro, btnLogin;
 
     @FXML
+    // Função chamada ao clicarem no botao de login, realiza o login e redireciona para a página correta
     public void onBtnLoginClickAction(ActionEvent event) throws IOException {
         try {
             // Se o usuário existe
-            if((this.listaClientes != null) && (this.listaClientes.LogarCliente(this.emailTextField.getText(),
-                    this.passwordTextField.getText()) == true)){
-                System.out.println(this.listaClientes.usuarioLogado.getTipoCliente());
+            if(this.oLoginEValido()){
+                // se o cliente for do tipo Vendedor
                 if(this.listaClientes.usuarioLogado.getTipoCliente() == TipoClienteEnum.VENDEDOR){
+                    // Carrega a página index do vendedor
                     CarregarPagina.trocarPagina(event, IndexVendedor.class,
                             "IndexVendedor-view.fxml", this.listaClientes, this.pilhaProdutos,
                             this.arvoreComprasCliente);
                 }else{
+                    //Carrega a pagina index do cliente
                     CarregarPagina.trocarPagina(event, IndexCliente.class,
                             "IndexCliente-view.fxml", this.listaClientes, this.pilhaProdutos,
                             this.arvoreComprasCliente);
                 }
-
             }
-            else{ // Error no login
-                System.out.println("Error ao logar");
+            else{
+                // Alerta do error no login
+                Alert errorLogin = new Alert(Alert.AlertType.ERROR);
+                errorLogin.setTitle("Error no login");
+                errorLogin.setHeaderText(null);
+                errorLogin.setContentText("Usuario ou senha incorretos");
+                errorLogin.showAndWait();
             }
 
         }catch (RuntimeException e) {
@@ -76,14 +79,22 @@ public class LoginController implements Initializable, Controller {
     }
 
     @FXML
+    // Função chamada ao clicarem no botão de cadastro
     public void onBtCadastroClickAction(ActionEvent event) throws IOException {
         try {
+            // Carrega página de cadastro
             CarregarPagina.trocarPagina(event, Cadastro.class, "Cadastro-view.fxml",
                     this.listaClientes, this.pilhaProdutos, this.arvoreComprasCliente);
 //
         }catch (RuntimeException e){
             e.getStackTrace();
         }
+    }
+
+    // Verifica se o login e a senha passado são válidos
+    public boolean oLoginEValido(){
+        return this.listaClientes != null && this.listaClientes.LogarCliente(this.emailTextField.getText(),
+                this.passwordTextField.getText());
     }
 
     @Override
@@ -112,15 +123,11 @@ public class LoginController implements Initializable, Controller {
     }
 
     @Override
+    // Função a ser rodada na inicialização do fxml
     public void initialize(URL url, ResourceBundle rb) {
-
+        // Adiciona listener no campo de email
         Constraints.setTextFieldEmail(this.emailTextField);
 
-        Platform.runLater(this::mostrarClientes);
     }
 
-    private void mostrarClientes(){
-        System.out.println("=======================================");
-        this.listaClientes.MostrarClientes();
-    }
 }
