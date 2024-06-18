@@ -67,22 +67,11 @@
                </children>
             </GridPane>
          </items></SplitPane>
-      <TitledPane layoutX="153.0" layoutY="120.0" prefHeight="104.0" prefWidth="188.0" text="Total De Vendas">
-         <content>
-            <Label fx:id="labelValorTotalVendas" alignment="CENTER" prefHeight="75.0" prefWidth="189.0" text="Label">
-               <font>
-                  <Font size="15.0" />
-               </font>
-            </Label>
-         </content></TitledPane>
-      <TitledPane layoutX="372.0" layoutY="120.0" prefHeight="104.0" prefWidth="188.0" text="Total Produdos Vendidos">
-         <content>
-            <Label fx:id="labelTotalVendas" alignment="CENTER" prefHeight="75.0" prefWidth="189.0" text="Label">
-               <font>
-                  <Font size="15.0" />
-               </font>
-            </Label>
-         </content></TitledPane>
-      <Button fx:id="btnDeslogar" layoutX="509.0" layoutY="14.0" mnemonicParsing="false" onAction="#onBtnDeslogar" text="Deslogar" />
+      <ImageView fitHeight="406.0" fitWidth="471.0" layoutX="130.0" layoutY="-1.0" pickOnBounds="true">
+         <image>
+            <Image url="@images/area_vendedor_logo.png" />
+         </image>
+      </ImageView>
+      <Button fx:id="btnDeslogar" layoutX="520.0" layoutY="362.0" mnemonicParsing="false" onAction="#onBtnDeslogar" text="Deslogar" />
    </children>
 </AnchorPane>

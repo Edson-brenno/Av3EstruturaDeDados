@@ -35,10 +35,6 @@ public class IndexVendedorController implements Initializable, Controller {
     private Label labelNomeUsuario;
     @FXML
     private Button btnCadastroProduto, btnVerProdutos, btnDeslogar;
-    @FXML
-    private Label labelValorTotalVendas;
-    @FXML
-    private Label labelTotalVendas;
 
     @Override
     public void setListaClientes(ListaClientes listaClientes){
@@ -110,8 +106,6 @@ public class IndexVendedorController implements Initializable, Controller {
 
         // Funções a serem rodas após a inicialização
         Platform.runLater(this::setarNomeUsuarioNoLabel);
-        Platform.runLater(this::obterValorTotalDeVendas);
-        Platform.runLater(this::obterTotalDeVendas);
     }
 
     // Seta o nome do usario no label
@@ -119,47 +113,4 @@ public class IndexVendedorController implements Initializable, Controller {
         this.labelNomeUsuario.setText(listaClientes.usuarioLogado.getNomeCompleto());
     }
 
-    // Obtém o valor Total de vendas
-    public void obterValorTotalDeVendas(){
-        // Se a arvore não for vazia
-        if(this.arvoreComprasCliente!=null){
-            // Obtém todas as vendas com o id do vendedor
-            PilhaProdutos vendasProdutos = this.arvoreComprasCliente.obterTodasVendasClienteVendedor(
-                    this.listaClientes.usuarioLogado.getId());
-
-            double totalVendas = 0;
-            int tamanhoPilha = vendasProdutos.tamanhoPilha;
-
-            for(int i = 0; i < tamanhoPilha; i++){
-                NoPilhaProduto produtoVendido = vendasProdutos.desempilharProduto();
-                totalVendas += produtoVendido.getPreco();
-            }
-            // Seta valor no label
-            this.labelValorTotalVendas.setText("R$ " + totalVendas);
-        }else{
-            this.labelValorTotalVendas.setText("R$ 0.00");
-        }
-    }
-
-    // Obtem o total de venda
-    public void obterTotalDeVendas(){
-        // Se a arvore não for vazia
-        if(this.arvoreComprasCliente!=null){
-            // Obtém todas as vendas do vendedor
-            PilhaProdutos vendasProdutos = this.arvoreComprasCliente.obterTodasVendasClienteVendedor(
-                    this.listaClientes.usuarioLogado.getId());
-
-            int totalProdutosVendidos = 0;
-            int tamanhoPilha = vendasProdutos.tamanhoPilha;
-
-            for(int i = 0; i < tamanhoPilha; i++){
-                NoPilhaProduto produtoVendido = vendasProdutos.desempilharProduto();
-                totalProdutosVendidos ++;
-            }
-            // Seta total no label de total de vendas
-            this.labelTotalVendas.setText(String.valueOf(totalProdutosVendidos));
-        }else {
-            this.labelTotalVendas.setText("0");
-        }
-    }
 }
