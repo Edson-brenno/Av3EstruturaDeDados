@@ -16,10 +16,13 @@ public class ArvoreComprasCliente {
         return this.raiz;
     }
 
+
+    // Verifica se arvore esta vazia
     private boolean arvoreEstaVazia(){
         return this.raiz == null;
     }
 
+    // Adiciona uma nova compra na arvore
     public void adicionarCompraCliente(String nomeProduto, double precoProduto, Long idVendedor, Long idCliente) {
         NoAvoreCompraCliente novoNo = new NoAvoreCompraCliente(nomeProduto, precoProduto, idVendedor, idCliente);
         if (this.arvoreEstaVazia()) {
@@ -47,6 +50,7 @@ public class ArvoreComprasCliente {
         }
     }
 
+    // Obtem os pedidos em ordem com base no id do cliente comprador
     private void obterPedidosEmOrdem(NoAvoreCompraCliente atual, long idClienteComprador, PilhaProdutos pilhaProdutos){
         if(atual != null){
             obterPedidosEmOrdem(atual.getEsquerda(), idClienteComprador, pilhaProdutos);
@@ -59,12 +63,14 @@ public class ArvoreComprasCliente {
         }
     }
 
+    // Retorna uma pilha com os produtos do cliente
     public PilhaProdutos obterTodosPedidosCliente(long idClienteComprador){
         PilhaProdutos pilhaProdutos = new PilhaProdutos();
         obterPedidosEmOrdem(this.raiz, idClienteComprador, pilhaProdutos);
         return pilhaProdutos;
     }
 
+    // Busca por ordem e seta o produto como avaliado
     private void setarPedidoAvaliadoEmOrdem(NoAvoreCompraCliente atual,String idCompra){
         if(atual != null){
             setarPedidoAvaliadoEmOrdem(atual.getEsquerda(), idCompra);
@@ -75,6 +81,7 @@ public class ArvoreComprasCliente {
         }
     }
 
+    // seta o pedido como avaliado
     public void setarPedidoAvaliado(String idCompra){
         NoAvoreCompraCliente atual = this.raiz;
         if(atual != null){
@@ -82,6 +89,7 @@ public class ArvoreComprasCliente {
         }
     }
 
+    // Busca os pedidos a serem avaliados com base no cliente Consumidos
     private void obterPedidoASerAvaliadoEmOrdem(NoAvoreCompraCliente atual, long idClienteConsumidor,
                                                 FilaAvaliacaoPedido filaAvaliacaoPedido, ListaClientes listaClientes){
         if(atual != null){
@@ -95,6 +103,7 @@ public class ArvoreComprasCliente {
         }
     }
 
+    // retorna a fila de avaliação
     public FilaAvaliacaoPedido obterPedidosASeremAvaliadosClienteConsumidor(long idClienteConsumidor,
                                                                              ListaClientes listaClientes){
         FilaAvaliacaoPedido filaAvaliacaoPedido = new FilaAvaliacaoPedido();
@@ -102,6 +111,7 @@ public class ArvoreComprasCliente {
         return filaAvaliacaoPedido;
     }
 
+    // Obtem pedido em ordem para vendedor
     private void obterPedidosEmOrdemParaVendedor(NoAvoreCompraCliente atual, long idClienteVendedor,
                                                  PilhaProdutos pilhaProdutos){
         if(atual != null){
@@ -114,6 +124,7 @@ public class ArvoreComprasCliente {
         }
     }
 
+    // retorna pilha com produtos
     public PilhaProdutos obterTodasVendasClienteVendedor(long idClienteVendedor){
         PilhaProdutos pilhaProdutos = new PilhaProdutos();
         obterPedidosEmOrdemParaVendedor(this.raiz, idClienteVendedor, pilhaProdutos);
