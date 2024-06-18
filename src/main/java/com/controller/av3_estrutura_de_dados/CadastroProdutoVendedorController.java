@@ -5,15 +5,13 @@ import java.io.IOException;
 import java.util.ResourceBundle;
 
 import com.views.av3_estrutura_de_dados.Login;
+import com.views.av3_estrutura_de_dados.VerProdutosVendedor;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.fxml.Initializable;
 import javafx.application.Platform;
 
-import javafx.scene.control.Label;
-import javafx.scene.control.TextField;
-import javafx.scene.control.TextArea;
-import javafx.scene.control.Button;
+import javafx.scene.control.*;
 
 import com.models.av3_estrutura_de_dados.Entities.Listas.ListaClientes;
 import com.models.av3_estrutura_de_dados.Entities.Pilhas.PilhaProdutos;
@@ -39,11 +37,13 @@ public class CadastroProdutoVendedorController implements Initializable, Control
     @FXML
     private TextArea textFieldDescricao;
     @FXML
-    private Button btnCadastrar, btnCancelar, btnDeslogar;
+    private Button btnCadastrar, btnCancelar, btnDeslogar, btnVerProdutos;
 
     @FXML
+    // Função a ser chamada ao clicar no botao cancelar
     public void onBtnCancelar(ActionEvent event) throws IOException {
         try {
+            // Carrega a página da index do vendedor
             CarregarPagina.trocarPagina(event, IndexVendedor.class, "IndexVendedor-view.fxml",
                     this.listaClientes, this.pilhaProdutos, this.arvoreComprasCliente);
         }catch (RuntimeException e){
@@ -52,24 +52,47 @@ public class CadastroProdutoVendedorController implements Initializable, Control
     }
 
     @FXML
+    // Função a ser chamada ao clicar no botão de cadastrar
     public void onBtnCadastrar(ActionEvent event) throws IOException {
         try {
+            if(this.osCamposDeCadastroDoProdutoSaoValidos()){
+                // Empilha novo produto
+                this.pilhaProdutos.emplilharProduto(this.textFieldNomeProduto.getText(), this.textFieldDescricao.getText(),
+                        this.listaClientes.usuarioLogado.getId(),
+                        null,Double.parseDouble(this.textFieldValor.getText().replace(",",".")));
 
-            this.pilhaProdutos.emplilharProduto(this.textFieldNomeProduto.getText(), this.textFieldDescricao.getText(),
-                    this.listaClientes.usuarioLogado.getId(),
-                    null,Double.parseDouble(this.textFieldValor.getText().replace(",",".")));
+                // Mensagem de sucesso
+                Alert cadastroRealizado = new Alert(Alert.AlertType.INFORMATION);
+                cadastroRealizado.setTitle("Cadastro Realizado");
+                cadastroRealizado.setHeaderText(null);
+                cadastroRealizado.setContentText("O produto " + this.textFieldNomeProduto.getText() +
+                        " foi cadastrado com sucesso!");
+                cadastroRealizado.showAndWait();
 
-            CarregarPagina.trocarPagina(event, IndexVendedor.class, "IndexVendedor-view.fxml",
-                    this.listaClientes, this.pilhaProdutos, this.arvoreComprasCliente);
+                // Carrega página index do vendedor
+                CarregarPagina.trocarPagina(event, IndexVendedor.class, "IndexVendedor-view.fxml",
+                        this.listaClientes, this.pilhaProdutos, this.arvoreComprasCliente);
+            }else{
+                // Mensagem de error
+                Alert errorCadastro = new Alert(Alert.AlertType.ERROR);
+                errorCadastro.setTitle("Error ao cadastrar produto");
+                errorCadastro.setHeaderText(null);
+                errorCadastro.setContentText("Preencha os campos corretamente!");
+                errorCadastro.showAndWait();
+            }
+
         }catch(RuntimeException e){
             e.printStackTrace();
         }
     }
 
     @FXML
+    // Função a ser chamada ao clicar no botao de delogar
     public void onBtnDeslogar(ActionEvent event) throws IOException {
         try {
+            // Desloga usuário
             this.listaClientes.deslogarCliente();
+            // Carrega página login
             CarregarPagina.trocarPagina(event, Login.class, "Login-view.fxml",
                     this.listaClientes, this.pilhaProdutos, this.arvoreComprasCliente);
         }catch (RuntimeException e){
@@ -77,9 +100,16 @@ public class CadastroProdutoVendedorController implements Initializable, Control
         }
     }
 
+    @FXML
+    // Função a ser chamada ao clicar no botao de ver produtos
+    public void onBtnVerProdutos(ActionEvent event) throws IOException {
+        // Carrega página da lista dos produtos
+        CarregarPagina.trocarPagina(event, VerProdutosVendedor.class, "VerProdutosVendedor-view.fxml",
+                this.listaClientes, this.pilhaProdutos, this.arvoreComprasCliente);
+    }
+
     @Override
     public void setListaClientes(ListaClientes listaClientes){
-        System.out.println("Chegou");
         this.listaClientes = listaClientes;
     }
 
@@ -90,7 +120,6 @@ public class CadastroProdutoVendedorController implements Initializable, Control
 
     @Override
     public void getPilhaProdutos(){
-        System.out.println("==========================");
         this.pilhaProdutos.mostrarProdutos();
     }
 
@@ -105,14 +134,26 @@ public class CadastroProdutoVendedorController implements Initializable, Control
     }
 
     @Override
+    // Função a ser executada no carregamento fxml
     public void initialize(URL url, ResourceBundle rb) {
+        // Seta listenner
         Constraints.setTextFieldSemAcento(this.textFieldNomeProduto);
         Constraints.setTextAreaDescricao(this.textFieldDescricao);
         Constraints.setTextFieldValor(this.textFieldValor);
+
+        // Funções a serem rodadas após o carregamento
         Platform.runLater(this::setarNomeUsuarioNoLabel);
     }
 
+    // Seta o nome do usuario na view
     private void setarNomeUsuarioNoLabel(){
         this.labelNomeUsuario.setText(listaClientes.usuarioLogado.getNomeCompleto());
+    }
+
+    // Verifica se os campos de cadatros foram preenchidos corretamente
+    private boolean osCamposDeCadastroDoProdutoSaoValidos(){
+        return this.textFieldNomeProduto.getText().matches("^[a-zA-Z0-9 _.-]*$") &&
+                this.textFieldDescricao.getText().length() <= 2500 &&
+                this.textFieldValor.getText().matches("^[0-9,]+$");
     }
 }
