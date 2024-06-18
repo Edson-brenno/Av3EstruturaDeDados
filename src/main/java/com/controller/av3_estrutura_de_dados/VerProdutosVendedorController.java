@@ -38,17 +38,19 @@ public class VerProdutosVendedorController implements Initializable, Controller{
     @FXML
     private ArvoreComprasCliente arvoreComprasCliente;
     @FXML
-    private TableView<TabelaVerProdutosVendedorModel> tabelaVerProdutos;
+    private TableView<TabelaVerProdutosVendedorModel> tabelaVerProdutos; //Tabela
     @FXML
-    private TableColumn<TabelaVerProdutosVendedorModel, String> nomeProdutoColumn;
+    private TableColumn<TabelaVerProdutosVendedorModel, String> nomeProdutoColumn; // coluna tabela
     @FXML
-    private TableColumn<TabelaVerProdutosVendedorModel, Double> precoColumn;
+    private TableColumn<TabelaVerProdutosVendedorModel, Double> precoColumn; // coluna tabela
     @FXML
     private Button btnVoltar, btnCadastroProduto, btnDeslogar;
 
     @FXML
+    // Função a ser chamada ao clicar no botao de voltar
     public void onBtnVoltarAction(ActionEvent event) throws IOException {
         try {
+            // Carrega a página IndexVendedor
             CarregarPagina.trocarPagina(event, IndexVendedor.class, "IndexVendedor-view.fxml",
                     this.listaClientes, this.pilhaProdutos, this.arvoreComprasCliente);
         } catch (IOException e) {
@@ -57,8 +59,10 @@ public class VerProdutosVendedorController implements Initializable, Controller{
     }
 
     @FXML
+    // Funçao a ser chamada ao clicar no butao de cadastrar produto
     public void onBtnCadastroProdutoAction(ActionEvent event) throws IOException {
         try{
+            // Carrega pagina de cadastro de produtos
             CarregarPagina.trocarPagina(event, CadastroProdutoVendedor.class,
                     "CadastroProdutoVendedor-view.fxml", this.listaClientes, this.pilhaProdutos,
                     this.arvoreComprasCliente);
@@ -68,9 +72,12 @@ public class VerProdutosVendedorController implements Initializable, Controller{
     }
 
     @FXML
+    // Função a ser chamada ao clicar no botao de deslogar
     public void onBtnDeslogar(ActionEvent event) throws IOException {
         try {
+            // Desloga o usuario
             this.listaClientes.deslogarCliente();
+            // Carrega a pagina de login
             CarregarPagina.trocarPagina(event, Login.class, "Login-view.fxml",
                     this.listaClientes, this.pilhaProdutos, this.arvoreComprasCliente);
         }catch (RuntimeException e){
@@ -79,8 +86,12 @@ public class VerProdutosVendedorController implements Initializable, Controller{
     }
 
     @Override
+    // Função a ser chamada na inicialização do fxml
     public void initialize(URL location, ResourceBundle resources) {
+        // configura tabela
         setupTabela();
+
+        //Funções a serem executadas após a inicializacao
         Platform.runLater(this::popularTabela);
     }
 
@@ -89,18 +100,24 @@ public class VerProdutosVendedorController implements Initializable, Controller{
         this.listaClientes = listaClientes;
     }
 
+    //Configura tabela
     private void setupTabela() {
+        // Seta os atributos no model para a tabela
         nomeProdutoColumn.setCellValueFactory(new PropertyValueFactory<TabelaVerProdutosVendedorModel, String>("nome"));
         precoColumn.setCellValueFactory(new PropertyValueFactory<TabelaVerProdutosVendedorModel, Double>("preco"));
     }
 
+    //Escreve os dados na tabela
     private void popularTabela(){
         tabelaVerProdutos.setItems(this.obterProdutosDaPilha());
     }
 
+    // Obtem os produtos da prilha e transforma para o formato reconhecido pela tabela
     private ObservableList<TabelaVerProdutosVendedorModel> obterProdutosDaPilha(){
+
         ObservableList<TabelaVerProdutosVendedorModel> produtos = FXCollections.observableArrayList();
 
+        //Obtém produtos do vendedor
         PilhaProdutos copiaPilhaProdutos = this.pilhaProdutos.gerarCopiaPilhaProdutosIdVendedor(
                 this.listaClientes.usuarioLogado.getId());
 
@@ -109,12 +126,14 @@ public class VerProdutosVendedorController implements Initializable, Controller{
         for (int i = 0; i < tamanhoPilha; i++ ){
             NoPilhaProduto produto = copiaPilhaProdutos.desempilharProduto();
             if (produto != null){
+                // Adiciona o produto no formato ao qual é reconhecido pela tabela
                 produtos.add(new TabelaVerProdutosVendedorModel(produto.getNome(), produto.getPreco()));
             }
         }
 
         return produtos;
     }
+
     @Override
     public void setPilhaProdutos(PilhaProdutos pilhaProdutos) {
         this.pilhaProdutos = pilhaProdutos;
