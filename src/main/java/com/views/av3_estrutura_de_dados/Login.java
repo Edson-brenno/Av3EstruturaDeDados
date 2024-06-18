@@ -11,8 +11,6 @@ import com.models.av3_estrutura_de_dados.Entities.Pilhas.PilhaProdutos;
 
 import com.models.av3_estrutura_de_dados.Entities.Arvores.ArvoreComprasCliente;
 
-import com.models.av3_estrutura_de_dados.Entities.Filas.NosFilas.NoFilaAvaliacaoPedido;
-
 import java.io.IOException;
 
 public class Login extends Application {
