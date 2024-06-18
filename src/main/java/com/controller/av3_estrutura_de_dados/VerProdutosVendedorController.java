@@ -101,7 +101,9 @@ public class VerProdutosVendedorController implements Initializable, Controller{
     private ObservableList<TabelaVerProdutosVendedorModel> obterProdutosDaPilha(){
         ObservableList<TabelaVerProdutosVendedorModel> produtos = FXCollections.observableArrayList();
 
-        PilhaProdutos copiaPilhaProdutos = this.pilhaProdutos.gerarCopiaPilhaProdutos();
+        PilhaProdutos copiaPilhaProdutos = this.pilhaProdutos.gerarCopiaPilhaProdutosIdVendedor(
+                this.listaClientes.usuarioLogado.getId());
+
         int tamanhoPilha = this.pilhaProdutos.tamanhoPilha;
 
         for (int i = 0; i < tamanhoPilha; i++ ){

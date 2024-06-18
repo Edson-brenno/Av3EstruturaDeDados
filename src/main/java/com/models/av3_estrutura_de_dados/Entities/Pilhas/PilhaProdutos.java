@@ -94,4 +94,33 @@ public class PilhaProdutos {
 
     }
 
+    public PilhaProdutos gerarCopiaPilhaProdutosIdVendedor(long idVendedor){
+
+        if(!this.pilhaEstaVazia()){
+            PilhaProdutos copia = new PilhaProdutos();
+
+            NoPilhaProduto ponteiro = this.base;
+
+            while(ponteiro.getProximoNo() != null){
+                if(ponteiro.getIdClienteVendedor() == idVendedor){
+                    copia.emplilharProduto(ponteiro.getNome(), ponteiro.getDescricao(), ponteiro.getIdClienteVendedor(),
+                            null,ponteiro.getPreco());
+                }
+
+                ponteiro = ponteiro.getProximoNo();
+            }
+
+            if(ponteiro.getIdClienteVendedor() == idVendedor){
+                copia.emplilharProduto(ponteiro.getNome(), ponteiro.getDescricao(), ponteiro.getIdClienteVendedor(),
+                        null,ponteiro.getPreco());
+            }
+
+            return copia;
+
+        }else{
+            return null;
+        }
+
+    }
+
 }
